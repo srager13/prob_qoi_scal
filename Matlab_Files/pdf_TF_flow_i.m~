@@ -1,0 +1,14 @@
+clear;
+
+num_nodes = 100;
+N = num_nodes;
+x = 1:num_nodes;
+i = 40;
+
+pdf_TF = zeros(1, length(num_nodes));
+
+% mu(x) = -0.016x^2 + 2x - 2
+% sigma(x) = -0.0011x^2 + 0.128x + 1.42
+% normpdf( x_vals, mu, sigma )
+
+pdf_TF = pdf_TF + (i/N)*normpdf(x,
