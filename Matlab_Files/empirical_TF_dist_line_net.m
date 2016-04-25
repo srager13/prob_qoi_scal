@@ -3,7 +3,7 @@
 %   a number of trials
 num_nodes = 100;
 x_vals = 1:num_nodes;
-num_trials = 10000;
+num_trials = 5000;
 emp_TF_pdf = zeros(1,num_nodes);
 TF_values = zeros(num_nodes,num_trials);
 font_size = 20;
@@ -49,7 +49,7 @@ saveas(gcf, sprintf('./TF_figures/std_dev_TF_each_node_line_net_%i.pdf',num_node
 figure;
 
 hold on;
-i=1:10;
+i=1:6;
 nodes_to_plot = ceil((num_nodes/max(i))*i);
 for node=nodes_to_plot(1:end-1)
     TF_pdf = TF_values(node,:);% - mean_TF_per_node(node);

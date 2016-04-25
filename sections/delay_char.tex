@@ -1,0 +1,129 @@
+\section{Finding Limits and Characterizing Delay}
+\label{sec:delay_char}
+
+%Let us define the following terms:
+%
+%\begin{itemize}
+%  \item $W$ = Channel Rate (bits/second)
+%  \item $T$ = Timeliness Requirement (seconds)
+%  \item $k_{req}$ = Number of required images
+%  \item $I_S$ = Size of each image (bits)
+%  \item $CF$ = Channel Factor
+%  \item $TF$ = Traffic Factor
+%  \item $P_S$ = Packet size
+%  \item $DF$ = Delay Factor
+%  \item $PL$ = Path Length
+%  \item $p_{i,j}$ = Probability of a flow from $i$ to $j$
+%\end{itemize}
+
+As explained in Section \ref{sec:qoi_model}, delay of a flow can be expressed as
+\begin{equation}
+	D = \frac{ k_{req} \cdot I_S \cdot CF \cdot TF}{W} + \frac{P_S \cdot DF \cdot (PL-1)}{W}
+\end{equation}
+We will make some substitutions to get the following version
+\begin{equation}
+	D = \frac{ P_S \cdot CF \cdot P_N \cdot TF}{W} + \frac{P_S \cdot DF \cdot (PL-1)}{W}
+\end{equation}
+
+Building on this equation for delay, we will use the following equation to describe the delay from $i$ given a destination of $j$:
+\begin{equation}
+	D_{i | j} = \frac{ P_S \cdot CD \cdot P_N \cdot TF_{i | j}}{W}  + \frac{P_S \cdot DF \cdot (PL(i,j)-1)}{W}
+\end{equation}
+Here, we use $PL()$ as a function that provides the path length between $i$ and $j$.  We also assume that $P_N$ is a random variable that describes the number of packets in a given request, capturing both the possible randomness of $k_{req}$ and $I_S$.  Also, recall that $TF$ is a random variable of the flows being forwarded at the bottleneck node along the path of the flow.  Let us define two constants to simplify the expression:
+\begin{eqnarray*}
+	C_1 = \frac{P_S \cdot CF}{W} \\
+	C_2 = \frac{P_S \cdot DF}{W}
+\end{eqnarray*}
+Then, we can express the delay as
+\begin{equation}
+	D_{i | j} = C_1 \cdot P_N \cdot TF_{i | j} + C_2 \cdot PL(i,j)
+\end{equation}
+
+We can develop the following expression for a distribution of delay:
+\begin{equation*}
+	P( D_{i | j} \leq d ) = P( C_1 \cdot P_N \cdot TF_{i | j} + C_2 \cdot PL(i,j) \leq d )
+\end{equation*}
+\begin{equation*}
+	P( P_N \cdot TF_{i | j} \leq \frac{d - C_2 \cdot PL(i,j)}{C_1}  )
+\end{equation*}
+\begin{equation*}
+	\sum\limits_{tf = 1}^{tf_{max}} P( P_N \cdot TF \leq \frac{d - C_2 \cdot PL(i,j)}{C_1} | TF = tf ) \cdot f_{TF_{i | j}}(tf)
+\end{equation*}
+\begin{equation*}
+	\sum\limits_{tf = 1}^{tf_{max}} P( P_N \leq \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot tf} ) \cdot f_{TF_{i | j}}(tf)
+\end{equation*}
+\begin{equation*}
+	F_{D_{i|j}}(d) = \sum\limits_{tf = 1}^{tf_{max}} F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot tf} ) \cdot f_{TF_{i | j}}(tf)
+\end{equation*}
+
+
+Then, we can generalize the expression to give a distribution for a flow originating in node $i$ with an unknown destination by conditioning over all possible destinations, $j$.
+\begin{equation}
+\label{eq:delay_dist_pdf_i}
+	F_{D_i} = \sum\limits_{j \neq i} [ \sum\limits_{tf = 1}^{tf_{max}} F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot tf} ) \cdot f_{TF_{i | j}}(tf) ] \cdot p(j)
+\end{equation}
+
+Finally, we can get an average distribution of all flows' delays by summing over all sources and dividing by the the number of sources.  This average delay distribtuion is in Equation (\ref{eq:delay_dist_pdf_i}).
+
+\begin{figure*}
+\begin{equation}
+\label{eq:full_delay_cdf}
+	F_D(d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} \sum\limits_{tf=1}^{tf_{max}}  F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot p_N} ) \cdot f_{TF_{i | j}}( tf ) \cdot p(j)
+\end{equation}
+\end{figure*}
+
+\subsection{Minimum Timeliness/Maximum Query Rate}
+
+The first useful information that can be gathered from the delay distribution is the maximum expected delay, $d_{max}$, of a flow in the network, which occurs at the delay $d$ at which $F_{D}$ reaches its maximum value of $1$.  If the average rate of queries, $\lambda$, is greater than $\frac{1}{d_{max}}$, then the traffic will exceed the network capacity and the number of active queries in the system will grow without bound, causing packets to be dropped and/or delays to grow without bound.  Therefore, the maximum query rate is $\lambda_{max} = \frac{1}{d_{max}}$, and, consequently, the minimum timeliness for which \emph{all} flows can be expected to complete before the deadline is $d_{max}$.
+
+In some applications, having a certain amount of queries not complete by the timeliness requirement may be acceptable.  In these situations, more useful information can be extracted from the delay distribution in Equation (\ref{eq:full_delay_cdf}).  Specifically, this delay distribution can be interpreted as the expected percentage of queries that will finish within the timeliness constraint if the timeliness constraint was $d$.  As we will show in Section \ref{sec:example_applications}, this relationship follows a Normal distribution CDF.
+
+\subsection{Probability of Timeliness Satisfiability}
+
+While the minimum timeliness at which all flows are expected to complete before their deadlines can be determined by the scalability equations in Section \ref{sec:example_applications}, some applications may benefit from an understanding of what the probability of completing within the timeliness constraints for those below the minimum fully satisfiable timeliness.  For example, if a mission issues a number of queries for information to support decision-making, receiving $80\%$ or $90\%$ of the responses may be sufficient for making the decision.  The question of importance, then, is "How far can we reduce the timeliness constraint and still expect to receive $x\%$ of the queries in time?"  Or, equivalently, we may pose the question, "When the network is operating at the edge of capacity, what is the expected delay for $x\%$ of queries to be completed?"  Since equation \ref{eq:full_delay_cdf} provides the distribution of delays, it provides quality estimates to answer these questions.  
+
+\begin{figure}[]
+\centering
+       \subfigure[Line Network, $N = 40$, $I_S = 36 KB$]{
+        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line.pdf}
+        \label{fig:scal_vs_qoi_line}
+        }
+    \subfigure[Grid Network, $N = 49$, $I_S = 72 KB$]{
+        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_grid.pdf}
+        \label{fig:scal_vs_qoi_grid}
+        }
+   \caption{Characterization of delay using framework follows distribution of empirical results in most cases.}
+   \label{fig:delay_cdf_anal_vs_sim}
+\end{figure}
+
+Figure \ref{fig:delay_cdf_anal_vs_sim} shows expected delay distributions from \ref{eq:full_delay_cdf} alongside distributions of delays recorded in ns3 simulations of the same networks.  In all cases, above $0.5$ probability analytical predictions are within about $10\%$ of empirical results.  We believe this end of the distribution provides much more useful information since minimum QoI requirements for most applications tend to be over $50\%$.  However, in smaller data load requirement cases, analytical predictions match simulation results quite closely along the entire distribution.
+
+%\subsection{Scalability and Maximum QoI Equations}
+%
+%Once 
+
+% from a different script:
+%\subsubsection{Delay}
+%
+%The delay distribution for a flow beginning in source node $i$ is:
+%
+%\begin{equation}
+%	f_{D_i} = \sum\limits_{j \neq i} [C_1 \cdot f_{TF_{i | j}}(tf) + C_2 \cdot PL(i,j)] \cdot p(j)
+%\end{equation}
+%which is equivalent to:
+%\begin{equation}
+%	P(D_i < d) = \sum\limits_{j \neq i} f_{TF_{i | j}}( \frac{d - C_2 \cdot PL(i,j)}{C_1} ) \cdot p(j)
+%\end{equation}
+
+%which can be expanded to:
+%
+%\begin{figure*}[t]
+%\begin{eqnarray}
+%\nonumber
+%	f_{D_i} (d) = &&\frac{i}{N} \cdot \mathcal{N}( \frac{2(i-1)(N-i)}{(N-2)(N-1)} , \sqrt{\frac{2(i-1)(N-i)  (1-\frac{1}{N-1})}{(N-2)(N-1)}} )  \\ \nonumber
+%			   &+& \sum\limits_{k=i}^{\frac{N}{2}-1} \cdot \frac{\frac{1}{2}-\frac{i}{N}}{\frac{N}{2} - i}\mathcal{N}( \frac{2(k-1)(N-k)}{(N-2)(N-1)}, \sqrt{\frac{2(k-1)(N-k)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )  \\
+%			   &+& \frac{1}{2} \cdot \mathcal{N} ( \frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} , \sqrt{\frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )
+%\label{eq:full_PDF_TF_line_2}
+%\end{eqnarray}
+%\end{figure*}
+% end from different script

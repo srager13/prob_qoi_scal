@@ -1,0 +1,99 @@
+\section{Finding Limits and Characterizing Delay}
+\label{sec:delay_char}
+
+%Let us define the following terms:
+%
+%\begin{itemize}
+%  \item $W$ = Channel Rate (bits/second)
+%  \item $T$ = Timeliness Requirement (seconds)
+%  \item $k_{req}$ = Number of required images
+%  \item $I_S$ = Size of each image (bits)
+%  \item $CF$ = Channel Factor
+%  \item $TF$ = Traffic Factor
+%  \item $P_S$ = Packet size
+%  \item $DF$ = Delay Factor
+%  \item $PL$ = Path Length
+%  \item $p_{i,j}$ = Probability of a flow from $i$ to $j$
+%\end{itemize}
+
+As explained in Section \ref{sec:qoi_model}, delay of a flow can be expressed as
+\begin{equation}
+	D = \frac{ k_{req} \cdot I_S \cdot CF \cdot TF}{W} + \frac{P_S \cdot DF \cdot (PL-1)}{W}
+\end{equation}
+
+Building on this equation for delay, we will use the following equation to describe the delay from $i$ given a destination of $j$:
+\begin{equation}
+	D_{i | j} = \frac{ k_{req} \cdot I_S \cdot CF \cdot TF_{i | j}}{W} + \frac{P_S \cdot DF \cdot (PL(i,j)-1)}{W}
+\end{equation}
+where $PL()$ is a function that provides the path length between $i$ and $j$ and recalling that $TF$ is a random variable of the flows being forwarded at the bottleneck node along the path of the flow.  Let us define two constants to simplify the expression:
+\begin{eqnarray*}
+	C_1 = \frac{k_{req} \cdot I_S \cdot CF}{W} \\
+	C_2 = \frac{P_S \cdot DF}{W}
+\end{eqnarray*}
+Then, we can express the delay as
+\begin{equation}
+	D_{i | j} = C_1 \cdot TF_{i | j} + C_2 \cdot PL(i,j)
+\end{equation}
+
+To get a distribution for the delay of this flow, we use the distribution of the traffic factor as derived above:
+\begin{equation}
+	F_{D_{i | j}} = C_1 \cdot F_{TF_{i | j}} + C_2 \cdot PL(i,j)
+\end{equation}
+
+Then, we can generalize the expression to give a distribution for a flow originating in node $i$ with an unknown destination by conditioning over all possible destinations, $j$.
+\begin{equation}
+\label{eq:delay_dist_pdf_i}
+	F_{D_i} = \sum\limits_{j \neq i} [ C_1 \cdot F_{TF_{i | j}} + C_2 \cdot PL(i,j)] \cdot p(j)
+\end{equation}
+
+Finally, the distribution of all flows' delays is the sum of the distribution in (\ref{eq:delay_dist_pdf_i}) over all sources, $i$.
+
+%\begin{equation}
+%\label{eq:delay_dist_pdf}
+%	f_{D} = \sum\limits_{i = 1}^N \sum\limits_{j \neq i} [ C_1 \cdot f_{TF_{i | j}} + C_2 \cdot PL(i,j)] \cdot p(j)
+%\end{equation}
+%We can use the CDF version, too
+\begin{equation}
+\label{eq:delay_dist_cdf}
+	F_{D} = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} [ C_1 \cdot F_{TF_{i | j}} + C_2 \cdot PL(i,j)] \cdot p(j)
+\end{equation}
+which is equivalent to:
+\begin{equation}
+	P(D \leq d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} F_{TF_{i | j}}( \frac{d - C_2 \cdot PL(i,j)}{C_1} ) \cdot p(j)
+\end{equation}
+
+\subsection{Minimum Timeliness/Maximum Query Rate}
+
+The first useful information that can be gathered from the delay distribution is the maximum expected delay, $d_{max}$, of a flow in the network, which occurs at the delay $d$ at which $F_{D}$ reaches its maximum value of $1$.  If the average rate of queries, $\lambda$, is greater than $\frac{1}{d_{max}}$, then the traffic will exceed the network capacity and the number of active queries in the system will grow without bound, causing packets to be dropped and/or delays to grow without bound.  Therefore, the maximum query rate is $\lambda_{max} = \frac{1}{d_{max}}$, and, consequently, the minimum timeliness for which \emph{all} flows can be expected to complete before the deadline is $d_{max}$.
+
+In some applications, having a certain amount of queries not complete by the timeliness requirement may be acceptable.  In these situations, more useful information can be extracted from the delay distribution in Equation \ref{eq:delay_dist_cdf}.  Specifically, this delay distribution can be interpreted as the expected percentage of queries that will finish within the timeliness constraint if the timeliness constraint was $d$.  As we will show in Section \ref{sec:example_applications}, this relationship follows a Normal distribution CDF.
+
+\subsection{Scalability and Maximum QoI Equations}
+
+Once 
+
+% from a different script:
+%\subsubsection{Delay}
+%
+%The delay distribution for a flow beginning in source node $i$ is:
+%
+%\begin{equation}
+%	f_{D_i} = \sum\limits_{j \neq i} [C_1 \cdot f_{TF_{i | j}}(tf) + C_2 \cdot PL(i,j)] \cdot p(j)
+%\end{equation}
+%which is equivalent to:
+%\begin{equation}
+%	P(D_i < d) = \sum\limits_{j \neq i} f_{TF_{i | j}}( \frac{d - C_2 \cdot PL(i,j)}{C_1} ) \cdot p(j)
+%\end{equation}
+
+%which can be expanded to:
+%
+%\begin{figure*}[t]
+%\begin{eqnarray}
+%\nonumber
+%	f_{D_i} (d) = &&\frac{i}{N} \cdot \mathcal{N}( \frac{2(i-1)(N-i)}{(N-2)(N-1)} , \sqrt{\frac{2(i-1)(N-i)  (1-\frac{1}{N-1})}{(N-2)(N-1)}} )  \\ \nonumber
+%			   &+& \sum\limits_{k=i}^{\frac{N}{2}-1} \cdot \frac{\frac{1}{2}-\frac{i}{N}}{\frac{N}{2} - i}\mathcal{N}( \frac{2(k-1)(N-k)}{(N-2)(N-1)}, \sqrt{\frac{2(k-1)(N-k)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )  \\
+%			   &+& \frac{1}{2} \cdot \mathcal{N} ( \frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} , \sqrt{\frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )
+%\label{eq:full_PDF_TF_line_2}
+%\end{eqnarray}
+%\end{figure*}
+% end from different script

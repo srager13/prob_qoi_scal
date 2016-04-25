@@ -1,0 +1,101 @@
+\appendices
+
+\section{Explanation of Expected QoI with Random Image Selection}
+\label{sec:expl_exp_qoi}
+
+\subsection{Top-K}
+First, we explain the expected number of images that are from the same set as the target image in the Top-K algorithm when images are selected from the entire image pool at random.  We define the following:  
+
+\begin{itemize}
+	\item $n$ = total number of images (summed over all sets)
+	\item $S$ = number of sets
+	\item $S_k$ = set of target image
+	\item $k$ = number of images selected
+	\item $N_{S}$ = number of images in each set (for simplicity, assumed to be the same for all sets)
+	\item $x$ = number of images returned from set $S_k$
+\end{itemize}
+
+\begin{equation}
+	P( X = x | k ) = \left\{ \,
+	\begin{IEEEeqnarraybox}[][c]{l?s}
+		\IEEEstrut
+		\frac{{k \choose x} * {n-k \choose k-x} }{ {n \choose k}} & if $k \leq N_S$, \\
+		\frac{ {N_{S} \choose x} * {n-N_{S} \choose k-x}}{{n \choose k}} & if $N_S < k \leq n-N_S$
+		\IEEEstrut
+	\end{IEEEeqnarraybox}
+	\right.
+\label{eq:prob_topk_rand}
+\end{equation}
+ 
+%If $k \leq N_{S}$, then 
+%\begin{equation}
+%	p(X = x | k) = \frac{{k \choose x} * {n-k \choose k-x} }{ {n \choose k}}, \forall x \leq k
+%\end{equation}
+%Otherwise, $p(X = x | k) = 0$.
+Equation \ref{eq:prob_topk_rand} provides the probability that $x$ of the $k$ selected images will be from the target set.  When $k \leq N_S$, the total number of possible combinations of choosing $x$ from the target set and $k-x$ from the $n - N_{S_k}$ remaining images over the entire sample space ($n$ choose $k$).  
+%Naturally, we cannot end up with more images from the target set than the number of images selected, and, thus the probability of $x > k$ is zero.  
+When $N_{S} < k < n-N_{S}$, then we consider the possible combinations of choosing $x$ images from the target set and $k-x$ images from the remaining $n-N_{S}$ images.
+This probability formula can then be used to derive the expected values of $x$ displayed in Figure \ref{fig:topkAvgNumSameSet}. 
+%Finally, when $k > n-N_{S}$, then $k - (n-N_{S} + x)$ images must be from the target set by the pigeonhole principle, so the $p(X = x) = 0$ for all $k > n - N_{S} + x$.  Otherwise, the same expression as directly above is true.
+
+%\begin{equation}
+%	p(X = x | N_S < k < n - N_S) = \frac{ {N_{S} \choose x} * {n-N_{S} \choose k-x}}{{n \choose k}}
+%\end{equation}
+
+\subsection{Clustering}
+For Clustering, we want to determine the probability that we will cover each of the $S$ sets with at least one of the $k$ chosen images if we had chosen them randomly.  We will call $X_i$ the random variable that represents the number of images from set $i$ in the results.  We use the following expression:
+
+\begin{equation}
+	P( X_i > 0 , \forall i | k) = (1 - P(X_i = 0))^{S}
+\end{equation}
+where $X_i$ is given by a multivariate hypergeometric distribution, which gives us the following:
+\begin{equation}
+	P(X_i = 0 | k) = \frac{{n-N_s \choose k}}{{n \choose k}}
+\end{equation}
+
+This probability expression is plotted directly against the percentage of trials in which all sets were covered in experiments using the Clustering algorithm in Figure \ref{fig:clusterAvgNumSetsCov}.
+
+
+
+%\section{Proof of Traffic Factor for Grid Network}
+%\label{sec:grid_tf_proof}
+%We outline a simple proof for determining the TF of the center node in a grid of $N$ nodes using ``Row-First, Column-Second" routing.  We give the proof for when $\sqrt{N}$ is odd, but the logic follows similarly for even values.
+%Assume each node is the source of exactly one flow and that the destination is uniformly chosen from all other $N-1$ nodes.  Node $i$, then, has a $\frac{1}{N-2}$ chance of choosing each non-center node.  
+%%For each source node, we can determine the number of destinations that route through the center.  We separate nodes into two categories for this counting.
+%
+%\begin{figure}
+%\begin{centering}
+%    \includegraphics[scale=0.32]{figures/TF_proof_fig_color.pdf}
+%    \vspace{-4mm}
+%    \caption{Sources and destinations used in proving TF for grid networks}
+%    \label{fig:TF_proof_fig}
+%    \vspace{-6mm}
+%\end{centering}
+%\end{figure}
+%
+%First, we consider the nodes circled in set $A$ in Figure \ref{fig:TF_proof_fig}.  
+%%Through manual inspection, one can deduce that the only destination nodes in the figure that result in a path that is relayed by the center node are the two bottom nodes in the center column in the figure, marked with blue.  
+%The destinations that are relayed through the center are marked in blue in the figure.
+%The probability of a node in set $A$ choosing one of these destinations is $P_{A} = \frac{\frac{\sqrt{N}-1}{2}}{N-2}$.
+%%Now, we can count the total number of nodes for which this probability holds.  From the figure, we can quantify the number of circled nodes, but we must also consider the reverse, i.e. imagine the figure rotated vertically, so 
+%The total number of nodes falling into set $A$, including the mirror of those circled in the figure, is $N_A = \sqrt{N} \cdot (\sqrt{N}-1)$.
+%Then, the contribution to the TF by nodes in set $A$ is simply the product of $P_A$ and $N_A$:
+%%\begin{equation}
+%	$E[TF_{A}] = \frac{\frac{\sqrt{N}-1}{2}}{N-2}  \cdot  \sqrt{N} \cdot (\sqrt{N}-1)$
+%%\end{equation}
+%
+%%Next, we consider the nodes in the same row as the center node, which we call set $B$.  
+%%Here, all destinations on the ``opposite" side of the center as well as those in the same column of the center require being routed through the center node when originating from any nodes in set $B$.  Just as above, we can relate the probability of choosing one of these destinations as 
+%Similarly, for set $B$: $P_{B} = \frac{\frac{\sqrt{N}+1}{2} \cdot \sqrt{N} - 1}{N-2}$
+% and $N_{B} = \frac{\sqrt{N-1}}{2}$, so the expected contribution to TF from set $B$ is
+%%\begin{equation}
+%	$E[TF_{B}] = \frac{\frac{\sqrt{N}+1}{2} \cdot \sqrt{N} - 1}{N-2} \cdot 2 \cdot (\frac{\sqrt{N}-1}{2})$.
+%%\end{equation}
+%
+%Since sets $A$ and $B$ account for all non-center nodes in the network, the overall expected traffic factor is just the sum of $E[TF_A]$ and $E[TF_B]$, which simplifies to
+%\begin{equation}
+%	E[TF] = \frac{\sqrt{N}(N - 2) + 1}{N-2}
+%\end{equation}
+%which is effectively $\sqrt{N}$ for large $N$.
+%\vspace{-1.5mm}
+

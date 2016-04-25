@@ -5,13 +5,13 @@
 syms T;
 
 % num_nodes_set = 25:25:250;
-num_nodes = 14;
+num_nodes = 125;
 W=2000000;
 CF=3;
-DF=1.5;
-image_size = 12000*8; % 12 KBytes
+DF=2;
+image_size = 2*1000*8; % KBytes
 P = 1500*8; % 1500 Bytes coverted to bits
-num_images = 10;
+num_images = 1;
 B=num_images*image_size;
 
 % tness = zeros(1,length(num_nodes_set));

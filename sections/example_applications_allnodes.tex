@@ -1,0 +1,101 @@
+\section{Example of Applying Framework}
+\label{sec:example_applications}
+
+We illustrate the application of network signatures to the relationship in (\ref{eq:general_scal}) using an $N$-node TDMA network with three different topologies: clique, line, and grid, also known as a ``Manhattan grid.''  (Discussion of other network control protocols and topologies are addressed in Section \ref{sec:discussion}.)  We adopt a traffic model that uses Top-K queries as an example application.  We assume that all nodes have a set of collected images that are used to respond to Top-K queries.  Each node produces a query with a target image and target QoI, $\mathbf{q} = \{C, T\}$, describing the required completeness (here, we use sum similarity) and timeliness, and sends it to another node chosen at random.  The queried node will respond with the required number of images, $k_{req}$, according to the empirical relation in Figure \ref{fig:topkSumSim}.
+%\footnote{This application is not necessarily intended to model a known operational scenario, only a generic example to illustrate our model in a simple manner.}.  
+
+For each topology, we must derive an expression of the $TF$ value.
+\subsection{Line Network Traffic Factor}
+
+First, let us look at the number of paths that go through a node in position $x$ of a line network.  There are $x-1$ nodes on one side and $N-x$ nodes on the opposite side.  Therefore, the total number of paths that go through node $x$ are
+\begin{equation*}
+	\rho(x) = 2(x-1)(N-x)
+\end{equation*}
+
+Then, since there are $N$ flows and $N*(N-1)$ total paths in the network, we can approximate the probability of each path containing a flow as $p_f = \frac{1}{N-1}$.  The traffic factor of node $x$ can then be approximated by a normal distribution as follows:
+
+\begin{equation*}
+	f_{TF_x} = \mathcal{N}( \frac{2(x-1)(N-x)}{N-1}, \frac{2(x-1)(N-x)}{N-1} \cdot ( 1 - \frac{1}{N-1} )  )
+\end{equation*}
+
+Next, we can determine the maximum mean of the traffic factor along the path from $i$ to $j$.  We will give the expression for values of $i < \frac{N}{2}$ here for simplicity, but note that since the network is symmetrical, it holds for all nodes.  It is easy to show that $\rho(x)$ is increasing in the domain $[1,N/2)$ with the maximum at $N/2$.  Therefore, the value of $x'$ is given by: 
+
+\begin{eqnarray*}
+	x' &=&
+		\left\{\begin{array}{ll}
+		i & \mbox{    } j < i \\
+		j & \mbox{    } i < j < \frac{N}{2} \\
+		\frac{N}{2} & \mbox{    } \frac{N}{2} \leq j \leq N \\ 
+		0 &\mbox{o.w.}
+		\end{array}\right.
+\end{eqnarray*}
+
+Therefore, we can give the expression for $f_{TF_{i | j}}$ in Equation (\ref{eq:tf_pdf_i_given_j}) where $\mu(x) = \frac{2(x-1)(N-x)}{N-1}$ and $\sigma(x) = \sqrt{\frac{2(x-1)(N-x)}{N-1} \cdot (1 - \frac{1}{N-1} )}$:
+
+\begin{eqnarray}
+	f_{TF_{i | j}} (tf) &=&
+		\left\{\begin{array}{ll}
+		\mathcal{N}( \mu(i), \sigma(i) ) & \mbox{    } j < i \\
+		\mathcal{N}( \mu(j), \sigma(j) ) & \mbox{    } i < j < \frac{N}{2} \\
+		\mathcal{N}( \mu(\frac{N}{2}), \sigma(\frac{N}{2}) ) & \mbox{    } \frac{N}{2} \leq j \leq N 
+		\end{array}\right.
+		\label{eq:tf_pdf_i_given_j}
+\end{eqnarray}
+
+\subsubsection{Grid Network Traffic Factor}
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|l|l|}
+\cline{2-5}
+                            					 & \textbf{CF}  					& \textbf{TF}   				& \textbf{DF}	& \textbf{PL} 			\\ \hline
+\multicolumn{1}{|l|}{\textbf{Clique}} 	& N-1 							& 1                              		& 1  			& 1 					\\ \hline
+\multicolumn{1}{|l|}{\textbf{Line}}   	& 3   							& $\frac{(N-1)^2}{2(N-2)}$ 	& 1.5 			& $\frac{N}{4}$			\\ \hline
+\multicolumn{1}{|l|}{\textbf{Grid}}   	& 5   							& $\sqrt{N}$                       	&  2.5			& $\frac{2}{3} \sqrt{N}$   \\ \hline
+\end{tabular}
+\caption{CF, TF, DF, and PL values for example topologies}
+\label{table:rf_ff_sf_values}
+\end{table}
+
+Since our goal is to determine the point at which an average flow is no longer sustainable, we derive expressions for $TF$, $CF$, and $DF$ for the network.  In the case of $TF$, we use the value for the node with the largest expected $TF_i$ since flows that are routed through this node are expected to experience that largest delay and are likely to be the first that fail to meet their timeliness requirements.  Values for this example are shown in Table \ref{table:rf_ff_sf_values}. A derivation of $TF$ for a grid network is included in Appendix \ref{sec:grid_tf_proof}.  Details about deriving the other values are explained in \cite{symptotics_journal}.  The equations in Table \ref{table:scal_eqs} can be used to determine QoI and network size limitations.
+
+\begin{table}[]
+\centering
+\begin{tabular}{l|l|}
+\cline{2-2}
+                             & \multicolumn{1}{c|}{{\bf Equation}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Clique}} & \multicolumn{1}{c|}{$W \cdot T - I_S \cdot k_{req} \cdot (N-1) \geq 0$}            \\ \hline
+\multicolumn{1}{|l|}{\textbf{Line}}   & \multicolumn{1}{c|}{$W \cdot T - 3 \cdot I_S \cdot k_{req} \cdot \frac{(N-1)^2}{N-2} - 1.5 \cdot P_S \cdot (\frac{N}{4}-1) \geq 0$}       \\ \hline
+\multicolumn{1}{|l|}{\textbf{Grid}}   & \multicolumn{1}{c|}{$W \cdot T - 5 \cdot I_S \cdot k_{req} \cdot \sqrt{N} - 2.5 \cdot P_S \cdot (\frac{2}{3}\sqrt{N} - 1) \geq 0$}      \\ \hline
+\end{tabular}
+\caption{Scalability equations}
+\label{table:scal_eqs}
+\end{table}
+
+To find the limitation of a particular parameter or QoI component, the scalability equation can be solved for the variable of interest.  Then all known values can be substituted to get the limit of the variable of interest.  For example, given a network size and completeness requirement, we can determine a clique network's minimum sustainable timeliness with the equation $T  \geq \frac{I_S \cdot k_{req} \cdot (N-1)}{W}$, where $k_{req}$ is given by the completeness function $Q(C)$.  As we will show in Section \ref{sec:network_design}, these equations is also easily used to determine the impact of other network parameters on this timeliness limit. 
+
+%\subsubsection{Delay}
+%
+%The delay distribution for a flow beginning in source node $i$ is:
+%
+%\begin{equation}
+%	f_{D_i} = \sum\limits_{j \neq i} [C_1 \cdot f_{TF_{i | j}}(tf) + C_2 \cdot PL(i,j)] \cdot p(j)
+%\end{equation}
+%which is equivalent to:
+%\begin{equation}
+%	P(D_i < d) = \sum\limits_{j \neq i} f_{TF_{i | j}}( \frac{d - C_2 \cdot PL(i,j)}{C_1} ) \cdot p(j)
+%\end{equation}
+
+%which can be expanded to:
+%
+%\begin{figure*}[t]
+%\begin{eqnarray}
+%\nonumber
+%	f_{D_i} (d) = &&\frac{i}{N} \cdot \mathcal{N}( \frac{2(i-1)(N-i)}{(N-2)(N-1)} , \sqrt{\frac{2(i-1)(N-i)  (1-\frac{1}{N-1})}{(N-2)(N-1)}} )  \\ \nonumber
+%			   &+& \sum\limits_{k=i}^{\frac{N}{2}-1} \cdot \frac{\frac{1}{2}-\frac{i}{N}}{\frac{N}{2} - i}\mathcal{N}( \frac{2(k-1)(N-k)}{(N-2)(N-1)}, \sqrt{\frac{2(k-1)(N-k)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )  \\
+%			   &+& \frac{1}{2} \cdot \mathcal{N} ( \frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} , \sqrt{\frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )
+%\label{eq:full_PDF_TF_line_2}
+%\end{eqnarray}
+%\end{figure*}

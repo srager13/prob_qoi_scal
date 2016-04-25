@@ -39,6 +39,8 @@
 \usepackage{algpseudocode}
 \usepackage{breqn}
 \usepackage{cite}
+\usepackage{url}
+\usepackage[export]{adjustbox}
 
 \renewcommand{\thealgorithm}{}
 \algnewcommand{\LineComment}[1]{\State \(\triangleright\) #1}
@@ -75,7 +77,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Stochastic Formulation of Scalability and Quality-of-Information Satisfiability in Wireless Networks}
+\title{Scalability, Delay Characterization, and Satisfiability of Quality-of-Information in Wireless Networks}
 
 \IEEEoverridecommandlockouts
 
@@ -152,11 +154,13 @@
 \boldmath
 %area
 %problem
+Quality of Information (QoI) provides a context-dependent measure of the utility that a network delivers to its users by incorporating non-traditional information attributes.  
+Quickly and easily predicting performance and limitations of a network using QoI metrics is a valuable tool for network design. Even more useful is an understanding of how network components like topology, bandwidth, protocols, etc. impact these limitations. 
 %solution
-%methodology
+In this paper, we develop a QoI-based framework that can provide this understanding of limitations and impact by modeling the various contributors to delay in the network, including channel rate and contention, competing traffic flows, and multi-hop propagation effects, and relating them to QoI requirements, especially completeness and timeliness.
 %results
+Analysis shows that large tradeoffs exist between network parameters, such as QoI requirements, topology, and network size.  Simulation results also provide evidence that the developed framework can estimate network limits with high accuracy.  Finally, this work also introduces  \emph{scalably feasible QoI regions}, which provide upper bounds on QoI requirements that can be supported for certain network applications.
 %takeaway
-This is where the abstract will be....essentially we're extending the ideas in the DCOSS submission to include probabilistic requirements.
 
 \end{abstract}
 
@@ -183,20 +187,35 @@ This is where the abstract will be....essentially we're extending the ideas in t
 \IEEEpeerreviewmaketitle
 
 
-%\input{sections/intro}
+\input{sections/intro}
 
-%\input{sections/related_work}
+\input{sections/related_work}
 
 \input{sections/qoi_model}
 
-\input{sections/bottleneck}
+\input{sections/qoi_scalability}
+
+\input{sections/def_tf}
+
+\input{sections/example_applications}
+
+\input{sections/validation}
+
+\input{sections/delay_char}
+
+\input{sections/network_design}
+
+\input{sections/scal_feasible_qoi}
+
+%\input{sections/bottleneck}
 
 %\input{sections/prob_sat}
 
-%\input{sections/conclusion}
+\input{sections/discussion}
 
+\input{sections/conclusion}
 
-
+\input{sections/appendices}
 
 %\appendix
 %\input{sections/random_explanation}

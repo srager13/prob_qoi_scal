@@ -1,0 +1,141 @@
+\section{Example of Applying Framework}
+\label{sec:example_applications}
+
+We illustrate the application of network signatures to the relationship in (\ref{eq:general_scal}) using an $N$-node TDMA network with three different topologies: clique, line, and grid, also known as a ``Manhattan grid.''  (Discussion of other network control protocols and topologies are addressed in Section \ref{sec:discussion}.)  We adopt a traffic model that uses Top-K queries as an example application.  We assume that all nodes have a set of collected images that are used to respond to Top-K queries.  Each node produces queries at a rate of $\lambda$, each with a target image and target QoI, $\mathbf{q} = \{C, T\}$, describing the required completeness (here, we use sum similarity) and timeliness, and sends it to another node chosen at random.  The queried node will respond with the required number of images, $k_{req}$, according to the empirical relation in Figure \ref{fig:topkSumSim}.
+%\footnote{This application is not necessarily intended to model a known operational scenario, only a generic example to illustrate our model in a simple manner.}.  
+
+For each topology, we must derive an expression of the $TF$ value.
+
+\subsection{Line Network Traffic Factor}
+
+First, let us look at the number of paths that go through the bottleneck node, which is the center node for a line network.  We will assume that $N$ is odd here, for simplicity of notation, but the logic is the same for even values of $N$.  Since there are $\frac{N-1}{2}$ nodes on each side the center node, the total number of paths that go through it is
+\begin{equation*}
+	\rho(\frac{N}{2}) = 2(\frac{N}{2}-1)^2
+\end{equation*}
+
+Then, since there are $N$ flows and $N*(N-1)$ total paths in the network, we can approximate the probability of each path containing a flow as $p_f = \frac{1}{N-1}$.  The traffic factor of the center node in a line network can then be approximated by a normal distribution as follows:
+
+\begin{equation*}
+	f_{TF_x} = \mathcal{N}( \frac{2(\frac{N}{2}-1)^2}{N-1}, \frac{2(\frac{N}{2}-1)^2}{N-1} \cdot ( 1 - \frac{1}{N-1} )  )
+\end{equation*}
+
+%Next, we can determine the maximum mean of the traffic factor along the path from $i$ to $j$.  We will give the expression for values of $i < \frac{N}{2}$ here for simplicity, but note that since the network is symmetrical, it holds for all nodes.  It is easy to show that $\rho(x)$ is increasing in the domain $[1,N/2)$ with the maximum at $N/2$.  Therefore, the value of $x'$ is given by: 
+%
+%\begin{eqnarray*}
+%	x' &=&
+%		\left\{\begin{array}{ll}
+%		i & \mbox{    } j < i \\
+%		j & \mbox{    } i < j < \frac{N}{2} \\
+%		\frac{N}{2} & \mbox{    } \frac{N}{2} \leq j \leq N \\ 
+%		0 &\mbox{o.w.}
+%		\end{array}\right.
+%\end{eqnarray*}
+%
+%Therefore, we can give the expression for $f_{TF_{i | j}}$ in Equation (\ref{eq:tf_pdf_i_given_j}) where $\mu(x) = \frac{2(x-1)(N-x)}{N-1}$ and $\sigma(x) = \sqrt{\frac{2(x-1)(N-x)}{N-1} \cdot (1 - \frac{1}{N-1} )}$:
+%
+%\begin{eqnarray}
+%	f_{TF_{i | j}} (tf) &=&
+%		\left\{\begin{array}{ll}
+%		\mathcal{N}( \mu(i), \sigma(i) ) & \mbox{    } j < i \\
+%		\mathcal{N}( \mu(j), \sigma(j) ) & \mbox{    } i < j < \frac{N}{2} \\
+%		\mathcal{N}( \mu(\frac{N}{2}), \sigma(\frac{N}{2}) ) & \mbox{    } \frac{N}{2} \leq j \leq N 
+%		\end{array}\right.
+%		\label{eq:tf_pdf_i_given_j}
+%\end{eqnarray}
+
+\subsection{Grid Network Traffic Factor}
+
+Again, the bottleneck node, i.e., the node with the highest number of paths going through it is the center node, and we give the derivation for when $\sqrt{N}$ is odd, but the logic follows similarly for even values.  As proved in \cite{lattice_nets_cap_opt_routing}, the most optimal routing scheme for maximum capacity is ``Row-First, Column-Second" routing, so we assume paths follow this approach.  Again, we adopt a traffic pattern in which each node is the source of exactly one flow and that the destination is uniformly chosen from all other $N-1$ nodes.  
+%Node $i$, then, has a $\frac{1}{N-2}$ chance of choosing each non-center node.  
+For each source node, we can determine the number of destinations that route through the center.  We separate nodes into two categories for this counting.
+
+\begin{figure}
+\begin{centering}
+    \includegraphics[scale=0.39]{figures/TF_proof_fig_color.pdf}
+    \caption{Sources and destinations used in proving TF for grid networks}
+    \label{fig:TF_proof_fig}
+\end{centering}
+\end{figure}
+
+First, we consider the nodes circled in set $A$ in Figure \ref{fig:TF_proof_fig}, of which there are $\sqrt{N} \cdot \frac{\sqrt{N}-1}{2}$.  Through manual inspection, one can deduce that the only destination nodes in the figure that result in a path that is relayed by the center node are the two bottom nodes in the center column in the figure, marked with blue.  
+%The probability of a node in set $A$ choosing one of these destinations is $P_{A} = \frac{\frac{\sqrt{N}-1}{2}}{N-2}$.
+%Now, we can count the total number of nodes for which this probability holds.  From the figure, we can quantify the number of circled nodes, but we must also consider the reverse, i.e. imagine the figure rotated vertically, so the total number of nodes falling into set $A$, including the mirror of those circled in the figure, is $N_A = \sqrt{N} \cdot (\sqrt{N}-1)$.
+There are $\frac{\sqrt{N}-1}{2}$ of these destination nodes for the nodes in set $A$, so the total number of paths from the nodes in set $A$ is $\sqrt{N} \cdot (\frac{\sqrt{N}-1}{2})^2$.  Now, if we also consider the reverse, i.e. imagine the figure rotated vertically, then we can give the total number of paths from nodes not in the same row as the center node as $2 \cdot \sqrt{N} \cdot (\frac{\sqrt{N}-1}{2})^2$.
+%Now, we can count the total number of nodes for which this probability holds.  From the figure, we can quantify the number of circled nodes, but we must also consider the reverse, i.e. imagine the figure rotated vertically, so the total number of nodes falling into set $A$, including the mirror of those circled in the figure, is $N_A = \sqrt{N} \cdot (\sqrt{N}-1)$.
+%Then, the contribution to the TF by nodes in set $A$ is simply the product of $P_A$ and $N_A$:
+%\begin{equation}
+%	E[TF_{A}] = \frac{\frac{\sqrt{N}-1}{2}}{N-2}  \cdot  \sqrt{N} \cdot (\sqrt{N}-1)
+%\end{equation}
+
+Next, we consider the nodes in the same row as the center node, which we call set $B$.  
+Here, all destinations on the ``opposite" side of the center as well as those in the same column of the center require being routed through the center node when originating from any nodes in set $B$.  Just as above, we can count the number of paths from the nodes in set $B$ that route through the center and double it to count the reverse.  The resulting number of paths is $2 \cdot (\sqrt{N} \cdot \frac{\sqrt{N}+1}{2}-1) \cdot (\frac{\sqrt{N}-1}{2})$.
+%Just as above, we can relate the probability of choosing one of these destinations as $P_{B} = \frac{\frac{\sqrt{N}+1}{2} \cdot \sqrt{N} - 1}{N-2}$ and $N_{B} = \sqrt{N}$, so the expected contribution to TF from set $B$ is
+%\begin{equation}
+%	E[TF_{B}] = \frac{\frac{\sqrt{N}+1}{2} \cdot \sqrt{N} - 1}{N-2} \cdot 2 \cdot (\frac{\sqrt{N}-1}{2})
+%\end{equation}
+%
+%Since sets $A$ and $B$ account for all non-center nodes in the network, the overall expected traffic factor is just the sum of $E[TF_A]$ and $E[TF_B]$, which simplifies to
+%\begin{equation}
+%	E[TF] = \frac{\sqrt{N}(N - 2) + 1}{N-2}
+%\end{equation}
+%which is effectively $\sqrt{N}$ for large $N$.
+
+Adding together these paths and simplifying gives us the following expression for the total number of paths that go through the center node: 
+\begin{equation}
+	\rho(\frac{N}{2}) = \sqrt{N} \cdot (N-2) + 1
+\end{equation}
+Just as with line networks, the probability of each path containing a flow is $p_f = \frac{1}{N-1}$, so the traffic factor for the center node of a grid network is given by the distribution:
+\begin{equation*}
+	f_{TF_x} = \mathcal{N}( \frac{\sqrt{N} \cdot (N-2) + 1}{N-1}, \frac{\sqrt{N} \cdot (N-2) + 1}{N-1} \cdot ( 1 - \frac{1}{N-1} )  )
+\end{equation*}
+which can be approximated by the following for large values of $N$.  
+\begin{equation*}
+	f_{TF_x} = \mathcal{N}( \sqrt{N}, \sqrt{N} \cdot ( 1 - \frac{1}{N-1} )  )
+\end{equation*}
+
+
+
+
+
+
+%Since our goal is to determine the point at which an average flow is no longer sustainable, we derive expressions for $TF$, $CF$, and $DF$ for the network.  In the case of $TF$, we use the value for the node with the largest expected $TF_i$ since flows that are routed through this node are expected to experience that largest delay and are likely to be the first that fail to meet their timeliness requirements.  Values for this example are shown in Table \ref{table:rf_ff_sf_values}. A derivation of $TF$ for a grid network is included in Appendix \ref{sec:grid_tf_proof}.  Details about deriving the other values are explained in \cite{symptotics_journal}.  The equations in Table \ref{table:scal_eqs} can be used to determine QoI and network size limitations.
+
+
+\subsection{Model Equations}
+
+Once an expression for the $TF$ is derived, we can use it along with expressions for $CF$, $DF$, and $PL$ for the network to create equations that estimate the scalability and QoI-satisfiability limits of the network.  Since our goal is to determine the point at which the system is unable to support the offered traffic load within the timeliness constraints, we use maximum values for these factors where applicable, specifically $TF_{max}$ and $PL_{max}$.  
+
+The $PL_{max}$ is usually quickly determined by an examination of the topology, such as $PL_{max} = N-1$ for a line network and $PL_{max} = 2 \cdot \sqrt{N}$ for a grid network.  To get a good estimate of $TF_{max}$, we can simply utilize the mean and standard deviation of the distribution derived above to create the following: $TF_{max} = TF_{\mu} + \eta \cdot TF_{sigma}$ where $\eta$ is a factor that can adjust how conservative the estimates should be.  For example, we use $\eta = 3$, which captures the $99.7\%$ of the maximum of the distribution.  NOTE:  Here, $\eta$ is similar to a z-score of a standard normal distribution.  Should we relate it to that to make it more clear?
+
+Table \ref{table:rf_ff_sf_values} shows expressions for clique, line, and grid networks as derived above and in \cite{symptotics_journal}.  Then, substituting the factors into equation \ref{eq:general_scal}, we achieve the scalability equations for each topology in Table \ref{table:scal_eqs}.  
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l|l|l|l|l|}
+\cline{2-6}
+                            					 & \boldmath{$CF$}  			& \boldmath{$TF_{\mu}$}   			& \boldmath{$TF_{\sigma}$}										& \boldmath{$DF$}			& \boldmath{$PL_{max}$}	\\ \hline
+\multicolumn{1}{|l|}{\textbf{Clique}} 	& $N-1$ 						& $1$                            				& $1$                            												& $1$  						& $1$ 					\\ \hline
+\multicolumn{1}{|l|}{\textbf{Line}}   	& $3$   							& $\frac{2(\frac{N}{2}-1)^2}{N-1}$ 	& $\sqrt{\frac{2(\frac{N}{2}-1)^2}{N-1} \cdot (1 - \frac{1}{N-1})}$ 		& $1.5$						& $N-1$				\\ \hline
+\multicolumn{1}{|l|}{\textbf{Grid}}   	& $5$   							& $\sqrt{N}$                       			&$\sqrt{\sqrt{N} \cdot (1 - \frac{1}{N-1})}$							&  $2.5$					& $2 \cdot \sqrt{N}$   	\\ \hline
+\end{tabular}
+\caption{CF, TF, DF, and PL values for example topologies}
+\label{table:rf_ff_sf_values}
+\end{table}
+
+\begin{table*}[]
+\centering
+\begin{tabular}{l|l|}
+\cline{2-2}
+                             & \multicolumn{1}{c|}{{\bf Equation}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{Clique}} & \multicolumn{1}{c|}{$W \cdot T - I_S \cdot k_{req} \cdot (N-1) \geq 0$}            \\ \hline
+\multicolumn{1}{|l|}{\textbf{Line}}   & \multicolumn{1}{c|}{$W \cdot T - 3 \cdot I_S \cdot k_{req} \cdot (\frac{2(\frac{N}{2}-1)^2}{N-1} + 3 \cdot \sqrt{\frac{2(\frac{N}{2}-1)^2}{N-1} \cdot (1 - \frac{1}{N-1})}) - 1.5 \cdot P_S \cdot (N-1) \geq 0$}       \\ \hline
+\multicolumn{1}{|l|}{\textbf{Grid}}   & \multicolumn{1}{c|}{$W \cdot T - 5 \cdot I_S \cdot k_{req} \cdot (\sqrt{N} + 3 \cdot \sqrt{\sqrt{N} \cdot (1 - \frac{1}{N-1})}) - 2.5 \cdot P_S \cdot (\frac{2}{3}\sqrt{N} - 1) \geq 0$}      \\ \hline
+\end{tabular}
+\caption{Scalability equations}
+\label{table:scal_eqs}
+\end{table*}
+
+To find the limitation of a particular parameter or QoI component, the scalability equation can be solved for the variable of interest.  Then all known values can be substituted to get the limit of the variable of interest.  For example, given a network size and completeness requirement, we can determine a clique network's minimum sustainable timeliness with the equation $T  \geq \frac{I_S \cdot k_{req} \cdot (N-1)}{W}$, where $k_{req}$ is given by the completeness function $Q(C)$.  In practice, solutions for these equations will most likely need to be made numerically, but doing so is rather straightforward using any number of commonly available tools.  As we will show in Section \ref{sec:network_design}, these equations can also be easily used to determine the impact of other network parameters on this timeliness limit. 
+
+
+

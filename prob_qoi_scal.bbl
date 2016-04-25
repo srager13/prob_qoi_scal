@@ -1,0 +1,128 @@
+\begin{thebibliography}{10}
+
+\bibitem{symptotics_journal}
+R.~Ramanathan, E.~Ciftcioglu, A.~Samanta, R.~Urgaonkar, and T.~La~Porta.
+\newblock Symptotics: a framework for estimating the scalability of real-world
+  wireless networks.
+\newblock {\em Wireless Networks}, 2016.
+\newblock to appear, available online at
+  http://link.springer.com/article/10.1007/s11276-016-1204-4.
+
+\bibitem{symptotics_framework_scalability}
+R.~Ramanathan, A.~Samanta, and T.~La Porta.
+\newblock Symptotics: A framework for analyzing the scalability of real-world
+  wireless networks.
+\newblock In {\em Proceedings of the 9th ACM symposium on PE-WASUN}, pages
+  31--38. ACM, 2012.
+
+\bibitem{scal_analysis_mobility}
+E.N. Ciftcioglu, R.~Ramanathan, and T.F.~La Porta.
+\newblock Scalability analysis of tactical mobility patterns.
+\newblock In {\em MILCOM 2013}, pages 1888--1893. IEEE, 2013.
+
+\bibitem{li_capacity}
+J.~Li, C.~Blake, D.~SJ De~Couto, Hu~Imm Lee, and R.~Morris.
+\newblock Capacity of ad hoc wireless networks.
+\newblock In {\em Proceedings of the 7th annual international conference on
+  Mobile computing and networking}, pages 61--69. ACM, 2001.
+
+\bibitem{gupta2000capacity}
+P.~Gupta and P.R. Kumar.
+\newblock The capacity of wireless networks.
+\newblock {\em Information Theory, IEEE Transactions on}, 46(2):388--404, 2000.
+
+\bibitem{khuri2010response}
+A.~I Khuri and S.~Mukhopadhyay.
+\newblock Response surface methodology.
+\newblock {\em Wiley Interdisciplinary Reviews: Computational Statistics},
+  2(2):128--149, 2010.
+
+\bibitem{quality_aware_routing_tan}
+H.~Tan, M.~Chan, W.~Xiao, P.~Kong, and C.~Tham.
+\newblock Information quality aware routing in event-driven sensor networks.
+\newblock In {\em IEEE INFOCOM, 2010}, pages 1--9, 2010.
+
+\bibitem{toward_qoi_rate_control}
+Z.~M. Charbiwala, S.~Zahedi~Y. Kim, Y.H. Cho, and M.~B. Srivastava.
+\newblock Toward {Q}uality of {I}nformation {A}ware {R}ate {C}ontrol for
+  {S}ensor {N}etworks.
+\newblock In {\em Fourth International Workshop on Feedback Control
+  Implemenation and Design in Computing Systems and Networks}, April 2009.
+
+\bibitem{explor_vs_exploit}
+E.N. Ciftcioglu, A.~Yener, and M.J. Neely.
+\newblock Maximizing quality of information from multiple sensor devices: The
+  exploration vs exploitation tradeoff.
+\newblock {\em Selected Topics in Signal Processing, IEEE Journal of},
+  7(5):883--894, Oct 2013.
+
+\bibitem{qoi_aware_mobile_apps}
+J.~Edwards, A.~Bahjat, Y.~Jiang, T.~Cook, and T.F. La~Porta.
+\newblock Quality of information-aware mobile applications.
+\newblock {\em Pervasive and Mobile Computing}, 11:216--228, 2014.
+
+\bibitem{oicc_journal}
+E.~N. Ciftcioglu, A.~Michaloliakos, A.~Yener, K.~Psounis, T.~F.~La Porta, and
+  R.~Govindan.
+\newblock Operational information content sum capacity: From theory to
+  practice.
+\newblock {\em Computer Networks}, 75:1--17, 2014.
+
+\bibitem{qoi_outage}
+E.~N. Ciftcioglu, A.~Michaloliakos, K.~Psounis, T.~F.~La Porta, and A.~Yener.
+\newblock Power minimization with {Q}uality-of-{I}nformation {O}utages.
+\newblock In {\em Proc. IEEE WCNC}, Istanbul, Turkey, April 2014.
+
+\bibitem{photonet}
+M.Y.S. Uddin, H.~Wang, F.~Saremi, G.-J. Qi, T.~Abdelzaher, and T.~Huang.
+\newblock Photonet: a similarity-aware picture delivery service for situation
+  awareness.
+\newblock In {\em Real-Time Systems Symposium (RTSS), 2011 IEEE 32nd}, pages
+  317--326. IEEE, 2011.
+
+\bibitem{mediascope}
+Y.~Jiang, X.~Xu, P.~Terlecky, T.~Abdelzaher, A.~Bar-Noy, and R.~Govindan.
+\newblock Mediascope: selective on-demand media retrieval from mobile devices.
+\newblock In {\em Proceedings of the 12th international conference on
+  Information processing in sensor networks}, pages 289--300. ACM, 2013.
+
+\bibitem{qoi_aware_tactical_mil_nets}
+A.~Bar-Noy, G.~Cirincione, R.~Govindan, S.~Krishnamurthy, T.F. LaPorta,
+  P.~Mohapatra, M.~Neely, and A.~Yener.
+\newblock Quality-of-information aware networking for tactical military
+  networks.
+\newblock In {\em Pervasive Computing and Communications Workshops (PERCOM
+  Workshops), 2011 IEEE International Conference on}, pages 2--7. IEEE, 2011.
+
+\bibitem{2008cedd}
+S.A. Chatzichristofis and Y.S. Boutalis.
+\newblock Cedd: color and edge directivity descriptor: a compact descriptor for
+  image indexing and retrieval.
+\newblock In {\em Computer Vision Systems}, pages 312--322. Springer, 2008.
+
+\bibitem{tanimoto}
+T.T. Tanimoto.
+\newblock An elementary mathematical theory of classification and prediction.
+\newblock {\em International Business Machines Corporation}, 1958.
+
+\bibitem{lattice_nets_cap_opt_routing}
+Guillermo Barrenechea, Baltasar Beferull-Lozano, and Martin Vetterli.
+\newblock Lattice sensor networks: Capacity limits, optimal routing and
+  robustness to failures.
+\newblock In {\em Information Processing in Sensor Networks, 2004. IPSN 2004.
+  Third International Symposium on}, pages 186--195. IEEE, 2004.
+
+\bibitem{perf_anal_80211_lan_mac}
+N.~Gupta, P.R. Kumar, et~al.
+\newblock A performance analysis of the 802.11 wireless lan medium access
+  control.
+\newblock {\em Communications in Information \& Systems}, 3(4):479--304, 2003.
+
+\bibitem{symptotics_tech_report}
+R.~Ramanathan, Ciftcioglu E., A.~Samanta, Urgaonkar R., and T.L. Porta.
+\newblock An approximate model for analyzing real-world wireless network
+  scalability.
+\newblock Technical report, Raytheon BBN Technologies, 2015.
+\newblock \url{http://www.ir.bbn.com/~ramanath/pdf/symptotics-techreport.pdf}.
+
+\end{thebibliography}

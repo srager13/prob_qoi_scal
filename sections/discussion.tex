@@ -1,0 +1,12 @@
+\section{Discussion}
+\label{sec:discussion}
+
+%Given the coarseness of the model and the abstraction of many details, we note that the above is not a perfect predictor of a real network's capabilities. However, we show with packet-based, multi-hop simulation results in Section \ref{sec:validation}, that our approach is very accurate in practice.  
+%Furthermore, the framework presented is more than accurate enough to expose tradeoff points in QoI and scalability as shown in Section \ref{sec:network_design}.  
+
+We note that although TDMA is primarily used in this work, the same approach can be taken to derive QoI-based relations in networks that use other MAC layer protocols.  In these cases, the appropriate Delay Factor would need to be derived for each protocol.  To examine an 802.11 network, for example, the $DF$ would capture queuing delays and could be determined by extending a delay model such as in \cite{perf_anal_80211_lan_mac}, for example.  
+
+Similarly, although we only address the regular topologies of clique, line, and grid networks here, we believe the framework can be applied to more complex, irregular network topologies.  In fact, some of the simple models presented here may already be quite useful for some of the topologies addressed.  As shown in \cite{symptotics_tech_report}, for example, a dense random network may be closely approximated by a clique network, or random networks' capabilities can be approximately bounded by the limits of clique and grid networks, since these networks can be viewed of as examples of dense and sparse random networks, respectively.  
+
+%Another approach to more complex topologies is to extract expressions for $DF$, $TF$, etc. empirically from simple simulations when deriving closed-form expressions is impossible or infeasible.  This approach would provide the benefits of the framework presented here without being as complicated as a packet-based simulation or testbed that must implement all layers of the network.  We are currently pursuing realistic examples and validation of this concept for more complex networks, including random and social network topologies among others. 
+

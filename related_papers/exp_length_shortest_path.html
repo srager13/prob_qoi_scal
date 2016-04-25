@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+
+
+
+
+
+
+<!--[if IE 8]><html class="ie8" lang="en-US"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en-US"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en-US"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="INDEX,FOLLOW,NOARCHIVE,NOODP,NOYDIR">
+
+    <style type="text/css">.body-container, .article-layout-container { display: none; }</style>
+    <link rel="stylesheet" href="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/stylesheets/core.css.gz" type="text/css">
+    <!--[if (lte IE 9) & (!IEMobile)]>
+    <link rel="stylesheet" href="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/stylesheets/ie.css.gz">
+    <![endif]-->
+
+    <link rel="icon" href="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/images/faviconSD.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/images/faviconSD.ico" type="image/x-icon">
+<link rel="stylesheet" href="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/stylesheets/article.css.gz" type="text/css">
+<link rel="canonical" href="http://www.sciencedirect.com/science/article/pii/002001909390059I">
+<meta name="citation_publisher" content="Elsevier">
+<meta name="citation_type" content="JOUR">
+<meta name="citation_journal_title" content="Information Processing Letters">
+<meta name="citation_title" content="The expected length of a shortest path">
+<meta name="citation_pii" content="002001909390059I">
+<meta name="citation_doi" content="10.1016/0020-0190(93)90059-I">
+
+<meta name="citation_issn" content="0020-0190">
+    <meta name="citation_volume" content="46">
+    <meta name="citation_issue" content="3">
+
+<meta name="citation_publication_date" content="1993/06/11">
+
+    <meta name="citation_firstpage" content="135">
+    <meta name="citation_lastpage" content="141">
+
+      <meta name="citation_author" content="Robert Davis">
+      <meta name="citation_author" content="Armand Prieditis">
+
+
+<meta name="dc.identifier" content="doi:10.1016/0020-0190(93)90059-I">
+<title>
+    The expected length of a shortest path
+</title>
+
+<script type="text/javascript">
+    var prs = {
+        rt: function(label,ts) { this[label]=(ts||ts==0?ts:new Date().getTime()); }
+    };
+
+    var SDM = {
+        cpc: 'SDFE',
+        ud: '209810||C000014439|23428|IPRANGE',
+        pm: {
+            pii: '002001909390059I',
+            issnisbn: '00200190',
+            eid: "1-s2.0-002001909390059I",
+            cid: "271527",
+            pdfEid: "1-s2.0-002001909390059I-main.pdf",
+            coverDate: "11-Jun-1993",
+            itemWeight: "HEAD-AND-TAIL",
+            entitled: true,
+            contentType: 'JL'
+        },
+        pageType: "article_full",
+        si: {
+            sds: "27877bdc669f8d5a9651e0211d9b87541fe18a835aef845bb57c274e24120af5e6ef909be835c5ce0f923eb2d039772c"
+        },
+        tid: "web-99960c8a-da57-430b-bdaa-1b19519fff79",
+        ep: {
+            prDevice: "http://pa.elsevier.com",
+            pru: "http://pa.elsevier.com"
+        },
+        pf: {
+            oa: {
+                item: "false"
+            }
+        },
+
+    };
+</script>
+
+
+</head>
+<body class="">
+<a href="#content" class="skip-to-content accessible-text">Skip to content</a>
+
+    <div id="left-menu" class="left-menu" role="region" aria-label="Search and Navigation">
+
+<div class="left-menu-header">
+    <ul class="navigation-links publication-type-links">
+        <li class="list-item"><a href="http://www.sciencedirect.com/science/journals">Journals</a></li>
+        <li class="list-item"><a href="http://www.sciencedirect.com/science/bookbshsrw">Books</a></li>
+    </ul>
+</div>
+
+<div class="left-menu-search">
+
+<form id="qkSrchLeft" class="utility-search-form" name="qkSrch" method="get" target="_top" action="http://www.sciencedirect.com/science" role="search" aria-label="ScienceDirect">
+    <input type="hidden" name="_ob" value="QuickSearchURL">
+    <input type="hidden" name="_method" value="submitForm">
+    <input type="hidden" name="_acct" value="C000014439">
+    <input type="hidden" name="searchtype" value="a">
+    <input type="hidden" name="_origin" value="article">
+    <input type="hidden" name="_zone" value="qSearch">
+    <input type="hidden" name="md5" value="db1ed596d153304dbaf6b3e9c354927b">
+
+<input class="quick-search-value" placeholder="Search ScienceDirect" title="Search ScienceDirect"
+       type="text" name="qs_all" id="qs_all_left" value="" size="35" maxlength="450">
+
+    <input class="quick-search-submit" id="submit_search_left" type="submit"
+           alt="Submit Quick Search" title="Submit Quick Search" name="sdSearch">
+
+    <a class="advanced-search-link" href="http://www.sciencedirect.com/science/search">Advanced search</a>
+</form>
+</div>
+
+<div class="left-menu-user-actions">
+
+    <ul class="left-menu-user-utility-links">
+
+<li class="list-item"><a href="http://www.sciencedirect.com/science?_ob=ShoppingCartURL&_method=display&_zone=TopNavBar&_origin=article&md5=98a3e89aa38c5044516e5e4ca8b64e74" target="_top" title="Shopping cart" id="sd-shopping-cart-link-left-menu">Shopping cart</a></li>
+
+
+    <li id="user-actions-left-menu" class="list-item user-actions">
+
+        <a href="#" id="signout-drawer-left-menu" class="user-actions-toggle js-user-actions-toggle no-label" role="button" aria-controls="user-actions-window" aria-expanded="false" aria-haspopup="true">
+            <i class="user-actions-toggle-icon"></i>
+                <span class="user-actions-toggle-label user-actions-username">Sign in</span>
+        </a>
+    </li>
+
+<li class="list-item">
+    <a id="help-link-left-menu" href="http://help.sciencedirect.com/flare/sdhelp_Left.htm#CSHID=browse_open_doc.htm|StartTopic=Content%2Fbrowse_open_doc.htm|SkinName=svs_SD" target="sdhelp" title="Help (Opens new window)">
+        Help
+    </a>
+</li>
+
+    </ul>
+</div>    </div>
+
+    <a href="#" class="left-menu-toggle" aria-controls="left-menu" aria-expanded="false" title="Search and Navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" version="1.1">
+            <path fill="#fff" d="M2,4v3h20v-3h-20zm0,6v3h20v-3h-20zm0,6v3h20v-3h-20z"></path>
+        </svg>
+    </a>
+<div class="page-container">
+
+
+<div class="header-container js-header-container">
+    <div class="header-banner">
+        <div class="navigation" role="navigation" aria-label="main navigation">
+            <div class="nav-left">
+                <a id="main-logo" class="main-logo main-logo--sd"
+                   href="http://www.sciencedirect.com">ScienceDirect</a>
+
+                <ul class="navigation-links publication-type-links">
+                    <li class="list-item"><a id="journals_link" href="http://www.sciencedirect.com/science/journals">Journals</a></li>
+                    <li class="list-item"><a id="books_link" href="http://www.sciencedirect.com/science/bookbshsrw">Books</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <ul class="navigation-links user-utility-links">
+
+<li class="list-item"><a href="http://www.sciencedirect.com/science?_ob=ShoppingCartURL&_method=display&_zone=TopNavBar&_origin=article&md5=98a3e89aa38c5044516e5e4ca8b64e74" target="_top" title="Shopping cart" id="sd-shopping-cart-link">Shopping cart</a></li>
+
+
+    <li id="user-actions" class="list-item user-actions">
+
+        <a href="#" id="signout-drawer" class="user-actions-toggle js-user-actions-toggle no-label" role="button" aria-controls="user-actions-window" aria-expanded="false" aria-haspopup="true">
+            <i class="user-actions-toggle-icon"></i>
+                <span class="user-actions-toggle-label user-actions-username">Sign in</span>
+        </a>
+    </li>
+
+<li class="list-item">
+    <a id="help-link" href="http://help.sciencedirect.com/flare/sdhelp_Left.htm#CSHID=browse_open_doc.htm|StartTopic=Content%2Fbrowse_open_doc.htm|SkinName=svs_SD" target="sdhelp" title="Help (Opens new window)">
+        Help
+    </a>
+</li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <div id="content" class="body-container">
+        
+<div class="page-utility-container article-utility-panel" data-pii="002001909390059I" data-toggle="false">
+    <div class="page-utility-inner-container">
+
+        <div class="article-utility-section article-utility-pdf article-utility-download">
+    <div id="article-download" class="article-download">
+        <a class="pdf-link track-usage usage-pdf-link article-download-switch pdf-download-link"
+           href="http://www.sciencedirect.com/science/article/pii/002001909390059I/pdf?md5=858294de822ead15d52395dc3d680b8d&pid=1-s2.0-002001909390059I-main.pdf"
+           data-origin="article"
+           data-enabled-origin="true"
+           data-zone="toolbar"
+           rel="nofollow"
+           target="_blank"
+           title="Download PDF Opens in a new window. Recommended articles will be shown in a dialog on return to ScienceDirect.">
+            <i class="pdf-link-icon"></i>Download full text in PDF
+        </a>
+
+    </div>
+    <!-- Download Issue Service content-->
+    <div id="DIS-article-download-injected-content"></div>
+        </div>
+
+        <div class="article-utility-section article-utility-export">
+<div id="article-export" class="article-export">
+    <a href="#" class="article-utility-button utility-button article-export-switch js-export-switch" aria-controls="export-article-window" aria-expanded="false" title="Export citation">
+        <i class="article-export-label-icon"></i>
+        <span class="article-export-switch-label">Export</span>
+        <i class="article-export-switch-icon"></i>
+    </a>
+    <div class="export-article-window-content">
+        <div id="export-article-window" class="export-article-window" aria-label="Overlay" role="region" aria-live="polite" aria-expanded="false">
+            <div class="export-text">
+                <p class="export-selected-text">You have selected 1 citation for export.</p>
+                <a class="export-link-help" href="http://help.sciencedirect.com/flare/sdhelp_Left.htm#CSHID=art_export.htm|StartTopic=Content%2Fart_export.htm|SkinName=svs_SD" title="Help (Opens new window)" target="_blank">Help</a>
+            </div>
+            <h3 class="export-heading">Direct export</h3>
+            <p class="export-row-direct">
+                <a 
+                    class="export-link export-link--mendeley utility-button track-usage"
+                    id="export-to-mendeley"
+                    href="#">
+                    Save to Mendeley
+                </a>
+            </p>
+            <p class="export-row-direct">
+                <a class="export-link export-link--refworks utility-button" id="export-to-refworks" href="/sdfe/export/002001909390059I/refworks-tagged-format" target="RefWorksMain">Save to RefWorks</a>
+            </p>
+            <form id="export-form" class="export-form" method="get" action="/sdfe/export/002001909390059I/format">
+                <h3 class="export-heading">Export file</h3>
+                <h4 class="export-subheading">Format</h4>
+                <div id="export-formats">
+                    <p class="export-row">
+                        <input type="radio" checked name="export-format" id="export-format-ris" value="RIS">
+                        <label for="export-format-ris" class="export-format-label">RIS (for EndNote, ReferenceManager, ProCite)</label>
+                    </p>
+                    <p class="export-row">
+                        <input type="radio" name="export-format" id="export-format-bibtex" value="BIBTEX">
+                        <label for="export-format-bibtex" class="export-format-label">BibTeX</label>
+                    </p>
+                    <p class="export-row">
+                        <input type="radio" name="export-format" id="export-format-text" value="ASCII">
+                        <label for="export-format-text" class="export-format-label">Text</label>
+                    </p>
+                </div>
+                <h4 class="export-subheading">Content</h4>
+                <div id="export-content">
+                    <p class="export-row">
+                        <input type="radio" name="export-content" id="export-content-citation" value="cite">
+                        <label for="export-content-citation" class="export-format-label">Citation Only</label>
+                    </p>
+                    <p class="export-row">
+                        <input type="radio" checked name="export-content" id="export-content-abstract" value="cite-abs">
+                        <label for="export-content-abstract" class="export-format-label">Citation and Abstract</label>
+                    </p>
+                </div>
+                <p><button id="export-submit">Export</button></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div class="article-utility-section article-utility-search">
+
+<form id="qkSrch" class="utility-search-form" name="qkSrch" method="get" target="_top" action="http://www.sciencedirect.com/science" role="search" aria-label="ScienceDirect">
+    <input type="hidden" name="_ob" value="QuickSearchURL">
+    <input type="hidden" name="_method" value="submitForm">
+    <input type="hidden" name="_acct" value="C000014439">
+    <input type="hidden" name="searchtype" value="a">
+    <input type="hidden" name="_origin" value="article">
+    <input type="hidden" name="_zone" value="qSearch">
+    <input type="hidden" name="md5" value="db1ed596d153304dbaf6b3e9c354927b">
+
+<input class="quick-search-value" placeholder="Search ScienceDirect" title="Search ScienceDirect"
+       type="text" name="qs_all" id="qs_all" value="" size="35" maxlength="450">
+
+    <input class="quick-search-submit" id="submit_search" type="submit"
+           alt="Submit Quick Search" title="Submit Quick Search" name="sdSearch">
+
+    <a class="advanced-search-link" href="http://www.sciencedirect.com/science/search">Advanced search</a>
+</form>
+        </div>
+
+    </div>
+</div>
+
+<div class="article-layout-container">
+    <div class="article-column-left-outer-fixed-container">
+        <div class="article-column-left-inner-fixed-offset">
+            <div class="article-column-left" role="navigation" aria-label="article outline">
+                <a href="#" class="article-column-left-switch js-toggle" data-element=".article-layout-container" data-class="article-column-left-landscape-tablet-visible"></a>
+                <div class="article-column-left-outline-container">
+                    <a class="article-outline-close js-toggle" aria-label="close overlay" role="button" data-element=".article-layout-container" data-class="article-column-left-landscape-tablet-visible">Close</a>
+                    <!-- no outline -->
+                    <div class="article-column-left-no-outline">
+                        This document does not have an outline.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-column-middle">
+        <div class="article-content" role="main" aria-label="Article">
+            <noscript>
+                <div class="alert-message-container" role="alert">
+                    <div class="alert-message-body">
+                       JavaScript is disabled on your browser. Please enable JavaScript to use all the features on this page.
+                    </div>
+                </div>
+            </noscript>
+
+            <div class="product-message-window" role="alert">
+                <div class="product-message-window-header">
+                    <a class="product-message-window-close" title="close alert" aria-label="close product message window" role="button">Close</a>
+                </div>
+                <div id="produce-message-body">There might be a brief outage due to maintenance of ScienceDirect on December 20 between 12:00 a.m. EST ( 5:00 a.m. GMT) and 12:00 p.m. EST (5:00 p.m. GMT) - it is not expected to last more than 10 minutes.</div>
+            </div>
+
+            <div class="journal-banner">
+        <div class="journal-brand">
+                <span class="elsevier-logo"></span>
+        </div>
+
+    <div class="journal-title-details">
+            <p class="journal-title">
+                <a class="track-usage" title="Go to Information Processing Letters on ScienceDirect"
+                   href="http://www.sciencedirect.com/science/journal/00200190">Information Processing Letters</a>
+            </p>
+        <p class="journal-volume"><a title="Go to table of contents for this volume/issue" href="http://www.sciencedirect.com/science/journal/00200190/46/3">Volume 46, Issue 3</a>, 11 June 1993, Pages 135-141</p>
+        <p class="journal-special-issue"></p>
+    </div>
+
+    <div class="journal-cover">
+        <a href="http://www.sciencedirect.com/science/journal/00200190/46/3">
+                <img src="http://ars.els-cdn.com/content/image/S00200190.gif" alt="Cover image" class="track-usage publication-cover-image">
+        </a>
+
+    </div>
+</div>
+
+
+
+            <h1 class="article-title">The expected length of a shortest path</h1>
+
+
+            
+
+
+<div id="article-author-list" class="article-author-list">
+    <span class="accessible-text" id="explainFootnote">Author links open the overlay panel. Numbers correspond to the affiliation list which can be exposed by using the show more link.</span>
+    <div class="author-group">
+            <div class="list list--inline list--article list--author">
+<span class="author"><span class="author-name"><a class="author-name-link" data-related-url="/science/article/pii/002001909390059I/part/related-articles?position=1&last-name=Davis&first-name=Robert" aria-describedby="explainOverlay" href="#">Robert Davis</a></span>,</span>
+<span class="author"><span class="author-name"><a class="author-name-link" data-related-url="/science/article/pii/002001909390059I/part/related-articles?position=2&last-name=Prieditis&first-name=Armand" aria-describedby="explainOverlay" href="#">Armand Prieditis</a></span>            <a class="author-correspondence" href="#COR1" aria-describedby="explainOverlay" title="corresponding author">∗</a></span>
+            </div>
+            <div class="affiliations show-more__section">
+<span class="affiliation"><span class="affiliation__text">Department of Computer Science, University of California, Davis, CA 95616, USA</span></span></div>    </div>
+</div>
+
+
+                <div id="article-history" class="article-history show-more__section">
+                    <p class="article-history-dates">Available online 21 March 2002</p>
+                </div>
+
+
+            <div class="show-more">
+                <a class="show-more__link js-toggle" title="bibliographic information" aria-expanded="false" href="#" data-element="#content" data-class="show-more--visible" data-text-enabled="Show less" data-text-disabled="Show more">Show more</a>
+            </div>
+
+
+
+            <div class="article-doi-rights">
+                    <p class="article-doi">
+                        <a href="http://dx.doi.org/10.1016/0020-0190(93)90059-I" id="doi-value" target="_blank" title="persistent link using digital object identifier">doi:10.1016/0020-0190(93)90059-I</a>
+                    </p>
+                    <p class="article-rights">
+                        <a class="article-rights-link" href="https://s100.copyright.com/AppDispatchServlet?publisherName=ELS&orderBeanReset=true&contentID=002001909390059I" id="rights-link" target="_blank">Get rights and content</a>
+                    </p>
+            </div>
+
+
+
+                <div class="js-async-container" data-href="/science/article/pii/002001909390059I/part/refers-to"></div>
+                <div class="js-async-container" data-href="/science/article/pii/002001909390059I/part/referred-to-by"></div>
+
+            <div class="article-content-separator-container">
+                <hr class="article-content-separator" />
+            </div>
+
+
+                <div class="article-author-abstract">
+                    <div class="abstract abstract-type-author"><h2 class="section-heading">Abstract</h2><div>We derive an exact summation formula and a closed-form approximation for the expected length of a shortest path for a complete graph where the arc lengths are independent and exponentially distributed random variables. Experimental data validates both results. The property of completeness allows us to exploit certain symmetries to derive these results, which would otherwise require computing an exponential number of recursive equations. We have also found that this formula is a close approximation for the expected length of a shortest path in complete graphs with uniformly distributed arc lengths.</div></div><hr class="article-content-separator"></hr>
+                </div>
+
+
+    <div class="article-keywords">
+        <h2 class="section-heading">Keywords</h2>
+        <ul class="list list--inline list--article list--keywords">
+                <li class="keyword">Analysis of algorithms;</li>
+                <li class="keyword">shortest path, expected length</li>
+        </ul>
+    </div>
+
+<div class="embedded-pdf-container">
+        <object class="embedded-pdf" data="http://www.sciencedirect.com/science/article/pii/002001909390059I/pdf?md5=858294de822ead15d52395dc3d680b8d&pid=1-s2.0-002001909390059I-main.pdf#view=fit" type="application/pdf"></object>
+</div>
+
+                <div class="second-download-link-container">
+                <a class="pdf-link track-usage usage-pdf-link pdf-download-link"
+                   href="http://www.sciencedirect.com/science/article/pii/002001909390059I/pdf?md5=858294de822ead15d52395dc3d680b8d&pid=1-s2.0-002001909390059I-main.pdf"
+                   data-origin="article"
+                   data-enabled-origin="true"
+                   data-zone="workspace"
+                   rel="nofollow"
+                   target="_blank"
+                   title="Download PDF Opens in a new window. Recommended articles will be shown in a dialog on return to ScienceDirect.">
+                    <i class="pdf-link-icon"></i>
+                Download full text in PDF
+                </a>
+            </div>
+
+
+            <script>prs.rt("abs_end");</script>
+
+                <div id="external-articles-mobile" class="external-articles-mobile"></div>
+
+                <div class="article-tail">
+
+    <h2 class="section-heading">References</h2>
+    <ul class="references reference-list">
+        <li class="clearfix reference reference-item " id="BIB1">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB1">[1]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">V. Adlakha, G. Fishman </p>
+                    <p class="reference-title">An improved conditional Monte Carlo technique for the stochastic shortest route problem</p>
+                    <p class="reference-host">Tech. Rept. 84-9, Curriculum in Operations Research and Systems Analysis, University of North Carolina, Chapel Hill, NC (1984), p. 27514</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB2">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB2">[2]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">H. Frank </p>
+                    <p class="reference-title">Shortest paths in probabilistic graphs</p>
+                    <p class="reference-host">Oper. Res., 17 (1969), pp. 583–599</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB3">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB3">[3]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">R. Hassin, E. Zemel </p>
+                    <p class="reference-title">On shortest paths in graphs with random weights</p>
+                    <p class="reference-host">Math. Oper. Res., 10 (1985), pp. 557–564</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB4">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB4">[4]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">V.G. Kulkarni </p>
+                    <p class="reference-title">Shortest paths in networks with exponentially distributed arc lengths</p>
+                    <p class="reference-host">Networks, 16 (1986), pp. 255–274</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB5">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB5">[5]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">J. Martin </p>
+                    <p class="reference-title">Distribution of the time through a directed acyclic network</p>
+                    <p class="reference-host">Oper. Res., 13 (1965), pp. 46–66</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB6">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB6">[6]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">P.B. Mirchandani </p>
+                    <p class="reference-title">Shortest distance and reliability of probabilistic networks</p>
+                    <p class="reference-host">Comput. Oper. Res., 3 (1976), pp. 347–356</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB7">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB7">[7]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">A. Pritsker </p>
+                    <p class="reference-title">Application of multi-channel queing results to the analysis of conveyor systems</p>
+                    <p class="reference-host">J. Industrial Engrg., 17 (1966), pp. 14–21</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB8">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB8">[8]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">C. Sigal, A. Pritsker, J. Solberg </p>
+                    <p class="reference-title">The use of cutsets in Monte Carlo analysis of stochastic networks</p>
+                    <p class="reference-host">Math. Comp. Simulation, 21 (1979), pp. 376–384</p>
+            </div>
+        </li>
+        <li class="clearfix reference reference-item " id="BIB9">
+                <p class="reference-item-title">
+                    <a class="reference-link track-usage" data-origin="article" href="#BIB9">[9]&nbsp;</a>
+                </p>
+            <div class="reference-item-container">
+                    <p class="reference-author">C. Sigal, A. Pritsker, J. Solberg </p>
+                    <p class="reference-title">The stochastic shortest route problem</p>
+                    <p class="reference-host">Oper. Res., 28 (1980), pp. 1122–1129</p>
+            </div>
+        </li>
+    </ul>
+
+                </div>
+
+            <div class="article-footnotes">
+                <p class="accessible-text" id="explainOverlay">open in overlay</p>
+                <dl id="COR1" class="correspondence"><dt class="correspondence-icon"></dt><dd class="correspondence-information">Correspondence to: A. Prieditis, Department of Computer Science, University of California, Davis, CA 95616-8562, USA</dd></dl>
+            </div>
+
+            <p class="article-copyright" id="copyright-line">
+                Copyright © 1993 Published by Elsevier B.V.
+            </p>
+        </div>
+<div class="article-footer" role="contentinfo" aria-label="product support">
+    <div class="article-footer-links-container">
+        <ul id="footer-links" class="article-footer-links">
+            <li class="article-footer-link"><a href='http://www.elsevier.com/solutions/sciencedirect' target='_blank'>About ScienceDirect</a></li>
+            <li class="article-footer-link"><a href='http://www.sciencedirect.com/science/contactus' target='_blank'>Contact and support</a></li>
+            <li class="article-footer-link"><a href='http://www.elsevier.com/legal/elsevier-website-terms-and-conditions' target='_blank'>Terms and conditions</a></li>
+            <li class="article-footer-link"><a href='http://www.elsevier.com/legal/privacy-policy' target='_blank'>Privacy policy</a></li>
+        </ul>
+        <div class="footer-logo">
+            Elsevier
+        </div>
+    </div>
+
+    <div class="footer-text-container">
+        <div id="copyright">
+            Copyright © 2015 Elsevier B.V. or its licensors or contributors. ScienceDirect® is a registered trademark of Elsevier B.V.
+        </div>
+        <div id="cookies-message">
+            Cookies are used by this site. To decline or learn more, visit our <a href='http://www.elsevier.com/solutions/sciencedirect/support/cookies' target='_blank'>Cookies</a> page
+        </div>
+    </div>
+    <meta name="SDFE" content="Proudly brought to you by the SDFE team in London, Dayton, and Amsterdam">
+</div>
+    </div>
+
+    <div class="article-column-right" role="complementary" aria-label="Related content">
+        <div class="article-column-right-container">
+                <div id="recommended-articles-main" data-zone-enabled="true" class="js-recommended" data-href="/sdfe/article/pii/002001909390059I/recommendations"></div>
+                <div id="citing-articles-main" data-zone-enabled="true" class="js-citing" data-href="/sdfe/article/pii/002001909390059I/citedby"></div>
+        </div>
+<div id="author-workspace" class="author-workspace is-hidden" aria-label="Overlay" role="region" aria-live="polite">
+    <a href="#" tabindex="1" role="button" aria-label="close overlay" class="workspace-close js-workspace-close"><span class="workspace-close-icon">Close overlay</span></a>
+    <div aria-label="Go to previous and next in sidebar" class="workspace-content">
+        <div class="workspace-navigation js-workspace-navigation"></div>
+        <div class="workspace-scroll-area js-workspace-scroll-area"></div>
+    </div>
+</div>
+    </div>
+</div>
+
+<div id="sdpa"></div>
+
+<div id="mobile-modal-container"></div>
+
+
+    </div>
+</div>
+
+<div class="page-container-overlay"></div>
+
+<div class="modals-container">
+    <div class="modals-offset-container">
+
+<div id="user-actions-window" class="user-actions-window" aria-labelledby="user-actions-heading" role="dialog">
+    <a class="user-actions-window-close" aria-label="close overlay" role="button">Close</a>
+    <div class="user-action-sections">
+
+<div class="user-action-section">
+    <h2 id="user-actions-heading" class="user-actions-heading">Sign in using your ScienceDirect credentials</h2>
+
+    <form id="sign-in-form" class="sign-in-form" action="https://www.sciencedirect.com/science/MiamiLogonURL" method="POST">
+        <input type="hidden" name="login" value="login">
+        <input type="hidden" name="_ob" value="MiamiLogonURL">
+        <input type="hidden" name="arrow" value="Sign+in">
+        <input type="hidden" name="targetURL" value="http://www.sciencedirect.com/science/article/pii/002001909390059I">
+        <input type="hidden" name="returnURL" value="http://www.sciencedirect.com/science/article/pii/002001909390059I">
+        <input type="hidden" name="invalidLoginURL" value="http://www.sciencedirect.com/sdfe/user/loginPage">
+
+        <div class="form-row">
+            <label class="form-label-textbox" for="sign-in-userid">Username:</label>
+            <input id="sign-in-userid" type="text" autofocus title="Please enter your username here" name="userid"
+                   class="form-input-text">
+        </div>
+        <div class="form-row">
+            <label class="form-label-textbox" for="sign-in-password">Password:</label>
+            <input id="sign-in-password" type="password" maxlength="20"
+                   title="Please enter your password here" name="password" class="form-input-text">
+        </div>
+        <div class="form-row--remember-me">
+            <input id="sign-in-remember" type="checkbox" checked name="rememberid" value="Y"
+                   title="Checking this option will log you in automatically next time you visit ScienceDirect">
+            <label for="sign-in-remember" class="form-label">Remember me</label>
+        </div>
+        <div class="form-row--sign-in">
+            <input class="form-button" type="submit" name="signin" value="Sign in" title="Sign in to ScienceDirect">
+            <a href="http://www.sciencedirect.com/science/register-new-user"
+               class="signin-link-not-registered"
+               title="Register a username and password for using alerts and other personal features"
+               target="_top">Not Registered?</a>
+        </div>
+        <div class="form-row--spaced">
+            <a href="http://www.sciencedirect.com/science?_ob=ReminderURL&amp;_method=display&amp;md5=4a97631c25ac81c09ad2f961106e9da2"
+               class="signin-link"
+               target="passwd"
+               onclick="var remindWin;remindWin=window.open('','passwd','scrollbars=yes,resizable=yes,directories=no,toolbar=n,menubar=no,status=no,width=650,height=300');"
+               title="Click here for help in recovering your ScienceDirect access">Forgotten username or
+                password?</a>
+        </div>
+    </form>
+</div>
+
+<div class="user-action-section">
+        <p>
+            <a title="Log in using OpenAthens" href="https://auth.elsevier.com/ShibAuth/institutionLogin?entityID=https%3A%2F%2Fidp.eduserv.org.uk%2Fopenathens&appReturnURL=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2F002001909390059I">OpenAthens login</a>
+        </p>
+
+        <h3 class="user-action-section-heading">Login via your institution</h3>
+        <div id="recent-institutions-section">
+            
+        </div>
+        <p>
+            <a title="Other institution login" href="http://www.sciencedirect.com/science/externallogin">Other institution login</a>
+        </p>
+
+
+    <div class="user-actions-org-name">
+        
+    </div>
+
+
+</div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+<div class="modal-overlay"></div>
+
+<div id="modal-container" class="modal-container">
+    <div id="modal" class="modal js-modal">
+        <div>
+            <div class="modal__header js-modal-header">
+                <div class="modal__heading js-modal-heading">Other users also viewed these articles
+                    <a class="modal__close js-modal-close" href="#" title="Close Article Suggestions" alt="Close Article Suggestions"><img src="http://cdn.els-cdn.com/sd/sci_dir/closeButton.png"></a>
+                </div>
+            </div>
+            <div id="modal-content" class="modal__content js-modal-content">
+                <div class="modal__loading">
+                    <img src="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/images/loader.gif" alt="Please wait...">
+                </div>
+            </div>
+            <div class="modal__footer">
+                <a href="#" class="modal__hide-link js-related-articles-hide">Do not show again</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tag-manager">
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHR5L7"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-KHR5L7');</script>
+</div>
+
+<style type="text/css">DIV.body-container { display: block; }</style>
+</body>
+<script data-main="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/javascripts/init.js.gz" src="http://sdfestaticassets-us-east-1.sciencedirectassets.com/prod/e888e88bae034f841fd4dab58a7c37986e61bd38/javascripts/vendor/require.js.gz"></script>
+<script defer src="http://cdn.els-cdn.com/sd/js/pa_1511R1.js"></script>
+<script>
+    var sdEndpoint = "http://www.sciencedirect.com";
+</script>
+
+</html>

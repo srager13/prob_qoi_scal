@@ -1,0 +1,50 @@
+
+\section{Related Work}
+\label{sec:related_work}
+
+Haven't addressed any related works yet.
+
+% Shortest Path Length Distribution:
+\cite{analytical_DSPLs_rand_nets} derives the distribution of shortest path lengths for random Erdos-Renyi (ER) model networks.  They have distributions of path lengths for different network sizes as well as for different probabilities of each pair of nodes being connected.  \cite{weibull_model_SPD_rand_nets} proves the shortest path distributions in ER networks can be modeled with a Weibull distribution and also show empirically that it works for Barabasi-Albert, power law, and log-normal graphs, too. 
+
+\cite{distance_dist_realworld_nets} analyzes a number of real-world network data sets and shows that many shortest path length distributions approximate normal distributions with various mean and variance values very closely.  
+
+%Data Replication:
+"Data Replication in Mobile Tactical Networks" \cite{data_rep_tact_nets}:  replicating data in mobile tactical networks that have groups of nodes with mobility patterns of Repeated Traversal, Bounded Overwatch, and Pincer.  Schemes for intra-group and inter-group replication are tested in each of the mobility patterns to see which have lowest delay and highest availability.  This is not opportunistic, really.  The network makes decisions on what to replicate, filling caches at the start.
+
+"Forwarding Redundancy in Opportunistic Mobile Networks: Investigation and Elimination" \cite{forw_red_gao2014} (Transactions on Mobile Computing and INFOCOM): Model is for DTNs.  Looks at examining forwarding redundancy instead of just trying to evaluate each node's utility/ability in forwarding information.  First looks at a global knowledge case and then also evaluates distributed algorithm with limited information.  *References within that look at node contact capability/predicting future node contacts.  Evaluation metric is the delivery ratio $P(X \leq T)$ where $X$ is random variable describing forwarding delay and $T$ is finite lifetime of message.
+
+%Cooperative Caching:
+"Supporting Cooperative Caching in Ad Hoc Networks" \cite{coop_cache_TOMC2006}:  Introduces caching of data and/or paths to where data is cached to reduce the number of hops for retrieving information.  Caching paths can be expensive when the probability of invalidating is large, the network is large or highly mobile, or if there is enough room in the cache to store data easily because the cost of a redirect that results in a miss is high.  This work uses probability of cache hits to calculate expected hop counts of CacheData and CachePath schemes.
+
+"Cooperative Caching for Efficient Data Access in Disruption Tolerant Networks" \cite{coop_cache_gao2014}:  Use probabilistic scheme to choose good Network Central Locations (NCLs) that are most easily accessed by other nodes in the network to cache data there.  Optimized tradeoff between data accessibility and caching overhead - minimize copies of data cached in network.  Also proposes utility-based replacement scheme that dynamically adjusts locations to balance accessibility and delay. - Look at this model.
+
+"To Cache or Not to Cache?" \cite{cache_or_not}:  Distributed algorithm called Hamlet that tells nodes what to cache and for how long they should keep it based on what it expects nodes around it have cached with the goal of creating information diversity.  Nodes only possibly cache data that they have queried for and received.  The scheme tells them if and how long to hold it.  
+
+"Cooperative Caching in Wireless P2P Networks:  Design, Implementation, and Evaluation" \cite{coop_cache_p2p_nets} : Need to read.
+
+"Benefit-based Data Caching in Ad Hoc Networks" \cite{benefit_based_cache}:  They define benefit as the reduction in total access cost and provide a distributed approximation algorithm that provides at least $1/4$ of the optimal benefit and $1/2$ of the optimal benefit when data is uniformly sized.  The focus here is on determining where to place data items given the access frequency and access cost of nodes and assuming a memory constraint at each node.  This doesn't really take into account the cost of placing the items in the caches (or timeouts, maybe?  double-check this).
+
+% Traffic Aggregation:
+"Energy Optimization Through Traffic Aggregation in Wireless Networks" \cite{traffic_agg_infocom2014}:  Model is using peer-to-peer connections for smartphones to aggregate data requests that go out and are returned through a singular, more power expensive cellular connection to reduce energy consumption.  Solves task-scheduling problem with optimal offline scheduler as well as online algorithm.  Solution is all about modeling energy usage of cellular vs. offloading.  (Probably not really relevant)
+
+% Caching in Cognitive Radio Networks:
+"Delay-constrained caching in Cognitive Radio Networks" \cite{cache_cog_nets_infocom2014}:  Uses caching to deliver data within delay constraints in cognitive radio networks.  Here, the biggest thing is that the delay is not known since it comes from primary users accessing the channel and forcing nodes to wait until it is available again.  Here, they model the primary user appearance as a continuous-time Markov chain.  The authors propose one solution that finds caching nodes by minimizing a sum of dissemination costs and access costs, one that finds caching nodes to ensure satisfying delay constraints across the network, and a hybrid approach that incorporates both ideas.
+
+% Caching in general:
+
+
+
+"SmartPhoto: A Resource-Aware Crowdsourcing Approach for Image Sensing with Smartphones" \cite{wang2014smartphoto} - Image selection using metadata of where the photo was taken and sensor readings like phone direction to efficiently select the right images that give good utility for resources used.
+
+% From previous QoI Symptotics paper:
+%The capacity and scalability model derived in this work is inspired by the symptotic scalability framework from \cite{scalability_manets_theory_vs_practice}, which has been previously applied to content-agnostic static networks \cite{symptotics_framework_scalability} and mobile networks \cite{scal_analysis_mobility}.  Other works that characterize the capacity of wireless networks, like \cite{li_capacity, gupta2000capacity, nom_cap_wmns}, do so differently by considering how networks scale asymptotically or by analyzing specific network instances instead of developing a general model.
+%
+%A large number of works provide definitions for Quality of Information and frameworks utilizing it.  We will address only the most relevant ones here.  Primarily, QoI has been used in scheduling and has been considered from a number of various angles, including control choices of data selection \cite{dcoss_max_cov, opt_qoi_data_collection_bijarbooneh}, routing \cite{quality_aware_routing_tan}, and scheduling/rate control \cite{qoi_aware_trx_pol_time_vary_links, toward_qoi_rate_control,explor_vs_exploit, qoi_outage}.  It is also the focus of a credibility-aware optimization technique in \cite{social_swarming}.  
+%
+%The work in \cite{qoi_aware_mobile_apps} evaluates the impact of varying QoI requirements on usage of network resources, which is certainly related to this paper.  Our focus is on a broader scale than this work, though, by modeling an entire network instead of a single node as the authors do in \cite{qoi_aware_mobile_apps}.
+%
+%Additionally, \cite{qoi_aware_tactical_mil_nets} and \cite{oiccm,oicc_journal} outline a framework called Operational Information Content Capacity, which describes the obtainable region of QoI, a notion similar to the \emph{scalably feasible QoI region} developed here.  These approaches use a general network model, though, and do not provide any method for determining the possible size of the network or impact of various network design choices like medium access protocols.   % might need to look at these two papers again
+%
+%Similarity-based image collection has previously been considered \cite{photonet} and \cite{mediascope}. In \cite{photonet}, authors consider a DTN network where the objective is to collect the most diverse set of pictures at every node.  Authors consider a picture prioritization and dropping mechanism in order to maximize the diversity, defined by dissimilarities of the collection of pictures. However, it does not consider attributes of timeliness, nor the consideration of transmission rates and network topology.  \cite{mediascope} considers a smartphone application where different queries called Top-K, spanner, and K-means clustering are defined.  We use these same similarity-based image selection algorithms, providing new methods of quantifying QoI from them.
+

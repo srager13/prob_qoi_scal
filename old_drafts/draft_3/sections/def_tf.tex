@@ -1,0 +1,20 @@
+\section{Defining Traffic Factor}
+\label{sec:def_tf}
+
+The Traffic Factor will depend on the traffic pattern and routing scheme used in the network, but here we outline a general formula for modeling it with a random variable.  In our formulation, we will focus on an application in which all nodes generate queries that request data of a given size from a randomly chosen destination.  We assume that these queries are generated according to a Poisson distribution with an average rate of $\lambda$.  
+
+Let $\rho(x)$ be the number of shortest paths of all other nodes that include node $x$.  Let $F_{ij}$ represent the existence of a flow existing from node $i$ to node $j$.  We assume that $F_{ij}$ is equal to $1$ with probability $p_f$ and $0$ otherwise.  Then, the traffic factor of a node $x$, $TF_x$, is given by the sum of $F_{ij}$ for all $\rho(x)$ pairs $(i,j)$ in which $x$ is along the shortest path.  Assuming that $F_{ij}$ is i.i.d. for all pairs $(i,j)$, then $TF_x$ can be approximated by a Normal RV with mean $\mu_x = \rho(x) p_f$ and variance $\rho(x) p_f (1-p_f)$:
+
+\begin{equation}
+	f_{TF_x} = \mathcal{N}(\rho(x) p_f, \rho(x) p_f (1-p_f)) 
+\end{equation}
+
+When characterizing the largest contributor to delay, we need to determine the maximum expected Traffic Factor through which the flow will be forwarded.  For a given flow from $i$ to $j$, we will use $TF_{x' | i,j}$ to represent that maximum expected Traffic Factor for that flow, where $x'$ is given by  
+
+\begin{equation}
+\label{eq:max_tf_node}
+	x' = \argmax_{x \in \mbox{ \emph{Path from i to j}} } \mu_x % which is also = \rho(x) 
+\end{equation}
+
+More specifically, we can focus on just the distribution of the traffic factor with the maximum mean along the path from $i$ to $j$, $f_{TF_{x' | i,j}}$.  We will shorten the notation for this traffic factor distribution to $f_{TF_{i | j}}$.  %We will use this traffic factor distribution to get a distribution for delay next.  
+

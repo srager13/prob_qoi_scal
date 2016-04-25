@@ -15,21 +15,27 @@ for i=i_set
     % sigma(x) = -0.0011x^2 + 0.128x + 1.42
     % normpdf( x_vals, mu, sigma )
 
-    x_1 = i;
-    mu_1 = -0.016*x_1^2 + 2*x_1 - 2;
-    sigma_1 = -0.0011*x_1^2 + 0.128*x_1 + 1.42;
+    %x_1 = i;
+    %mu_1 = -0.016*x_1^2 + 2*x_1 - 2;
+    %sigma_1 = -0.0011*x_1^2 + 0.128*x_1 + 1.42;
+    mu_1 = (2*(i-1)*(N-i))/(N-1);
+    sigma_1 = sqrt(((2*(i-1)*(N-i))/(N-1))*(1-(1/(N-1))));
     pdf_TF = pdf_TF + (i/N)*normpdf(x,mu_1,sigma_1);
 
     for k=i:(N/2-1)
-        x_2 = k;
-        mu_2 = -0.016*x_2^2 + 2*x_2 - 2;
-        sigma_2 = -0.0011*x_2^2 + 0.128*x_2 + 1.42;
-        pdf_TF = pdf_TF + ((1/2-i/N)/(N/2-i))*normpdf(x,mu_2,sigma_2);
+        %x_2 = k;
+        %mu_2 = -0.016*x_2^2 + 2*x_2 - 2;
+        %sigma_2 = -0.0011*x_2^2 + 0.128*x_2 + 1.42;
+        mu_2 = (2*(k-1)*(N-k))/(N-1);
+        sigma_2 = sqrt(((2*(k-1)*(N-k))/(N-1))*(1-(1/(N-1))));
+        pdf_TF = pdf_TF + ( (0.5-(i/N)) / ((N/2)-i) ) *normpdf(x,mu_2,sigma_2);
     end
 
-    x_3 = N/2;
-    mu_3 = -0.016*x_3^2 + 2*x_3 - 2;
-    sigma_3 = -0.0011*x_3^2 + 0.128*x_3 + 1.42;
+    %x_3 = N/2;
+    %mu_3 = -0.016*x_3^2 + 2*x_3 - 2;
+    %sigma_3 = -0.0011*x_3^2 + 0.128*x_3 + 1.42;
+    mu_3 = (N*(N/2-1))/(N-1);
+    sigma_3 = sqrt(((N*(N/2-1))/(N-1))*(1-(1/(N-1))));
     pdf_TF = pdf_TF + (1/2)*normpdf(x,mu_3,sigma_3);
     
     exp_TF(i_set==i) = sum(x.*pdf_TF);

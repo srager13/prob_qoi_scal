@@ -4,7 +4,7 @@ font_size = 20;
 num_nodes=125;
 N=num_nodes;
 x = 1:num_nodes;
-i_set = [1,32,62];
+i_set = [1,ceil(N/2)];
 exp_TF = zeros(1,length(i_set));
 
 hold on;
