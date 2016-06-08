@@ -7,16 +7,15 @@ axes_font_size = 13;
 marker_size = 15;
 
 ss_plot_index = [1];
+ss_labels = [0.5, 1.0, 1.5];
 tness_plot_index = [1,2,3];
 topology = 'line';
 
-sat_all_queries = '';
-% sat_all_queries = '_satAllQueries';
-avg_all_flows = '';
-% avg_all_flows = '_avg_all_flows';
 
-image_size = [36, 48, 90]; % in KB
-ss_labels = [0.5, 1.0, 1.5];
+% image_size = [36, 48, 90]; % in KB
+% image_size = [36, 48, 72];
+% image_size = [18, 36, 72];
+image_size = 48;
 packet_size = 1500; % in Bytes
 channel_rate = 2; %in Mbps
 plot_perc_diff = 1;
@@ -25,8 +24,9 @@ small_queues = 0;
 hold on;
 for h=1:length(image_size)
     directory = sprintf( './scal_predictions/image_size_%i_KB/channel_rate_%i/PS_%i/line_net', image_size(h), channel_rate, packet_size );
-    values_1 = csvread( sprintf('%s/Scalability%s.csv', directory, sat_all_queries) );
-    values_2 = csvread( sprintf('%s/initial_guesses%s.csv', directory, avg_all_flows) );
+    values_1 = csvread( sprintf('%s/Scalability.csv', directory) );
+%     values_2 = csvread( sprintf('%s/initial_guesses.csv', directory) );
+    values_2 = csvread( sprintf('%s/initial_guesses_max.csv', directory) );
 
     sum_sim_values = unique(values_1(:,1));
     timeliness_values = unique(values_1(:,2));
@@ -66,11 +66,11 @@ for h=1:length(image_size)
 end
 set(gca, 'FontSize', axes_font_size);
 
-y_offsets = [0.1, 0.3, 0.5];
+y_offsets = [0.56, 0.37, 0.18];
 for i=1:length(image_size)
     ymax = get(gca, 'ylim');
 
-    x1 = 0.67;
+    x1 = 0.75;
     y1 = (max_scal_values(1,2,1)-ymax(1))/(ymax(2)-ymax(1)) + y_offsets(i);
 
     str = sprintf('SS=%s', num2str(ss_labels(i)) );
@@ -81,13 +81,13 @@ xlabel('Timeliness', 'FontSize', font_size);
 ylabel('Maximum Number of Nodes', 'FontSize', font_size);
 legendTitles{1} = 'Analytical';
 legendTitles{2} = 'Simulation';
-% legendTitles{3} = 'Simulation';
-% legendTitles{3} = 'Analytical w/ PN';
-legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
+% legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
+legend(cellstr(legendTitles), 'Location', 'NorthWest', 'FontSize', legend_font_size);
 
+SAVE_DIR = sprintf('./scal_predictions');
 if plot_color == 1
-    saveas(gcf, sprintf('%s/line_scal_anal_vs_sim_color_ss_%.1f%s.pdf', directory, sum_sim_values(ss_plot_index), avg_all_flows));
-    savefig(sprintf('%s/line_scal_anal_vs_sim_color_ss_%.1f%s.fig', directory, sum_sim_values(ss_plot_index), avg_all_flows));
+    saveas(gcf, sprintf('%s/line_scal_anal_vs_sim_color.pdf', SAVE_DIR));
+    savefig(sprintf('%s/line_scal_anal_vs_sim_color.fig', SAVE_DIR));
 end
 
 

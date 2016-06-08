@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+%\documentclass[12pt, draftclsnofoot, onecolumn]{IEEEtran}
 %% SECON 2013 addition:
 \makeatletter
 \def\ps@headings{%
@@ -77,7 +78,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Scalability, Delay Characterization, and Satisfiability of Quality-of-Information in Wireless Networks}
+\title{Scalability and Satisfiability of Quality-of-Information in Wireless Networks}
 
 \IEEEoverridecommandlockouts
 
@@ -105,19 +106,19 @@
 %\thanks{Research was sponsored by the U.S. Army Research Laboratory under the Network Science Collaborative Technology Alliance, Agreement Number W911NF-09-2-0053.} 
 %}
 
-%\author{
-%  \IEEEauthorblockN{Scott T. Rager\IEEEauthorrefmark{1} \quad Ertugrul N. Ciftcioglu\IEEEauthorrefmark{2}  \quad Ram Ramanathan\IEEEauthorrefmark{3} \quad Thomas F. La Porta\IEEEauthorrefmark{1} \quad Ramesh Govindan\IEEEauthorrefmark{4} \\
-%  }
-%  \IEEEauthorblockA{
-%  	\IEEEauthorrefmark{1}The Pennsylvania State University, University Park, PA 16802\\
-%	\IEEEauthorrefmark{2}IBM Research, Yorktown Heights, NY 10598 \\
-%  \IEEEauthorrefmark{3}Raytheon BBN Technologies, Cambridge, MA 02138 \\
-%  \IEEEauthorrefmark{4}University of Southern California, Los Angeles, CA 90089
-%  }
-%
-%  Email:  rager@psu.edu, enciftci@us.ibm.com , ramanath@bbn.com, tlp@cse.psu.edu, ramesh@usc.edu
-%\thanks{Research was sponsored by the U.S. Army Research Laboratory under the Network Science Collaborative Technology Alliance, Agreement Number W911NF-09-2-0053.} 
-%}
+\author{
+  \IEEEauthorblockN{Scott T. Rager\IEEEauthorrefmark{1} \quad Ertugrul N. Ciftcioglu\IEEEauthorrefmark{2}  \quad Ram Ramanathan\IEEEauthorrefmark{3} \quad Thomas F. La Porta\IEEEauthorrefmark{1} \quad Ramesh Govindan\IEEEauthorrefmark{4} \\
+  }
+  \IEEEauthorblockA{
+  	\IEEEauthorrefmark{1}The Pennsylvania State University, University Park, PA 16802\\
+	\IEEEauthorrefmark{2}IBM Research, Yorktown Heights, NY 10598 \\
+  \IEEEauthorrefmark{3}Raytheon BBN Technologies, Cambridge, MA 02138 \\
+  \IEEEauthorrefmark{4}University of Southern California, Los Angeles, CA 90089
+  }
+
+  Email:  rager@psu.edu, enciftci@us.ibm.com , ramanath@bbn.com, tlp@cse.psu.edu, ramesh@usc.edu
+\thanks{Research was sponsored by the U.S. Army Research Laboratory under the Network Science Collaborative Technology Alliance, Agreement Number W911NF-09-2-0053.} 
+}
 
 
 % for over three affiliations, or if they all won't fit within the width
@@ -149,6 +150,9 @@
 % make the title area
 \maketitle
 
+%\let\thefootnote\relax\footnote{Research was sponsored by the U.S. Army Research Laboratory under the Network Science Collaborative Technology Alliance, Agreement Number W911NF-09-2-0053. }
+
+\let\thefootnote\relax\footnote{This work was presented in part at IEEE Wireless Communications and Networking Conference (WCNC) 2016, April 2016 \cite{qoi_symptotics_wcnc}.}
 
 \begin{abstract}
 \boldmath
@@ -157,9 +161,9 @@
 Quality of Information (QoI) provides a context-dependent measure of the utility that a network delivers to its users by incorporating non-traditional information attributes.  
 Quickly and easily predicting performance and limitations of a network using QoI metrics is a valuable tool for network design. Even more useful is an understanding of how network components like topology, bandwidth, protocols, etc. impact these limitations. 
 %solution
-In this paper, we develop a QoI-based framework that can provide this understanding of limitations and impact by modeling the various contributors to delay in the network, including channel rate and contention, competing traffic flows, and multi-hop propagation effects, and relating them to QoI requirements, especially completeness and timeliness.
+In this paper, we develop a QoI-based framework that can provide accurate estimates for limitations on network size and achievable QoI requirements, focusing on completeness and timeliness.  We extend this framework to model competing flows and data loads as random variables to capture the stochastic nature of real networks.  We show that our framework can provide a characterization of delays for satisfied queries to further analyze performance when some late arrivals are acceptable.  
 %results
-Analysis shows that large tradeoffs exist between network parameters, such as QoI requirements, topology, and network size.  Simulation results also provide evidence that the developed framework can estimate network limits with high accuracy.  Finally, this work also introduces  \emph{scalably feasible QoI regions}, which provide upper bounds on QoI requirements that can be supported for certain network applications.
+Analysis shows that large tradeoffs exist between network parameters, such as QoI requirements, topology, and network size.  Simulation results also provide evidence that the developed framework can estimate network limits and delays with high accuracy.  Finally, this work also introduces  \emph{scalably feasible QoI regions}, which provide upper bounds on QoI requirements that can be supported for certain network applications.
 %takeaway
 
 \end{abstract}
@@ -195,11 +199,11 @@ Analysis shows that large tradeoffs exist between network parameters, such as Qo
 
 \input{sections/qoi_scalability}
 
-\input{sections/def_tf}
+%\input{sections/def_tf}
 
 \input{sections/example_applications}
 
-\input{sections/validation}
+%\input{sections/validation}
 
 \input{sections/delay_char}
 

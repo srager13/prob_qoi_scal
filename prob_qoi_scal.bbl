@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{qoi_symptotics_wcnc}
+E.~N.~Ciftcioglu S.~Rager, R.~Ramanathan, T.~F.~La Porta, and R.~Govindan.
+\newblock Scalability and satisfiability of quality-of-information in wireless
+  networks.
+\newblock In {\em Proc. IEEE WCNC}, Doha, Qatar, April 4-6, 2016 2016.
+
 \bibitem{symptotics_journal}
 R.~Ramanathan, E.~Ciftcioglu, A.~Samanta, R.~Urgaonkar, and T.~La~Porta.
 \newblock Symptotics: a framework for estimating the scalability of real-world
@@ -117,6 +123,12 @@ N.~Gupta, P.R. Kumar, et~al.
 \newblock A performance analysis of the 802.11 wireless lan medium access
   control.
 \newblock {\em Communications in Information \& Systems}, 3(4):479--304, 2003.
+
+\bibitem{CSMA_efficiency}
+Abhishek Jindal and Konstantinos Psounis.
+\newblock On the efficiency of csma-ca scheduling in wireless multihop
+  networks.
+\newblock {\em Networking, IEEE/ACM Transactions on}, 21(5):1392--1406, 2013.
 
 \bibitem{symptotics_tech_report}
 R.~Ramanathan, Ciftcioglu E., A.~Samanta, Urgaonkar R., and T.L. Porta.

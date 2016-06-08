@@ -1,7 +1,10 @@
 clear;
 clc;
 figure;
-font_size = 20;
+font_size = 26;
+legend_font_size = 22;
+axes_font_size = 20;
+marker_size = 11;
 orig=1;
 plot_exp=1;
 from_scal_exp=1;
@@ -51,9 +54,9 @@ for x=1:length(image_size_kb)
     cdf_D = csvread( sprintf('%s/cdf_values.csv', LOCAL_DIR) );
     
 
-    plot(delay_set, cdf_D, char(linespec(end)) );
-    xlabel('Delay', 'FontSize',font_size);
-    ylabel('CDF', 'FontSize',font_size);
+    plot(delay_set, cdf_D, char(linespec(end)), 'MarkerSize', marker_size );
+    xlabel('Delay', 'FontSize',axes_font_size);
+    ylabel('CDF', 'FontSize',axes_font_size);
     legendTitles{1} = 'Analytical';
 
     plot_exp_str = '';
@@ -67,8 +70,8 @@ for x=1:length(image_size_kb)
         end
         timeliness_values = exp_vals(:,1);
         q_comp_values = exp_vals(:,2);
-        plot(timeliness_values, q_comp_values, char(linespec(1)) );
-        legendTitles{2} = 'Experimental';
+        plot(timeliness_values, q_comp_values, char(linespec(1)), 'MarkerSize', marker_size );
+        legendTitles{2} = 'Simulation';
         plot_exp_str = '_vsExp';
     end
 end
@@ -90,8 +93,7 @@ end
 % legendTitles{1} = 'Node 1';
 % legendTitles{2} = 'Node 25';
 % legendTitles{3} = 'Avg all Nodes';
-legend_font_size = 14;
-legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
+legend(cellstr(legendTitles), 'Location', 'SouthEast', 'FontSize', legend_font_size);
 % h_legend = legend('Avg all flows');
 % set(h_legend,'FontSize',14);
 

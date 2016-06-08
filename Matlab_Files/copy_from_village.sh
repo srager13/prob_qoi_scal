@@ -52,9 +52,9 @@ echo "image size = ${image_size_KB}"
 echo "channel rate = ${channel_rate}"
 echo "packet size = ${packet_size}"
 
-if [ ! -d ./image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/line_net/PS_${packet_size}/q_comp_thresh_${q_comp_thresh} ]; then
-	mkdir -p ./image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/line_net/PS_${packet_size}/q_comp_thresh_${q_comp_thresh}
-fi
+#if [ ! -d ./image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/line_net/PS_${packet_size}/q_comp_thresh_${q_comp_thresh} ]; then
+	#mkdir -p ./image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/line_net/PS_${packet_size}/q_comp_thresh_${q_comp_thresh}
+#fi
 
 LOCAL_DIR="./scal_predictions/image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/PS_${packet_size}/"
 #REMOTE_DIR="/home/moby/str5004/ns-3-working-directory/ns-allinone-3.21/ns-3.21/data_files/vary_q_comp_thresh/"
@@ -74,6 +74,7 @@ if [ $grid -ge 1 ]; then
 fi
 REMOTE_DIR="${REMOTE_DIR}data_set_SumSimRequirements_USC_data_set/image_size_${image_size_KB}_KB/channel_rate_${channel_rate}/PS_${packet_size}/q_comp_thresh_1.00"
 
+echo "LOCAL_DIR: ${LOCAL_DIR}"
 scp str5004@village.cse.psu.edu:${REMOTE_DIR}/Scalability*.csv ${LOCAL_DIR} 
 
 

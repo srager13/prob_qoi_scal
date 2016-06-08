@@ -8,10 +8,12 @@ marker_size = 15;
 
 ss_plot_index = [1];
 tness_plot_index = [1,2,3];
-ss_labels=[1.5, 1.0, 0.5];
+ss_labels=[0.5, 1.0, 1.5];
 topology = 'grid';
 
-image_size = [72, 90, 120]; % in KB
+% image_size = [72, 90, 120]; % in KB
+% image_size = [48, 60, 90];
+image_size = 48;
 packet_size = 1500; % in Bytes
 channel_rate = 2; %in Mbps
 plot_perc_diff = 1;
@@ -21,7 +23,8 @@ hold on;
 for h=1:length(image_size)
     directory = sprintf( './scal_predictions/image_size_%i_KB/channel_rate_%i/PS_%i/grid_net', image_size(h), channel_rate, packet_size );
     values_1 = csvread( sprintf('%s/Scalability.csv', directory) );
-    values_2 = csvread( sprintf('%s/initial_guesses.csv', directory) );
+%     values_2 = csvread( sprintf('%s/initial_guesses.csv', directory) );
+    values_2 = csvread( sprintf('%s/initial_guesses_2.csv', directory) );
 
     sum_sim_values = unique(values_1(:,1));
     timeliness_values = unique(values_1(:,2));
@@ -61,7 +64,7 @@ for h=1:length(image_size)
 end
 set(gca, 'FontSize', axes_font_size);
 
-y_offsets = [0.1, 0.3, 0.5];
+y_offsets = [0.5, 0.3, 0.1];
 for i=1:length(image_size)
     ymax = get(gca, 'ylim');
 
@@ -76,13 +79,13 @@ xlabel('Timeliness', 'FontSize', font_size);
 ylabel('Maximum Number of Nodes', 'FontSize', font_size);
 legendTitles{1} = 'Analytical';
 legendTitles{2} = 'Simulation';
-% legendTitles{3} = 'Simulation';
-% legendTitles{3} = 'Analytical w/ PN';
-legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
+legend(cellstr(legendTitles), 'Location', 'NorthWest', 'FontSize', legend_font_size);
+% legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
 
+SAVE_DIR = sprintf('./scal_predictions');
 if plot_color == 1
-    saveas(gcf, sprintf('%s/grid_scal_anal_vs_sim_color_ss_%.1f.pdf', directory, sum_sim_values(ss_plot_index)));
-    savefig(sprintf('%s/grid_scal_anal_vs_sim_color_ss_%.1f.fig', directory, sum_sim_values(ss_plot_index)));
+    saveas(gcf, sprintf('%s/grid_scal_anal_vs_sim_color.pdf', SAVE_DIR));
+    savefig(sprintf('%s/grid_scal_anal_vs_sim_color.fig', SAVE_DIR));
 end
 
 

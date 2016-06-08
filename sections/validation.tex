@@ -1,6 +1,17 @@
 \section{Validation}
 \label{sec:validation}
 
+%\setcounter{MYtempeqncnt}{\value{equation}}
+\begin{figure*}[!t]
+\setcounter{equation}{11}
+\begin{equation}
+\label{eq:full_delay_cdf}
+	F_D(d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} \sum\limits_{tf=1}^{tf_{max}}  F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot p_N} ) \cdot f_{TF_{i | j}}( tf ) \cdot p(j)
+\end{equation}
+\end{figure*}
+\setcounter{equation}{6}
+%\setcounter{equation}{\value{MYtempeqncnt}}
+
 \begin{figure}[]
 \centering
        \subfigure[Line Network, $I_S = 18 KB$]{

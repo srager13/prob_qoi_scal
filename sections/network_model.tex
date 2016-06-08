@@ -1,0 +1,11 @@
+\section{Network Model}
+\label{sec:network_model}
+
+We develop the framework in this paper with an aim for application in ad hoc networks, in which nodes can act as both clients and servers, issuing queries and serving responding with data.  Additionally, nodes serve as routers, forwarding traffic for the rest of the network when it lies on a given path between a source-destination pair.  
+
+For a traffic model, we adopt a model in which each produces queries according to a Poisson distribution with an average rate of $\lambda$ and send the query to another node chosen at random.
+This model provides a general example of expected traffic with randomness that we can use to provide an example of applying our framework in Section \ref{sec:example_applications}, but the framework is in no way limited to this particular traffic scenario.  As a second example, we provide a different network application in Section \ref{sec:scal_feasible_qoi} while introducing the concept of defining QoI capacity regions.  
+
+\subsection{Defining Scalability}
+
+We determine the effective scalability of the network by two methods.  First, we assume that nodes have finite queues sizes, so we say that the network is no longer scalable when the expected traffic rate is greater than the expected service rate, since such a scenario will cause queues to become overloaded and drop traffic.  The second definition of scalability is related directly to QoI.  As explained in more detail in Section \ref{sec:qoi_model}, we adopt a timeliness constraint for all query responses.  When the network is no longer capable of meeting this timeliness constraint for all queries, then it is not considered scalable.  

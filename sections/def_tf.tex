@@ -9,12 +9,12 @@ Let $\rho(x)$ be the number of shortest paths of all other nodes that include no
 	f_{TF_x} = \mathcal{N}(\rho(x) p_f, \rho(x) p_f (1-p_f)) 
 \end{equation}
 
-When characterizing the largest contributor to delay, we need to determine the maximum expected Traffic Factor through which the flow will be forwarded.  For a given flow from $i$ to $j$, we will use $TF_{x' | i,j}$ to represent that maximum expected Traffic Factor for that flow, where $x'$ is given by  
+%When characterizing the largest contributor to delay, we need to determine the maximum expected Traffic Factor through which the flow will be forwarded.  For a given flow from $i$ to $j$, we will use $TF_{x' | i,j}$ to represent that maximum expected Traffic Factor for that flow, where $x'$ is given by  
 
-\begin{equation}
-\label{eq:max_tf_node}
-	x' = \argmax_{x \in \mbox{ \emph{Path from i to j}} } \mu_x % which is also = \rho(x) 
-\end{equation}
+%\begin{equation}
+%\label{eq:max_tf_node}
+%	x' = \argmax_{x \in \mbox{ \emph{Path from i to j}} } \mu_x % which is also = \rho(x) 
+%\end{equation}
 
 More specifically, we can focus on just the distribution of the traffic factor with the maximum mean along the path from $i$ to $j$, $f_{TF_{x' | i,j}}$.  We will shorten the notation for this traffic factor distribution to $f_{TF_{i | j}}$.  %We will use this traffic factor distribution to get a distribution for delay next.  
 

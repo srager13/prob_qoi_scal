@@ -1,29 +1,31 @@
 clear;
 clc;
 figure;
-font_size = 20;
+font_size = 26;
+legend_font_size = 22;
+axes_font_size = 13;
+marker_size = 15;
 orig=1;
 plot_exp=1;
 from_scal_exp=1;
 % exp_tness=18;
-exp_tness=24;
-% exp_tness=45;
+% exp_tness=24;
+exp_tness=45;
 % exp_tness=85;
 
 % num_nodes = 20;
 % num_nodes = 30;
 num_nodes = 40;
 % image_size_kb = 36;
-image_size_kb = 48;
-% image_size_kb = 90;
+% image_size_kb = 48;
+image_size_kb = 90;
 % image_size_kb = 180;
-image_size_variance = 64;
-% image_size_variance = 120;
-% image_size_variance = 250;
+% image_size_variance = 48;
+% image_size_variance = 64;
+image_size_variance = 45;
 % timeliness = 18;
-timeliness = 24;
-% timeliness = 45;
-% timeliness = 85;
+% timeliness = 24;
+timeliness = 45;
 % max_buffer_size=250;
 % max_buffer_size=500;
 max_buffer_size=1000;
@@ -73,9 +75,10 @@ for i=1:N
         end
 %         for i_s=image_size_kb-sqrt(image_size_variance)*2:image_size_kb+sqrt(image_size_variance)*2
         for i_s=1:image_size_kb*2
-%         cdf_D = cdf_D + (1.0/(N-1))*cdf_TF_ftn_2_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/C_1);
-            cdf_D = cdf_D + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_2_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
-            cdf_D_i = cdf_D_i + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_2_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
+%             cdf_D = cdf_D + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_2_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
+%             cdf_D_i = cdf_D_i + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_2_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
+            cdf_D = cdf_D + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_poisson_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
+            cdf_D_i = cdf_D_i + normpdf(i_s,image_size_kb,sqrt(image_size_variance))*cdf_TF_ftn_poisson_line(N, min(i,j), max(i,j), (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s*1000*8));
 %             fprintf('i_s = %i\n', i_s);
 %             fprintf('input to cdf_TF = %f\n', (delay_set-a_factor-m_factor*C_2*pl)/(C_1*i_s));
 %             cdf_D
@@ -120,7 +123,6 @@ end
 % legendTitles{1} = 'Node 1';
 % legendTitles{2} = 'Node 25';
 % legendTitles{3} = 'Avg all Nodes';
-legend_font_size = 14;
 legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
 % h_legend = legend('Avg all flows');
 % set(h_legend,'FontSize',14);

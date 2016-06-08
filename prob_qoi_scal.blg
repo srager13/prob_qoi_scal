@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: prob_qoi_scal.aux
 The style file: unsrt.bst
 Database file #1: references.bib
-You've used 20 entries,
+You've used 22 entries,
             1791 wiz_defined-function locations,
-            570 strings with 7933 characters,
-and the built_in function-call counts, 5898 in all, are:
-= -- 538
-> -- 285
+            582 strings with 8323 characters,
+and the built_in function-call counts, 6366 in all, are:
+= -- 579
+> -- 307
 < -- 9
-+ -- 102
-- -- 82
-* -- 387
-:= -- 892
-add.period$ -- 70
-call.type$ -- 20
-change.case$ -- 21
++ -- 110
+- -- 88
+* -- 422
+:= -- 966
+add.period$ -- 76
+call.type$ -- 22
+change.case$ -- 23
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 280
-empty$ -- 555
-format.name$ -- 82
-if$ -- 1372
+cite$ -- 22
+duplicate$ -- 301
+empty$ -- 604
+format.name$ -- 88
+if$ -- 1476
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 19
-newline$ -- 105
-num.names$ -- 20
-pop$ -- 80
+int.to.str$ -- 22
+missing$ -- 21
+newline$ -- 115
+num.names$ -- 22
+pop$ -- 88
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 144
+skip$ -- 149
 stack$ -- 0
-substring$ -- 377
-swap$ -- 99
+substring$ -- 408
+swap$ -- 101
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 56
-width$ -- 22
-write$ -- 231
+while$ -- 60
+width$ -- 24
+write$ -- 253

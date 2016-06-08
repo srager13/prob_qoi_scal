@@ -1,15 +1,18 @@
 clear;
 clc;
 figure;
-font_size = 20;
+font_size = 26;
+legend_font_size = 22;
+axes_font_size = 20;
+marker_size = 11;
 orig=1;
 plot_exp=1;
 from_scal_exp=1;
 cdf_from_file=1;
-exp_tness=[17, 30, 60];
-num_nodes = 49;
 image_size_kb = [48, 90, 180];
 image_size_variance = [120, 120, 250];
+exp_tness=[17, 30, 60];
+num_nodes = 49;
 timeliness = [17, 30, 60];
 % max_buffer_size=500;
 max_buffer_size=1000;
@@ -78,16 +81,16 @@ for x=1:length(image_size_kb)
             cdf_D_i = cdf_D_i/(N-zero_prob);
 
             if sum(i==plot_set) > 0
-                plot( delay_set, cdf_D_i, char(linespec(i==plot_set)) );
+                plot( delay_set, cdf_D_i, char(linespec(i==plot_set)), 'MarkerSize', marker_size );
             end
         end
     end
     % cdf_D = cdf_D/(N-2)
     cdf_D
 
-    plot(delay_set, cdf_D, char(linespec(end)) );
-    xlabel('Delay', 'FontSize',font_size);
-    ylabel('CDF', 'FontSize',font_size);
+    plot(delay_set, cdf_D, char(linespec(end)), 'MarkerSize', marker_size );
+    xlabel('Delay', 'FontSize', axes_font_size);
+    ylabel('CDF', 'FontSize', axes_font_size);
     legendTitles{1} = 'Analytical';
 
     plot_exp_str = '';
@@ -101,8 +104,8 @@ for x=1:length(image_size_kb)
         end
         timeliness_values = exp_vals(:,1);
         q_comp_values = exp_vals(:,2);
-        plot(timeliness_values, q_comp_values, char(linespec(1)) );
-        legendTitles{2} = 'Experimental';
+        plot(timeliness_values, q_comp_values, char(linespec(1)), 'MarkerSize', marker_size  );
+        legendTitles{2} = 'Simulationmore ';
         plot_exp_str = '_vsExp';
     end
 end
@@ -124,8 +127,7 @@ end
 % legendTitles{1} = 'Node 1';
 % legendTitles{2} = 'Node 25';
 % legendTitles{3} = 'Avg all Nodes';
-legend_font_size = 14;
-legend(cellstr(legendTitles), 'Location', 'Best', 'FontSize', legend_font_size);
+legend(cellstr(legendTitles), 'Location', 'SouthEast', 'FontSize', legend_font_size);
 % h_legend = legend('Avg all flows');
 % set(h_legend,'FontSize',14);
 
