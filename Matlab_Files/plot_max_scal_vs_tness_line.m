@@ -5,7 +5,7 @@ font_size = 26;
 legend_font_size = 22;
 axes_font_size = 13;
 marker_size = 15;
-
+x_start = 4;
 ss_plot_index = [1];
 ss_labels = [0.5, 1.0, 1.5];
 tness_plot_index = [1,2,3];
@@ -13,9 +13,9 @@ topology = 'line';
 
 
 % image_size = [36, 48, 90]; % in KB
-% image_size = [36, 48, 72];
+image_size = [36, 48, 72];
 % image_size = [18, 36, 72];
-image_size = 48;
+% image_size = 90;
 packet_size = 1500; % in Bytes
 channel_rate = 2; %in Mbps
 plot_perc_diff = 1;
@@ -54,23 +54,24 @@ for h=1:length(image_size)
             for k=1:length(timeliness_values)
                 y(k) = a_values(i,k,1);
             end
-            plot(timeliness_values', y, '+-b', 'MarkerSize', marker_size);
+            plot(timeliness_values(x_start:end)', y(x_start:end), '+-b', 'MarkerSize', marker_size);
             y=zeros(1,length(timeliness_values));
             for k=1:length(timeliness_values)
                 y(k) = max_scal_values(i,k,1);
             end
-            plot(timeliness_values', y, 'x--r', 'MarkerSize', marker_size);
+            plot(timeliness_values(x_start:end)', y(x_start:end), 'x--r', 'MarkerSize', marker_size);
     %         plot(q_comp_thresh_values', a_values(i,j,:), '+b', 'MarkerSize', marker_size);
     %         plot(q_comp_thresh_values', max_scal_values(i,j,:), 'xr', 'MarkerSize', marker_size); 
     end
 end
 set(gca, 'FontSize', axes_font_size);
 
-y_offsets = [0.56, 0.37, 0.18];
+% y_offsets = [0.56, 0.37, 0.18];
+y_offsets = [0.78, 0.54, 0.34];
 for i=1:length(image_size)
     ymax = get(gca, 'ylim');
 
-    x1 = 0.75;
+    x1 = 0.76;
     y1 = (max_scal_values(1,2,1)-ymax(1))/(ymax(2)-ymax(1)) + y_offsets(i);
 
     str = sprintf('SS=%s', num2str(ss_labels(i)) );

@@ -1,6 +1,8 @@
 clear;
 
 plot_3d = 1;
+plot_2d = 1;
+read_from_file = 1;
 
 syms N
 
@@ -35,30 +37,44 @@ end
 max_num_nodes = zeros(size(num_images,2),length(T));
 max_feasible_qoi = zeros(1,length(T));
 max_num_images = zeros(1,length(T));
-i = 1;
-for i=1:size(num_images,2)
-    for j=1:length(T)
-        
-        %B=num_images(i)*image_size;
-        B=image_size;
-        
-        % including multihop considerations 
-        sol_1 = solve( W*T(j) - C*(0.5*(N-1)*num_images(1,i))*B - (2.5*C*(2*sqrt(N))*P_s) == 0, N );
-        
-        if double(sol_1) >= 9
-            max_num_nodes(i,j) = floor(real(double(sol_1)));
+
+if read_from_file == 0
+    i = 1;
+    for i=1:size(num_images,2)
+        for j=1:length(T)
+
+            %B=num_images(i)*image_size;
+            B=image_size;
+
+            % including multihop considerations 
+            sol_1 = solve( W*T(j) - C*(0.5*(N-1)*num_images(1,i))*B - (2.5*C*(2*sqrt(N))*P_s) == 0, N );
+
+            if double(sol_1) >= 9
+                max_num_nodes(i,j) = floor(real(double(sol_1)));
+            end
+
+            if max_num_nodes(i,j)-1 >= num_images(1,i)
+                max_feasible_qoi(j) = ss_requ(ss_requ(:,2)==num_images(1,i),1);
+                max_num_images(j) = num_images(1,i);
+            end
         end
-        
-        if max_num_nodes(i,j)-1 >= num_images(1,i)
-            max_feasible_qoi(j) = ss_requ(ss_requ(:,2)==num_images(1,i),1);
-            max_num_images(j) = num_images(1,i);
+    end
+    csvwrite( sprintf('./%s/scalably_feasible_qoi_corner_sink.csv', output_directory), max_num_nodes );
+else
+    max_num_nodes = csvread( sprintf('./%s/scalably_feasible_qoi_corner_sink.csv', output_directory) );
+    i = 1;
+    for i=1:size(num_images,2)
+        for j=1:length(T)
+
+            B=image_size;
+
+            if max_num_nodes(i,j)-1 >= num_images(1,i)
+                max_feasible_qoi(j) = ss_requ(ss_requ(:,2)==num_images(1,i),1);
+                max_num_images(j) = num_images(1,i);
+            end
         end
     end
 end
-% max_feasible_qoi
-% max_num_images
-
-csvwrite( sprintf('./%s/scalably_feasible_qoi_corner_sink.csv', output_directory), max_num_nodes );
 
 if plot_3d == 1 
     mesh( T, sum_sim, max_num_nodes, 'FaceColor', 'b');
@@ -86,11 +102,14 @@ if plot_3d == 1
     savefig(sprintf('./image_size_%i_KB/channel_rate_%i/grid_net/scal_feas_qoi_grid_corner_sink_3d_plot.fig', IS, channel_rate/1000000));
 end
 
-if plot_3d == 0
-    plot(T, max_feasible_qoi, '-sk');
+if plot_2d == 1
+%     plot(T, max_feasible_qoi, '-sk');
+    a = area(xL, yL);
+    a.FaceColor = [0 0 0];
     font_size=20;
     xlabel('Timeliness (S)', 'FontSize', font_size);
-    ylabel('Max Feasible QoI', 'FontSize', font_size);
+    ylabel('Max Feasible Completeness (Sum Sim.)', 'FontSize', font_size);
 
-    saveas(gcf, sprintf('./image_size_%i_KB/channel_rate_%i/grid_net/scal_feas_qoi_grid_corner_sink.pdf', IS, channel_rate/1000000));
+    saveas(gcf, sprintf('./image_size_%i_KB/channel_rate_%i/grid_net/scal_feas_qoi_grid_corner_sink_2d.pdf', IS, channel_rate/1000000));
+    savefig(sprintf('./image_size_%i_KB/channel_rate_%i/grid_net/scal_feas_qoi_grid_corner_sink_2d.fig', IS, channel_rate/1000000));
 end

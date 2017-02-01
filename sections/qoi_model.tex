@@ -45,6 +45,7 @@ Here, as in \cite{qoi_aware_tactical_mil_nets}, we specify a vector of minimum v
 information is evaluated based on whether it satisfies all of the QoI requirements or not.  We use this approach to establish the edges of QoI satisfiability for the vector of metrics, which defines the boundaries of maximum achievable QoI regions in the metric space.
 
 We choose to use two QoI attributes, one that is time-based and one that is information-content-based.  The first attribute is timeliness, $T$, of data.  For the second attribute, we present a notion of \emph{completeness}, $C$, which we show can be defined multiple ways, depending on the application and context.  Together, a QoI requirement of $\mathbf{q} = \{C,T\}$ specifies a quantity of data that must be delivered as well as a deadline by which it must arrive to be useful.  Since completeness is a rather new concept, we explain an example image selection algorithm and show how it can be evaluated with completeness.
+%REFERENCES THAT USE COMPLETENESS: 1) mentions completeness of information in context of mobile sensor networks; argues that mobility can increase coverage/completeness \cite{qoi_data_collection_mobile_sens_nets};  
 
 \subsection{Example Application: Similarity-based Image Retrieval}
 
@@ -70,7 +71,7 @@ One query that provides diverse images is known as the {\bf Spanner} of the set 
 
 %Here, the algorithm first chooses the two images with the greatest dissimilarity between them from all available images.  Then, each successive image is chosen to be the one with the greatest minimum distance between it and all images already chosen, until $k$ images are selected.  This minimum distance between the image being selected and the images in the collected set is the value added to the running cumulative completeness metric of \emph{Sum Dissimilarity}.  Since the Spanner algorithm's goal is to provide images at the edges of the available feature space, the Sum Dissimilarity represents a measure of its completeness because a higher level of dissimilarity is providing a more complete view of the feature space.
 
-The other query that can achieve a complete view over all images is {\bf Clustering}.  In the Clustering algorithm, all images are separated into a $k$ clusters based on their pairwise distances using any version of a k-means clustering algorithm, where $k$ is given by the user.  Then, the most central image from each cluster is returned.  
+The other query that can achieve a complete view over all images is {\bf Clustering}.  In the Clustering algorithm, all images are separated into $k$ clusters based on their pairwise distances using any version of a k-means clustering algorithm, where $k$ is given by the user.  Then, the most central image from each cluster is returned.  
 Here, assuming that the photographs of the same settings or objects of interest exhibit similar characteristics, 
 Clustering also provides a complete view of the network's environment.
 

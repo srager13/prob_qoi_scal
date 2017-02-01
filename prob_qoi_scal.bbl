@@ -6,6 +6,26 @@ E.~N.~Ciftcioglu S.~Rager, R.~Ramanathan, T.~F.~La Porta, and R.~Govindan.
   networks.
 \newblock In {\em Proc. IEEE WCNC}, Doha, Qatar, April 4-6, 2016 2016.
 
+\bibitem{ns3}
+ns-3: Open-source event-driven network simulator. https://www.nsnam.org.
+
+\bibitem{iot_lab_exp_platform}
+Georgios~Z Papadopoulos, Julien Beaudaux, Antoine Gallais, Thomas Noel, and
+  Guillaume Schreiner.
+\newblock Adding value to wsn simulation using the iot-lab experimental
+  platform.
+\newblock In {\em Wireless and Mobile Computing, Networking and Communications
+  (WiMob), 2013 IEEE 9th International Conference on}, pages 485--490. IEEE,
+  2013.
+
+\bibitem{wisebed}
+Geoff Coulson, Barry Porter, Ioannis Chatzigiannakis, Christos Koninis, Stefan
+  Fischer, Dennis Pfisterer, Daniel Bimschas, Torsten Braun, Philipp Hurni,
+  Markus Anwander, Gerald Wagenknecht, S\'{a}ndor~P. Fekete, Alexander
+  Kr\"{o}ller, and Tobias Baumgartner.
+\newblock Flexible experimentation in wireless sensor networks.
+\newblock {\em Commun. ACM}, 55(1):82--90, January 2012.
+
 \bibitem{symptotics_journal}
 R.~Ramanathan, E.~Ciftcioglu, A.~Samanta, R.~Urgaonkar, and T.~La~Porta.
 \newblock Symptotics: a framework for estimating the scalability of real-world
@@ -92,6 +112,11 @@ Y.~Jiang, X.~Xu, P.~Terlecky, T.~Abdelzaher, A.~Bar-Noy, and R.~Govindan.
 \newblock In {\em Proceedings of the 12th international conference on
   Information processing in sensor networks}, pages 289--300. ACM, 2013.
 
+\bibitem{arq_schemes}
+Richard~A Comroe and Daniel~J Costello.
+\newblock Arq schemes for data transmission in mobile radio systems.
+\newblock {\em IEEE transactions on vehicular technology}, 33(3):88--97, 1984.
+
 \bibitem{qoi_aware_tactical_mil_nets}
 A.~Bar-Noy, G.~Cirincione, R.~Govindan, S.~Krishnamurthy, T.F. LaPorta,
   P.~Mohapatra, M.~Neely, and A.~Yener.
@@ -111,13 +136,6 @@ T.T. Tanimoto.
 \newblock An elementary mathematical theory of classification and prediction.
 \newblock {\em International Business Machines Corporation}, 1958.
 
-\bibitem{lattice_nets_cap_opt_routing}
-Guillermo Barrenechea, Baltasar Beferull-Lozano, and Martin Vetterli.
-\newblock Lattice sensor networks: Capacity limits, optimal routing and
-  robustness to failures.
-\newblock In {\em Information Processing in Sensor Networks, 2004. IPSN 2004.
-  Third International Symposium on}, pages 186--195. IEEE, 2004.
-
 \bibitem{perf_anal_80211_lan_mac}
 N.~Gupta, P.R. Kumar, et~al.
 \newblock A performance analysis of the 802.11 wireless lan medium access
@@ -125,7 +143,7 @@ N.~Gupta, P.R. Kumar, et~al.
 \newblock {\em Communications in Information \& Systems}, 3(4):479--304, 2003.
 
 \bibitem{CSMA_efficiency}
-Abhishek Jindal and Konstantinos Psounis.
+A.~Jindal and K.~Psounis.
 \newblock On the efficiency of csma-ca scheduling in wireless multihop
   networks.
 \newblock {\em Networking, IEEE/ACM Transactions on}, 21(5):1392--1406, 2013.
@@ -136,5 +154,24 @@ R.~Ramanathan, Ciftcioglu E., A.~Samanta, Urgaonkar R., and T.L. Porta.
   scalability.
 \newblock Technical report, Raytheon BBN Technologies, 2015.
 \newblock \url{http://www.ir.bbn.com/~ramanath/pdf/symptotics-techreport.pdf}.
+
+\bibitem{lattice_nets_cap_opt_routing}
+G.~Barrenechea, B.~Beferull-Lozano, and M.~Vetterli.
+\newblock Lattice sensor networks: Capacity limits, optimal routing and
+  robustness to failures.
+\newblock In {\em Information Processing in Sensor Networks, 2004. IPSN 2004.
+  Third International Symposium on}, pages 186--195. IEEE, 2004.
+
+\bibitem{nsf_net}
+Karen~D Frazer.
+\newblock {\em NSFNET: A Partnership for High-speed Networking: Final Report,
+  1987-1995}.
+\newblock Merit Network, 1996.
+
+\bibitem{mitzenmacher2005probability}
+M.~Mitzenmacher and E.~Upfal.
+\newblock {\em Probability and computing: Randomized algorithms and
+  probabilistic analysis}.
+\newblock Cambridge University Press, 2005.
 
 \end{thebibliography}

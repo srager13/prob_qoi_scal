@@ -34,9 +34,13 @@ We can develop an expression for a distribution of delay as follows.  First, we 
 	= P( P_N \cdot TF_{i}^{j} \leq \frac{d - C_2 \cdot PL(i,j)}{C_1}  )
 \end{equation*}
 Next, conditioning over all possible values of $TF$, we get
-\begin{equation*}
-	P( D_{i}^{j} \leq d ) = \sum\limits_{\tau = 1}^{\tau_{max}} P( P_N \cdot TF \leq \frac{d - C_2 \cdot PL(i,j)}{C_1} | TF = \tau ) \cdot f_{TF_{i}^{j}}(\tau)
-\end{equation*}
+\begin{eqnarray*}
+	&&P( D_{i}^{j} \leq d ) = \\
+	&&\sum\limits_{\tau = 1}^{\tau_{max}} P( P_N \cdot TF \leq \frac{d - C_2 \cdot PL(i,j)}{C_1} | TF = \tau ) \cdot f_{TF_{i}^{j}}(\tau)
+\end{eqnarray*}
+%\begin{equation*}
+%	P( D_{i}^{j} \leq d ) = \sum\limits_{\tau = 1}^{\tau_{max}} P( P_N \cdot TF \leq \frac{d - C_2 \cdot PL(i,j)}{C_1} | TF = \tau ) \cdot f_{TF_{i}^{j}}(\tau)
+%\end{equation*}
 \begin{equation*}
 	= \sum\limits_{\tau = 1}^{\tau_{max}} P( P_N \leq \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot \tau} ) \cdot f_{TF_{i}^{j}}(\tau)
 \end{equation*}
@@ -51,6 +55,15 @@ Then, we can generalize the expression to give a distribution for a flow origina
 \end{equation}
 Finally, we can get an average distribution of all flows' delays by summing over all sources and dividing by the the number of sources.  This average delay distribution is in Equation (\ref{eq:full_delay_cdf}).
 
+\begin{figure*}[!t]
+%\setcounter{equation}{9}
+\begin{equation}
+\label{eq:full_delay_cdf}
+	F_D(d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} \sum\limits_{tf=1}^{tf_{max}}  F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot p_N} ) \cdot f_{TF_{i | j}}( tf ) \cdot p(j)
+\end{equation}
+\end{figure*}
+%\setcounter{equation}{5}
+
 %\begin{figure*}[!t]
 %\begin{equation}
 %\label{eq:full_delay_cdf}
@@ -64,15 +77,16 @@ Finally, we can get an average distribution of all flows' delays by summing over
 %        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line.pdf}
 %        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line_full_2.pdf}
         \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line_half.pdf}
-        \label{fig:scal_vs_qoi_line}
+        \label{fig:delay_cdf_line}
         }
     \subfigure[Grid Network, $N = 49$, $I_S = 72 KB$]{
 %        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_grid.pdf}
         \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_grid_half.pdf}
-        \label{fig:scal_vs_qoi_grid}
+        \label{fig:delay_cdf_grid}
         }
    \caption{Characterization of delay using framework follows distribution of empirical results in most cases.}
    \label{fig:delay_cdf_anal_vs_sim}
+   \vspace{-4mm}
 \end{figure}
 
 \subsection{Probability of Timeliness Satisfiability}
@@ -83,6 +97,7 @@ While the minimum timeliness at which all flows are expected to complete before 
 
 Figure \ref{fig:delay_cdf_anal_vs_sim} shows expected delay distributions from \ref{eq:full_delay_cdf} alongside distributions of delays recorded in ns3 simulations of the same networks.  We argue that minimum QoI requirements for most applications tend to be over $50\%$, and therefore focus on the top half of the delay distribution.  In all cases here, analytical predictions of satisfying the timeliness requirement are within about $10\%$ of empirical results for probabilities above $0.5$.  
 
+These delay distributions also provide much more information about the expected delays of all queries in addition to the minimum satisfiable timeliness.  For each completeness requirement of a minimum expected Sum Similarity, the maximum delay at the top of the distribution provides the minimum satisfiable timeliness.  Examining the distributions, though, we see that many of the queries finish well before that maximum delay.  For example, focusing on the delay distribution when the Sum Similarity requirement is $1.5$ in Figure \ref{fig:delay_cdf_line}, we note that the maximum delay is approximately $45$ seconds, but $80\%$ of the queries on average finish in almost half of that delay.  
 %Additionally, in smaller data load requirement cases, analytical predictions match simulation results quite closely along the entire distribution.
 
 %\subsection{Scalability and Maximum QoI Equations}

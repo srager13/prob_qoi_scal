@@ -1,46 +1,50 @@
-This is BibTeX, Version 0.99d (TeX Live 2012)
+This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: prob_qoi_scal.aux
 The style file: unsrt.bst
 Database file #1: references.bib
-You've used 22 entries,
+Warning--empty author in ns3
+Warning--empty journal in ns3
+Warning--empty year in ns3
+You've used 28 entries,
             1791 wiz_defined-function locations,
-            582 strings with 8323 characters,
-and the built_in function-call counts, 6366 in all, are:
-= -- 579
-> -- 307
-< -- 9
-+ -- 110
-- -- 88
-* -- 422
-:= -- 966
-add.period$ -- 76
-call.type$ -- 22
-change.case$ -- 23
+            613 strings with 9516 characters,
+and the built_in function-call counts, 7793 in all, are:
+= -- 695
+> -- 389
+< -- 10
++ -- 140
+- -- 112
+* -- 525
+:= -- 1187
+add.period$ -- 93
+call.type$ -- 28
+change.case$ -- 27
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 301
-empty$ -- 604
-format.name$ -- 88
-if$ -- 1476
+cite$ -- 31
+duplicate$ -- 368
+empty$ -- 738
+format.name$ -- 112
+if$ -- 1793
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 21
-newline$ -- 115
-num.names$ -- 22
-pop$ -- 88
+int.to.str$ -- 28
+missing$ -- 29
+newline$ -- 143
+num.names$ -- 27
+pop$ -- 117
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 149
+skip$ -- 179
 stack$ -- 0
-substring$ -- 408
-swap$ -- 101
-text.length$ -- 9
+substring$ -- 478
+swap$ -- 116
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 60
-width$ -- 24
-write$ -- 253
+warning$ -- 3
+while$ -- 72
+width$ -- 30
+write$ -- 312
+(There were 3 warnings)
