@@ -3,35 +3,6 @@
 
 We illustrate the application of Equation (\ref{eq:general_scal}) using an $N$-node TDMA network with three different topologies: clique, line, and grid, also known as a ``Manhattan grid.''  Discussion of other network control protocols and topologies are addressed in Section \ref{sec:discussion}.  We adopt a traffic model that uses Top-K queries as an example application.  We assume that all nodes have a set of collected images that are used to respond to Top-K queries.  Each node produces queries according to a Poisson process with exponential interarrival times with parameter $\lambda$, each with a target image and target QoI, $\mathbf{q} = \{C, T\}$, describing the required completeness (here, we use sum similarity) and timeliness, and sends it to another node chosen at random.  Here, the actual size of the response fulfilling the query can be given by a distribution that incorporates the number of images required, $k_{req}$, and the size of each image.  The details of this distribution can be given from empirical observations of experiments like those in Section \ref{sec:qoi_model}.
 
-\subsection{Defining Traffic Factor}
-\label{sec:def_tf}
-The Traffic Factor will depend on the traffic pattern and routing scheme used in the network, but here we outline a general formula for modeling it with a random variable based on the traffic model described above.  For this derivation, we assume that the network is operating in a steady state with the query rate $\lambda$ that is arbitrarily close to the the maximum satisfiable traffic rate since we are estimating the upper-most scalability limits and characterizing delay for when the network is operating at its maximum capacity. 
-
-Let $S_{(i,j)}$ be the set of nodes that make up the shortest path between node $i$ and $j$. For a node $x$, let $\rho(x)$ be the number of shortest paths in which $x$ is present. Now we assume that at a given time, the probability of node $i$ currently sending data to node $j$ is given by $p_f$. 
-We will let $\chi_{ij}$ be a Bernoulli trial that represents the existence of this flow, i.e., $\chi_{ij}$ will equal $1$ with probability $p_f$ and $0$ otherwise. Then, the traffic factor of node $x$, $TF_x$, would be the sum of $\chi_{ij}$ for all pairs $(i,j)$ in which $x \in P_{ij}$. Since $p_f$ is i.i.d. for all $(i,j)$ pairs such that $i \neq j$, then $TF_x$ is Binomial random variable with $n=\rho(x)$ and $p=p_{f}$.
-
-%Let $\rho(x)$ be the number of shortest paths of all other nodes that include $x$. Let $\chi_{ij}$ represent the existence of a flow from node $i$ to node $j$. We assume that $\chi_{ij}$ is equal to $1$ with probability $p_f$ and $0$ otherwise. Then, the traffic factor of a node $x$, $TF_x$, is given by the sum of $\chi_{ij}$ for all $\rho(x)$ pairs $(i,j)$ in which $x$ is along the shortest path.  If $\chi_{ij}$ is i.i.d for all pairs $(i,j)$, then $TF_x$ is a Binomial random variable with $n=N$ and $p=p_{f}$. 
-
-Since working with the binomial distribution can be tedious, we note that for most cases $TF_x$ can be approximated.  In some cases, namely when $p_f$ does not approach $0$ or $1$ as $n$ increases, the de Moivre-Laplace theorem states that the normal distribution can be used as an approximation.  When $p_f$ does approach $0$ and $n$ is sufficiently large, then the Poisson distribution is a more appropriate approximation as we show in examples in Appendix \ref{sec:derivation_TFs}. 
-
-%Assuming that $\chi_{ij}$ is i.i.d. for all pairs $(i,j)$, then, using the de Moivre-Laplace theorem, $TF_x$ can be approximated by a Normal RV with mean $\mu_{TF_x} = \rho(x) p_f$ and variance $\sigma_{TF_x}^2 = \rho(x) p_f (1-p_f)$ if the network is sufficiently large:
-%\begin{equation}
-%	f_{TF_x} = \mathcal{N}(\rho(x) p_f, \rho(x) p_f (1-p_f)) 
-%\end{equation}
-%For increased accuracy, especially in network setups that project to small maximum network sizes, continuity corrections may be useful.  Since our overall goal of estimating scalability and QoI limits allows for approximation, though, we will use this distribution as is for the $TF$.  
-%When characterizing the largest contributor to delay, we need to determine the maximum expected Traffic Factor through which the flow will be forwarded.  For a given flow from $i$ to $j$, we will use $TF_{x' | i,j}$ to represent that maximum expected Traffic Factor for that flow, where $x'$ is given by  
-
-%\begin{equation}
-%\label{eq:max_tf_node}
-%	x' = \argmax_{x \in \mbox{ \emph{Path from i to j}} } \mu_x % which is also = \rho(x) 
-%\end{equation}
-
-%More specifically, we can focus on just the distribution of the traffic factor with the maximum mean along the path from $i$ to $j$, $f_{TF_{x' | i,j}}$.  We will shorten the notation for this traffic factor distribution to $f_{TF_{i | j}}$.  
-
-
-
-With a goal of determining maximum scalability and QoI-satisfiability limits, we choose to focus on the bottleneck node, $b$, which is the node that results in the largest mean $\mu_{TF_x}$ value.  While some non-uniform topologies may require some processing or calculation to determine this bottleneck node, in the topologies we explore in depth here, finding the bottleneck is intuitive. Traffic Factor expressions for clique, line, and grid topologies are in Table \ref{table:rf_ff_sf_values}. Details on how these expressions are derived are in Appendix \ref{sec:derivation_TFs}.  
-
 \begin{table*}[]
 \centering
 \begin{tabular}{l|l|l|l|l|l|}
@@ -50,20 +21,10 @@ With a goal of determining maximum scalability and QoI-satisfiability limits, we
 
 \subsection{Scalability Equations}
 
+We outline details on how to derive an expression for the Traffic Factor ($TF$) of a network in Appendix \ref{sec:derivation_TFs}. The result from that process is a mean and standard deviation of a distribution for the traffic factor. In the case of uniform network structures that are scalable, these expressions depend on the network size $N$. For fixed-size networks with a given topology, such as the NSFNET network in Figure \ref{fig:NSF_net} (also in Appendix \ref{sec:derivation_TFs}), the distribution is given with values calculated using the topology and traffic pattern. 
+
 Once an expression for the Traffic Factor ($TF$) is derived, we can use it along with expressions for the Channel Factor ($CF$), Delay Factor ($DF$), and Path Length ($PL$) for the network to create specific instances of Equation (\ref{eq:general_scal}) that estimate the scalability and QoI-satisfiability limits of the particular network of interest.  Since our goal is to determine the point at which the system is unable to support the offered traffic load within the timeliness constraints, we use maximum values for these factors where applicable, specifically $TF_{max}$ and $PL_{max}$. 
 
-%\begin{table*}[]
-%\centering
-%\begin{tabular}{l|l|}
-%\cline{2-2}
-%                             & \multicolumn{1}{c|}{{\bf Equation}} \\ \hline
-%\multicolumn{1}{|l|}{\textbf{Clique}} & \multicolumn{1}{c|}{$W \cdot T - I_S \cdot k_{req} \cdot (N-1) \geq 0$}            \\ \hline
-%\multicolumn{1}{|l|}{\textbf{Line}}   & \multicolumn{1}{c|}{$W \cdot T - 3 \cdot I_S \cdot k_{req} \cdot (\frac{N-1}{2} + \eta \cdot \sqrt{\frac{N-1}{2}}) - 1.5 \cdot P_S \cdot (N-1) \geq 0$}       \\ \hline
-%\multicolumn{1}{|l|}{\textbf{Grid}}   & \multicolumn{1}{c|}{$W \cdot T - 5 \cdot I_S \cdot k_{req} \cdot (\sqrt{N} + \eta\cdot N^{\frac{1}{4}}) - 2.5 \cdot P_S \cdot (2 \cdot \sqrt{N} - 1) \geq 0$}      \\ \hline
-%\end{tabular}
-%\caption{Scalability equations}
-%\label{table:scal_eqs}
-%\end{table*}
 \begin{table*}[]
 \centering
 \begin{tabular}{l|l|}
@@ -94,7 +55,7 @@ Setting the RHS side of (\ref{eq:chernoff_bound}) equal to $\epsilon$ and solvin
 
 % simply utilize the mean and standard deviation of the distribution derived above to create the following: $TF_{max} = \mu_{TF} + \eta \cdot \sigma_{TF}$ where $\eta$ is a factor that can adjust how conservative the estimates should be.  This notion of $\eta$ is analogous to the z-score of a standard normal distribution, and is applicable here since $TF_x$ approaches a Normal distribution as the network size, $N$, grows.  As an example, we use $\eta = 3.5$ in the validation results below, which captures approximately $99.7\%$ of the maximum of the $TF$ distribution.  
 
-Table \ref{table:rf_ff_sf_values} shows expressions for clique, line, and grid networks as derived in Appendix \ref{sec:derivation_TFs} and in \cite{symptotics_journal}.  Then, substituting the factors into equation \ref{eq:general_scal}, we achieve the scalability equations for each topology in Table \ref{table:scal_eqs}.  
+Table \ref{table:rf_ff_sf_values} shows expressions for factors representing general clique, line, and grid networks as well as the NSFNET network as derived in Appendix \ref{sec:derivation_TFs} and in \cite{symptotics_journal}. Then, substituting the factors into equation \ref{eq:general_scal}, we achieve the scalability equations for each topology in Table \ref{table:scal_eqs}.  
 
 
 To find the limitation of a particular parameter or QoI component, the scalability equation can be solved for the variable of interest.  Then all known values can be substituted to get the limit of the variable of interest.  For example, given a network size and completeness requirement, we can determine a clique network's minimum sustainable timeliness with the equation $T  \geq \frac{I_S \cdot k_{req} \cdot (N-1)}{W}$, where $k_{req}$ is given by the completeness function $Q(C)$.  In practice, solutions for these equations will most likely need to be made numerically, but doing so is rather straightforward using any number of commonly available tools and is much faster and simpler than developing and running separate simulations to determine scalability.  Additionally, as we will show in Section \ref{sec:network_design}, these equations can also be easily used to determine the impact of other network parameters on this timeliness limit. 

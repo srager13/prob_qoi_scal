@@ -18,6 +18,12 @@ Georgios~Z Papadopoulos, Julien Beaudaux, Antoine Gallais, Thomas Noel, and
   (WiMob), 2013 IEEE 9th International Conference on}, pages 485--490. IEEE,
   2013.
 
+\bibitem{wsn_testbed}
+Manjunath Doddavenkatappa, Mun~Choon Chan, and Akkihebbal~L Ananda.
+\newblock Indriya: A low-cost, 3d wireless sensor network testbed.
+\newblock In {\em International Conference on Testbeds and Research
+  Infrastructures}, pages 302--316. Springer, 2011.
+
 \bibitem{wisebed}
 Geoff Coulson, Barry Porter, Ioannis Chatzigiannakis, Christos Koninis, Stefan
   Fischer, Dennis Pfisterer, Daniel Bimschas, Torsten Braun, Philipp Hurni,
@@ -125,17 +131,6 @@ A.~Bar-Noy, G.~Cirincione, R.~Govindan, S.~Krishnamurthy, T.F. LaPorta,
 \newblock In {\em Pervasive Computing and Communications Workshops (PERCOM
   Workshops), 2011 IEEE International Conference on}, pages 2--7. IEEE, 2011.
 
-\bibitem{2008cedd}
-S.A. Chatzichristofis and Y.S. Boutalis.
-\newblock Cedd: color and edge directivity descriptor: a compact descriptor for
-  image indexing and retrieval.
-\newblock In {\em Computer Vision Systems}, pages 312--322. Springer, 2008.
-
-\bibitem{tanimoto}
-T.T. Tanimoto.
-\newblock An elementary mathematical theory of classification and prediction.
-\newblock {\em International Business Machines Corporation}, 1958.
-
 \bibitem{perf_anal_80211_lan_mac}
 N.~Gupta, P.R. Kumar, et~al.
 \newblock A performance analysis of the 802.11 wireless lan medium access
@@ -154,6 +149,17 @@ R.~Ramanathan, Ciftcioglu E., A.~Samanta, Urgaonkar R., and T.L. Porta.
   scalability.
 \newblock Technical report, Raytheon BBN Technologies, 2015.
 \newblock \url{http://www.ir.bbn.com/~ramanath/pdf/symptotics-techreport.pdf}.
+
+\bibitem{2008cedd}
+S.A. Chatzichristofis and Y.S. Boutalis.
+\newblock Cedd: color and edge directivity descriptor: a compact descriptor for
+  image indexing and retrieval.
+\newblock In {\em Computer Vision Systems}, pages 312--322. Springer, 2008.
+
+\bibitem{tanimoto}
+T.T. Tanimoto.
+\newblock An elementary mathematical theory of classification and prediction.
+\newblock {\em International Business Machines Corporation}, 1958.
 
 \bibitem{lattice_nets_cap_opt_routing}
 G.~Barrenechea, B.~Beferull-Lozano, and M.~Vetterli.

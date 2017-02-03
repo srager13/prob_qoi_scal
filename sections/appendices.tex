@@ -1,4 +1,28 @@
 \appendices
+\section{Details on Image Retrieval Algorithms}
+\label{sec:image_retr_algs}
+
+To satisfy completeness of a query, we utilize measurements of the similarity or dissimilarity between pairs of images as explained in the rest of this section.  To get a similarity measurement, we use the same choice as was shown to be effective in \cite{mediascope}.  A technique called Color and Edge Directivity Descriptor (CEDD) \cite{2008cedd} provides a $54$-byte vector of qualities inherent to a photograph like lightness, contrast, and color.  The similarity between two images can then be given as a scalar by calculating the \emph{Tanimoto Similarity} \cite{tanimoto} between their CEDD vectors.  Dissimilarity is simply defined as $1$ minus the similarity.
+
+\subsection{Selecting Similar Images}
+The first type of query we introduce occurs when a user already has one image of a particular area or object of interest and would like to obtain similar images to get a more complete view of that specific scene or object. In this scenario, we use the {\bf Top-K} algorithm for this application, which returns the $k$ images with the most similarity with respect to the target image. 
+
+We can evaluate the completeness of the result in one of two ways.  First, we can use the similarity of the images as a value representing each image's effectiveness in providing a more complete view of the target scene.  If we sum the similarity of all $k$ images returned by the algorithm, we get a representation of completeness, which we naturally call \emph{Sum Similarity}.  While this measure of completeness is abstract, it can be refined in an actual implementation through testing and evaluating.  This definition of completeness is useful, though, because it can be applied without any predetermined knowledge of the environment or pool of images.  
+
+Often, though, we can partition the environment in which the network operates into a number, $n$, of distinct settings or areas.  In those cases, we can utilize a second method of quantifying completeness.  Assume that each image belongs to one of these $n$ sets, %$Q_i$, 
+related to the setting it depicts.  Naturally, then, when executing a Top-K query, the goal is for the algorithm to return images from the same set as the target image.  Completeness can then be given by the fraction of images returned that are in the same set as the target image.
+
+\subsection{Selecting Diverse Images}
+One query that provides diverse images is known as the {\bf Spanner} of the set of known photographs.  For the Spanner algorithm, we employ a greedy algorithm similar to that in \cite{mediascope}.  Here, the algorithm simply chooses images that provide the greatest minimum distance from all images already chosen.  This minimum distance can be added to a running sum to provide a completeness metric of \emph{Sum Dissimilarity}.  This value represents a measure of completeness because a higher level of dissimilarity provides a more complete view of the feature space.
+
+%Here, the algorithm first chooses the two images with the greatest dissimilarity between them from all available images.  Then, each successive image is chosen to be the one with the greatest minimum distance between it and all images already chosen, until $k$ images are selected.  This minimum distance between the image being selected and the images in the collected set is the value added to the running cumulative completeness metric of \emph{Sum Dissimilarity}.  Since the Spanner algorithm's goal is to provide images at the edges of the available feature space, the Sum Dissimilarity represents a measure of its completeness because a higher level of dissimilarity is providing a more complete view of the feature space.
+
+The other query that can achieve a complete view over all images is {\bf Clustering}.  In the Clustering algorithm, all images are separated into $k$ clusters based on their pairwise distances using any version of a k-means clustering algorithm, where $k$ is given by the user.  Then, the most central image from each cluster is returned.  
+Here, assuming that the photographs of the same settings or objects of interest exhibit similar characteristics, 
+Clustering also provides a complete view of the network's environment.
+
+Both Spanner and Clustering algorithms can also be evaluated using a model assuming the environment is split into $n$ sets.  With this model, we can define completeness as either the number of sets represented by at least one of the $k$ images returned or the probability of all $n$ sets being represented by at least one image when $k$ are returned.  Here, though, we only show results for the second definition.
+
 
 \section{Explanation of Expected QoI with Random Image Selection}
 \label{sec:expl_exp_qoi}
@@ -59,7 +83,16 @@ This probability expression is plotted directly against the percentage of trials
 \section{Derivation of Traffic Factor for Example Topologies}
 \label{sec:derivation_TFs}
 
-With a goal of determining maximum scalability and QoI-satisfiability limits, we focus on the bottleneck node, $b$, which is the node that results in the largest mean $\mu_{TF_x}$ value. For topologies with regular patterns like the line and grid networks, finding the bottleneck node and expressions to capture the expected traffic through it is intuitive. When handling non-uniform topologies, we use some straightforward processing on the graph to determine the bottleneck and appropriate values for the traffic factor.
+The Traffic Factor will depend on the traffic pattern and routing scheme used in the network, but here we outline a general formula for modeling it with a random variable based on the traffic model described in Section \ref{sec:network_model}. For this derivation, we assume that the network is operating in a steady state with the query rate $\lambda$ that is arbitrarily close to the the maximum satisfiable traffic rate since we are estimating the upper-most scalability limits and characterizing delay for when the network is operating at its maximum capacity. 
+
+Let $S_{(i,j)}$ be the set of nodes that make up the shortest path between node $i$ and $j$. For a node $x$, let $\rho(x)$ be the number of shortest paths in which $x$ is present. Now we assume that at a given time, the probability of node $i$ currently sending data to node $j$ is given by $p_f$. 
+We will let $\chi_{ij}$ be a Bernoulli trial that represents the existence of this flow, i.e., $\chi_{ij}$ will equal $1$ with probability $p_f$ and $0$ otherwise. Then, the traffic factor of node $x$, $TF_x$, would be the sum of $\chi_{ij}$ for all pairs $(i,j)$ in which $x \in P_{ij}$. Since $p_f$ is i.i.d. for all $(i,j)$ pairs such that $i \neq j$, then $TF_x$ is Binomial random variable with $n=\rho(x)$ and $p=p_{f}$.
+
+Since working with the binomial distribution can be tedious, we note that for most cases $TF_x$ can be approximated.  In some cases, namely when $p_f$ does not approach $0$ or $1$ as $n$ increases, the de Moivre-Laplace theorem states that the normal distribution can be used as an approximation.  When $p_f$ does approach $0$ and $n$ is sufficiently large, then the Poisson distribution is a more appropriate approximation as we show in examples in Appendix \ref{sec:derivation_TFs}. 
+
+%With a goal of determining maximum scalability and QoI-satisfiability limits, we choose to focus on the bottleneck node, $b$, which is the node that results in the largest mean $\mu_{TF_x}$ value.  While some non-uniform topologies may require some processing or calculation to determine this bottleneck node, in the topologies we explore in depth here, finding the bottleneck is intuitive. Traffic Factor expressions for clique, line, and grid topologies are in Table \ref{table:rf_ff_sf_values}. Details on how these expressions are derived are in Appendix \ref{sec:derivation_TFs}.  
+
+With a goal of determining maximum scalability and QoI-satisfiability limits, we focus on the bottleneck node, $b$, which is the node that results in the largest mean $\mu_{TF_x}$ value. For topologies with regular patterns like the line and grid networks, finding the bottleneck node and expressions to capture the expected traffic through it is intuitive. When handling non-uniform topologies, like the NSFNET topology, we use some straightforward processing on the graph to determine the bottleneck and appropriate values for the traffic factor.
 
 \subsection{Clique Network Traffic Factor}
 In a clique network, all nodes have a direct link to every other node, so no node is required to forward other nodes' traffic.  Therefore, we can simply set $\mu_{TF} = 1$ and $\sigma_{TF} = 0$.
