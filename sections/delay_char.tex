@@ -1,14 +1,10 @@
 \section{Finding Limits and Characterizing Delay}
 \label{sec:delay_char}
+
 As explained in Section \ref{sec:qoi_model}, delay of a flow can be expressed as
 \begin{equation}
 	D = \frac{ k_{req} \cdot I_S \cdot CF \cdot TF}{W} + \frac{P_S \cdot DF \cdot (PL-1)}{W}
 \end{equation}
-%We will make some substitutions to get the following version
-%\begin{equation}
-%	D = \frac{ P_S \cdot CF \cdot P_N \cdot TF}{W} + \frac{P_S \cdot DF \cdot (PL-1)}{W}
-%\end{equation}
-%
 Let $PL()$ be a function that provides the path length between $i$ and $j$, and let $TF_{i}^{j}$ be a random variable of the Traffic Factor for the bottleneck node between $i$ and $j$, i.e. the node along the path from $i$ to $j$ with the highest $u_x$.  Finally, let $P_N$ be a random variable that describes the number of packets in a given request, capturing both the possible randomness of $k_{req}$ and $I_S$.  
 Then, building on the equation for delay above and making some substitutions, we can get the following equation to describe the delay from a node $i$ given a destination of $j$:
 \begin{equation}
@@ -49,45 +45,39 @@ Substituting the cumulative distribution representing the data load, $F_{P_{N}}$
 	F_{D_{i}^{j}}(d) = \sum\limits_{\tau = 1}^{\tau_{max}} F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot \tau} ) \cdot f_{TF_{i}^{j}}(\tau)
 \end{equation*}
 Then, we can generalize the expression to give a distribution for a flow originating in node $i$ with an unknown destination by conditioning over all possible destinations, $j$.
-\begin{equation}
-\label{eq:delay_dist_pdf_i}
+\begin{equation*}
 	F_{D_i} = \sum\limits_{j \neq i} [ \sum\limits_{\tau = 1}^{\tau_{max}} F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot \tau} ) \cdot f_{TF_{i}^{j}}(\tau) ] \cdot p(j)
-\end{equation}
+\end{equation*}
 Finally, we can get an average distribution of all flows' delays by summing over all sources and dividing by the the number of sources.  This average delay distribution is in Equation (\ref{eq:full_delay_cdf}).
 
-\begin{figure*}[!t]
-%\setcounter{equation}{9}
-\begin{equation}
-\label{eq:full_delay_cdf}
-	F_D(d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} \sum\limits_{tf=1}^{tf_{max}}  F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot p_N} ) \cdot f_{TF_{i | j}}( tf ) \cdot p(j)
-\end{equation}
-\end{figure*}
-%\setcounter{equation}{5}
 
+\begin{figure*}[]
+\vspace{2mm}
+\centering
+    \subfigure[Prob. All Sets Covered vs. N (Timeliness = 50)]{
+	\includegraphics[scale=0.37, clip=true, trim=0mm 0mm 0mm 0mm]{figures/use_cases_examples/ccp_vs_N.pdf}
+        \label{fig:use_case_sum_sim_vs_num_nodes}
+        }
+  \subfigure[N vs. Timeliness (Prob. All Sets Covered = 0.8)]{
+	\includegraphics[scale=0.37, clip=true, trim=0mm 0mm 0mm 0mm]{figures/use_cases_examples/tness_vs_N.pdf}
+        \label{fig:use_case_num_nodes_vs_qoi_2}
+        }
+  \subfigure[Prob. All Sets Covered vs. Timeliness (N = 14)]{
+	\includegraphics[scale=0.37, clip=true, trim=0mm 0mm 0mm 0mm]{figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf}
+        \label{fig:use_case_nsf}
+        }
+   \vspace{-1mm}
+   \caption{One can quickly and easily find QoI limits and how these limits scale as network size increases for scalable networks (a) and (b). For a fixed-size network, the framework shows limits and tradeoffs in competing QoI requirements, such as in for the NSFNET topology in (c). }
+   \label{fig:huh_net_design}
+   \vspace{-6mm}
+\end{figure*}
 %\begin{figure*}[!t]
+%%\setcounter{equation}{9}
 %\begin{equation}
 %\label{eq:full_delay_cdf}
 %	F_D(d) = \frac{1}{N} \cdot \sum\limits_{i = 1}^N \sum\limits_{j \neq i} \sum\limits_{tf=1}^{tf_{max}}  F_{P_N}( \frac{d - C_2 \cdot PL(i,j)}{C_1 \cdot p_N} ) \cdot f_{TF_{i | j}}( tf ) \cdot p(j)
 %\end{equation}
 %\end{figure*}
-
-\begin{figure}[]
-\centering
-       \subfigure[Line Network, $N = 40$, $I_S = 36 KB$]{
-%        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line.pdf}
-%        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line_full_2.pdf}
-        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_line_half.pdf}
-        \label{fig:delay_cdf_line}
-        }
-    \subfigure[Grid Network, $N = 49$, $I_S = 72 KB$]{
-%        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_grid.pdf}
-        \includegraphics[scale=0.40, clip=true, trim=12mm 65mm 20mm 65mm]{figures/delay_cdfs/delay_cdf_grid_half.pdf}
-        \label{fig:delay_cdf_grid}
-        }
-   \caption{Characterization of delay using framework follows distribution of empirical results in most cases.}
-   \label{fig:delay_cdf_anal_vs_sim}
-   \vspace{-4mm}
-\end{figure}
 
 \subsection{Probability of Timeliness Satisfiability}
 
@@ -98,34 +88,8 @@ While the minimum timeliness at which all flows are expected to complete before 
 Figure \ref{fig:delay_cdf_anal_vs_sim} shows expected delay distributions from \ref{eq:full_delay_cdf} alongside distributions of delays recorded in ns3 simulations of the same networks.  We argue that minimum QoI requirements for most applications tend to be over $50\%$, and therefore focus on the top half of the delay distribution.  In all cases here, analytical predictions of satisfying the timeliness requirement are within about $10\%$ of empirical results for probabilities above $0.5$.  
 
 These delay distributions also provide much more information about the expected delays of all queries in addition to the minimum satisfiable timeliness.  For each completeness requirement of a minimum expected Sum Similarity, the maximum delay at the top of the distribution provides the minimum satisfiable timeliness.  Examining the distributions, though, we see that many of the queries finish well before that maximum delay.  For example, focusing on the delay distribution when the Sum Similarity requirement is $1.5$ in Figure \ref{fig:delay_cdf_line}, we note that the maximum delay is approximately $45$ seconds, but $80\%$ of the queries on average finish in almost half of that delay.  
-%Additionally, in smaller data load requirement cases, analytical predictions match simulation results quite closely along the entire distribution.
 
-%\subsection{Scalability and Maximum QoI Equations}
-%
-%Once 
 
-% from a different script:
-%\subsubsection{Delay}
-%
-%The delay distribution for a flow beginning in source node $i$ is:
-%
-%\begin{equation}
-%	f_{D_i} = \sum\limits_{j \neq i} [C_1 \cdot f_{TF_{i | j}}(tf) + C_2 \cdot PL(i,j)] \cdot p(j)
-%\end{equation}
-%which is equivalent to:
-%\begin{equation}
-%	P(D_i < d) = \sum\limits_{j \neq i} f_{TF_{i | j}}( \frac{d - C_2 \cdot PL(i,j)}{C_1} ) \cdot p(j)
-%\end{equation}
 
-%which can be expanded to:
-%
-%\begin{figure*}[t]
-%\begin{eqnarray}
-%\nonumber
-%	f_{D_i} (d) = &&\frac{i}{N} \cdot \mathcal{N}( \frac{2(i-1)(N-i)}{(N-2)(N-1)} , \sqrt{\frac{2(i-1)(N-i)  (1-\frac{1}{N-1})}{(N-2)(N-1)}} )  \\ \nonumber
-%			   &+& \sum\limits_{k=i}^{\frac{N}{2}-1} \cdot \frac{\frac{1}{2}-\frac{i}{N}}{\frac{N}{2} - i}\mathcal{N}( \frac{2(k-1)(N-k)}{(N-2)(N-1)}, \sqrt{\frac{2(k-1)(N-k)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )  \\
-%			   &+& \frac{1}{2} \cdot \mathcal{N} ( \frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} , \sqrt{\frac{N(\frac{N}{2}-1)}{(N-2)(N-1)} (1-\frac{1}{N-1})} )
-%\label{eq:full_PDF_TF_line_2}
-%\end{eqnarray}
-%\end{figure*}
-% end from different script
+
+

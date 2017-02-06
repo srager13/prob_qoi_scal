@@ -118,6 +118,12 @@ Y.~Jiang, X.~Xu, P.~Terlecky, T.~Abdelzaher, A.~Bar-Noy, and R.~Govindan.
 \newblock In {\em Proceedings of the 12th international conference on
   Information processing in sensor networks}, pages 289--300. ACM, 2013.
 
+\bibitem{d2d_survey}
+Arash Asadi, Qing Wang, and Vincenzo Mancuso.
+\newblock A survey on device-to-device communication in cellular networks.
+\newblock {\em IEEE Communications Surveys \& Tutorials}, 16(4):1801--1819,
+  2014.
+
 \bibitem{arq_schemes}
 Richard~A Comroe and Daniel~J Costello.
 \newblock Arq schemes for data transmission in mobile radio systems.
@@ -130,6 +136,12 @@ A.~Bar-Noy, G.~Cirincione, R.~Govindan, S.~Krishnamurthy, T.F. LaPorta,
   networks.
 \newblock In {\em Pervasive Computing and Communications Workshops (PERCOM
   Workshops), 2011 IEEE International Conference on}, pages 2--7. IEEE, 2011.
+
+\bibitem{nsf_net}
+Karen~D Frazer.
+\newblock {\em NSFNET: A Partnership for High-speed Networking: Final Report,
+  1987-1995}.
+\newblock Merit Network, 1996.
 
 \bibitem{perf_anal_80211_lan_mac}
 N.~Gupta, P.R. Kumar, et~al.
@@ -167,12 +179,6 @@ G.~Barrenechea, B.~Beferull-Lozano, and M.~Vetterli.
   robustness to failures.
 \newblock In {\em Information Processing in Sensor Networks, 2004. IPSN 2004.
   Third International Symposium on}, pages 186--195. IEEE, 2004.
-
-\bibitem{nsf_net}
-Karen~D Frazer.
-\newblock {\em NSFNET: A Partnership for High-speed Networking: Final Report,
-  1987-1995}.
-\newblock Merit Network, 1996.
 
 \bibitem{mitzenmacher2005probability}
 M.~Mitzenmacher and E.~Upfal.

@@ -11,6 +11,7 @@ Let us assume that we are designing a surveillance network with nodes arranged i
 Here, the data sink node will have two neighbors through which all queries will be forwarded, so clearly we can choose either of these to consider as the bottleneck node.  Even if the network balances traffic evenly over both of these nodes, each must forward at least $\frac{N-1}{2}-1$ since there are $N-1$ sources, half of which must be forwarded through each of the data sink's two neighbors, excluding the $1$ image from each of these neighbors themselves.  If we assume these queries may be simultaneously served in the worst case, then we can simply use this expression for the maximum Traffic Factor.  Then, using the same values derived for a grid network in Table \ref{table:rf_ff_sf_values} in place of the other factors in Equation (\ref{eq:general_scal}), we get the following scalability equation:
 
 \begin{equation}
+\setcounter{equation}{11}
 	W \cdot T - 5 \cdot I_s \cdot (\frac{N-1}{2}-1) - 2.5 \cdot P_s \cdot 2 \sqrt{N} \geq 0
 \end{equation}
 

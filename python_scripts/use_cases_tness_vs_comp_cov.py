@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Feb  1 20:06:27 2017
-
-@author: srager
-"""
 
 import csv
 import matplotlib.pyplot as plt
@@ -28,7 +23,7 @@ perc_cov_values = np.linspace(0.1,1,num_data_points)
 perc_cov_requ = []
 
 #ss_requ = csvread('SumSimRequirements_PSU_Data_Set.csv')
-with open('Matlab_Files/Cluster_Perc_Sets_Covered.csv', 'r') as csvfile:
+with open('Cluster_Perc_Sets_Covered.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
 #        print(row)
@@ -55,10 +50,11 @@ plt.plot(perc_cov_values, T, 'bx-', markersize=10, label="NSFNET Topology")
 #plt.plot(perc_cov_values, num_images)
 ax.set_xlabel('Prob. All Sets Covered', fontsize=axes_font_size, family='Arial', weight=font_weight) #, fontweight='bold'
 ax.set_ylabel('Minimum Satisfiable Timeliness ', fontsize=axes_font_size, family='Arial', weight=font_weight) #, fontweight='bold'
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
+#ax.spines['top'].set_visible(False)
+#ax.spines['right'].set_visible(False)
 plt.legend(loc='best', fontsize=12)
-plt.savefig('./figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf');
+plt.savefig('prob_sets_cov_vs_tness.pdf');
+#plt.savefig('./figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf');
 
 #hold on;
 #if plot_color == 1

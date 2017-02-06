@@ -1,4 +1,5 @@
 \appendices
+{\color{blue}
 \section{Details on Image Retrieval Algorithms}
 \label{sec:image_retr_algs}
 
@@ -15,14 +16,12 @@ related to the setting it depicts.  Naturally, then, when executing a Top-K quer
 \subsection{Selecting Diverse Images}
 One query that provides diverse images is known as the {\bf Spanner} of the set of known photographs.  For the Spanner algorithm, we employ a greedy algorithm similar to that in \cite{mediascope}.  Here, the algorithm simply chooses images that provide the greatest minimum distance from all images already chosen.  This minimum distance can be added to a running sum to provide a completeness metric of \emph{Sum Dissimilarity}.  This value represents a measure of completeness because a higher level of dissimilarity provides a more complete view of the feature space.
 
-%Here, the algorithm first chooses the two images with the greatest dissimilarity between them from all available images.  Then, each successive image is chosen to be the one with the greatest minimum distance between it and all images already chosen, until $k$ images are selected.  This minimum distance between the image being selected and the images in the collected set is the value added to the running cumulative completeness metric of \emph{Sum Dissimilarity}.  Since the Spanner algorithm's goal is to provide images at the edges of the available feature space, the Sum Dissimilarity represents a measure of its completeness because a higher level of dissimilarity is providing a more complete view of the feature space.
-
 The other query that can achieve a complete view over all images is {\bf Clustering}.  In the Clustering algorithm, all images are separated into $k$ clusters based on their pairwise distances using any version of a k-means clustering algorithm, where $k$ is given by the user.  Then, the most central image from each cluster is returned.  
 Here, assuming that the photographs of the same settings or objects of interest exhibit similar characteristics, 
 Clustering also provides a complete view of the network's environment.
 
 Both Spanner and Clustering algorithms can also be evaluated using a model assuming the environment is split into $n$ sets.  With this model, we can define completeness as either the number of sets represented by at least one of the $k$ images returned or the probability of all $n$ sets being represented by at least one image when $k$ are returned.  Here, though, we only show results for the second definition.
-
+}
 
 \section{Explanation of Expected QoI with Random Image Selection}
 \label{sec:expl_exp_qoi}
@@ -97,8 +96,15 @@ With a goal of determining maximum scalability and QoI-satisfiability limits, we
 \subsection{Clique Network Traffic Factor}
 In a clique network, all nodes have a direct link to every other node, so no node is required to forward other nodes' traffic.  Therefore, we can simply set $\mu_{TF} = 1$ and $\sigma_{TF} = 0$.
 
-\subsection{Line Network Traffic Factor}
+{\color{blue}
+\subsection{Star Network Traffic Factor}
+In a star network, also called a hub-spoke network, one node acts as the central hub or access point for the network. Naturally, this central hub node is the bottleneck node since all communication flows through it. Since there are $N-1$ non-hub nodes and each of those have $N-2$ possible non-hub node destinations, the number of paths that go through the hub node is $\rho(b) = (N-1)(N-2)$. Then, since there are $N$ flows and $N*(N-1)$ total paths in the network, we can approximate the probability of each path containing a flow as $p_f = \frac{1}{N-1}$. Therefore, $p$ approaches zero as the network size, $N$, and thus, $n$, increases, so we use a Poisson approximation for $TF_b$, giving the following distribution: 
+\begin{equation*}
+	f_{TF_b}(t) = e^{-(N-2)}\frac{(N-1)^{t}}{t!}
+\end{equation*} 
+}
 
+\subsection{Line Network Traffic Factor}
 For a line network, first, let us look at the number of paths that go through the bottleneck node, which is the center node for a line network.  We will assume that $N$ is odd here, for simplicity of notation, but the logic is the same for even values of $N$.  Since there are $\frac{N-1}{2}$ nodes on each side the center node, the total number of paths that go through it is
 \begin{equation*}
 %	\rho(\frac{N}{2}) = 2(\frac{N}{2}-1)^2
@@ -106,14 +112,12 @@ For a line network, first, let us look at the number of paths that go through th
 	\rho(b) = 2(\frac{N-1}{2})^2
 \end{equation*}
 
-Then, since there are $N$ flows and $N*(N-1)$ total paths in the network, we can approximate the probability of each path containing a flow as $p_f = \frac{1}{N-1}$.  Then, $TF_x$ will be a Binomial random variable with $n=\rho(b)$ and $p=\frac{1}{N-1}$.  Therefore, $p$ approaches zero as the network size, $N$, and thus, $n$, increases, so we use a Poisson approximation for $TF_b$, giving the following distribution:  
-%We note that in other traffic patterns, e.g., when $p$ does not approach $1$ or $0$, a normal approximation may be used instead.   
+Here, $p_f$ is the same as in the star network, $p_f = \frac{1}{N-1}$.  Then, $TF_x$ will be a Binomial random variable with $n=\rho(b)$ and $p=\frac{1}{N-1}$, and the Poisson approximation would be:  
 \begin{equation*}
 	f_{TF_b}(t) = e^{-(\frac{N-1}{2})}\frac{(\frac{N-1}{2})^{t}}{t!}
 \end{equation*} 
 
 \subsection{Grid Network Traffic Factor}
-
 Again, the bottleneck node, i.e., the node with the highest number of paths going through it is the center node, and we give the derivation for when $\sqrt{N}$ is odd, but the logic follows similarly for even values.  As proved in \cite{lattice_nets_cap_opt_routing}, the most optimal routing scheme for maximum capacity is ``Row-First, Column-Second" routing, so we assume paths follow this approach.  Again, we adopt a traffic pattern in which each node is the source of exactly one flow and that the destination is uniformly chosen from all other $N-1$ nodes.  
 %Node $i$, then, has a $\frac{1}{N-2}$ chance of choosing each non-center node.  
 For each source node, we can determine the number of destinations that route through the center.  We separate nodes into two categories for this counting.
@@ -167,12 +171,13 @@ which can be approximated by the following for large values of $N$.
 
 %Since our goal is to determine the point at which an average flow is no longer sustainable, we derive expressions for $TF$, $CF$, and $DF$ for the network.  In the case of $TF$, we use the value for the node with the largest expected $TF_i$ since flows that are routed through this node are expected to experience that largest delay and are likely to be the first that fail to meet their timeliness requirements.  Values for this example are shown in Table \ref{table:rf_ff_sf_values}. A derivation of $TF$ for a grid network is included in Appendix \ref{sec:grid_tf_proof}.  Details about deriving the other values are explained in \cite{symptotics_journal}.  The equations in Table \ref{table:scal_eqs} can be used to determine QoI and network size limitations.
 
+{\color{blue}
 \subsection{NSF Network}
 
 \begin{figure}
 \begin{centering}
     \includegraphics[scale=0.25]{figures/NSF_net.png}
-    \caption{Topology of NSFNET network. Node $5$ is on the highest number of shortest paths between all pairs, so it is the bottleneck node.}
+    \caption{{\color{blue}Topology of NSFNET network. Node $5$ is on the highest number of shortest paths between all pairs, so it is the bottleneck node.}}
     \label{fig:NSF_net}
 \end{centering}
 \end{figure}
@@ -181,6 +186,7 @@ We can also determine the traffic factor for an arbitrary network like the NSFNE
 \begin{equation*}
   f_{TF_b}(t) = e^{-2.15} \frac{2.15^t}{t!}
 \end{equation*}
+}
 
 \section{Proof of Multiplicative Chernoff Bound}
 \label{sec:chernoff_bound_proof}

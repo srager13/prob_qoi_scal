@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import csv
+import matplotlib.pyplot as plt
+import numpy as np
+from sympy import *
+import math
+
+plot_color=1
+font_size = 26
+font_weight = 550
+legend_font_size = 22
+axes_font_size = 16
+marker_size = 15
+
+N_set = [float(i) for i in range(5,145,5)]
+#N_set = [float(i) for i in range(5,55,5)]
+
+channel_rate = 2
+IS = 12
+W=channel_rate*1000000
+P_s = 1500*8
+image_size = IS*8*1000
+cluster_cov_perc = 0.8
+    
+ccp_requ = []              
+#ss_requ = csvread('SumSimRequirements_PSU_Data_Set.csv')
+with open('Cluster_Perc_Sets_Covered.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        print(row)
+        ccp_requ.append(float(row[0]))
+        if float(row[0]) > cluster_cov_perc:
+            num_images = float(row[1])
+
+B = num_images*image_size
+
+T_clique = np.zeros(len(N_set)) # [0.0 for i in range(len(N_set))]
+T_star = np.zeros(len(N_set)) # [0.0 for i in range(len(N_set))]
+T_line = np.zeros(len(N_set)) # [0.0 for i in range(len(N_set))]
+T_grid = np.zeros(len(N_set)) # [0.0 for i in range(len(N_set))]
+
+for i,N in enumerate(N_set):
+    T_clique[i] = (B/W)*(N-1)+(P_s/W)
+    T_star[i] = (B*(N-1)*(N-2)+P_s*N)/W
+    T_line[i] = 1.5*(B/W)*((N-1)*(N-1)/(N-2))+1.5*(P_s/W)*(N/4 -1)
+    T_grid[i] = 5*(math.sqrt(N)/W)*(B+(P_s/3));
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+plt.plot(N_set, T_clique, 'ro-', markerfacecolor='none', markersize=10, label="Clique")
+plt.plot(N_set, T_star, 'k*-', markerfacecolor='none', markersize=10, label="Star")
+plt.plot(N_set, T_line, 'b+-', markersize=10, label="Line")
+plt.plot(N_set, T_grid, 'gx-', markersize=10, label="Grid")
+ax.set_xlabel('Number of Nodes', fontsize=axes_font_size, family='Arial', weight=font_weight) #, fontweight='bold'
+ax.set_ylabel('Timeliness', fontsize=axes_font_size, family='Arial', weight=font_weight) #, fontweight='bold'
+axes = plt.gca()
+axes.set_xlim([0,N_set[-1]+5])
+axes.set_ylim([0,600])
+#ax.spines['top'].set_visible(False)
+#ax.spines['right'].set_visible(False)
+plt.legend(loc=9, fontsize=12)
+plt.savefig('./tness_vs_N.pdf');

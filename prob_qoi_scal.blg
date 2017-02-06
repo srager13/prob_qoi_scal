@@ -6,45 +6,45 @@ Database file #1: references.bib
 Warning--empty author in ns3
 Warning--empty journal in ns3
 Warning--empty year in ns3
-You've used 29 entries,
+You've used 30 entries,
             1791 wiz_defined-function locations,
-            618 strings with 9726 characters,
-and the built_in function-call counts, 8178 in all, are:
-= -- 736
-> -- 400
+            624 strings with 9900 characters,
+and the built_in function-call counts, 8449 in all, are:
+= -- 762
+> -- 411
 < -- 11
-+ -- 144
-- -- 115
-* -- 546
-:= -- 1236
-add.period$ -- 97
-call.type$ -- 29
-change.case$ -- 28
++ -- 148
+- -- 118
+* -- 570
+:= -- 1278
+add.period$ -- 100
+call.type$ -- 30
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 389
-empty$ -- 776
-format.name$ -- 115
-if$ -- 1890
+cite$ -- 33
+duplicate$ -- 398
+empty$ -- 802
+format.name$ -- 118
+if$ -- 1948
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 30
-newline$ -- 148
-num.names$ -- 28
-pop$ -- 123
+int.to.str$ -- 30
+missing$ -- 31
+newline$ -- 153
+num.names$ -- 29
+pop$ -- 124
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 193
+skip$ -- 196
 stack$ -- 0
-substring$ -- 510
-swap$ -- 127
+substring$ -- 541
+swap$ -- 128
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 3
-while$ -- 76
-width$ -- 31
-write$ -- 324
+while$ -- 79
+width$ -- 32
+write$ -- 335
 (There were 3 warnings)

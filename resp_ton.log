@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 FEB 2017 11:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  5 FEB 2017 15:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1155,24 +1155,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--112
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
+
+ []
+
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 124--126
 
  []
 
-[2] [3] [4] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+[2] [3] [4] [5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 248--249
 
  []
 
-[9]
+
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+
+ []
+
+[9] [10]
 No file resp_ton.bbl.
-[10] (./resp_ton.aux) ) 
+[11] (./resp_ton.aux) ) 
 Here is how much of TeX's memory you used:
  18240 strings out of 493014
  371916 string characters out of 6133351
@@ -1180,14 +1190,14 @@ Here is how much of TeX's memory you used:
  21418 multiletter control sequences out of 15000+600000
  28558 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,92p,953b,175s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,7n,92p,953b,179s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base
 /8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on resp_ton.pdf (10 pages, 53850 bytes).
+Output written on resp_ton.pdf (11 pages, 55121 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 

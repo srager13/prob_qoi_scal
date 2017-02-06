@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 FEB 2017 10:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  6 FEB 2017 11:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -672,50 +672,50 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-])
-(./sections/network_model.tex) [2] (./sections/qoi_model.tex
-<figures/topk/topk_sum_sim_color.pdf, id=21, 614.295pt x 794.97pt>
+]
+<figures/topk/topk_sum_sim_color.pdf, id=11, 614.295pt x 794.97pt>
 File: figures/topk/topk_sum_sim_color.pdf Graphic file (type pdf)
 
 <use figures/topk/topk_sum_sim_color.pdf>
 Package pdftex.def Info: figures/topk/topk_sum_sim_color.pdf used on input line
- 23.
+ 21.
 (pdftex.def)             Requested size: 113.8001pt x 94.49532pt.
 
-<figures/topk/avg_num_matching_color.pdf, id=23, 614.295pt x 794.97pt>
+<figures/topk/avg_num_matching_color.pdf, id=13, 614.295pt x 794.97pt>
 File: figures/topk/avg_num_matching_color.pdf Graphic file (type pdf)
 
 <use figures/topk/avg_num_matching_color.pdf>
 Package pdftex.def Info: figures/topk/avg_num_matching_color.pdf used on input 
-line 27.
+line 25.
 (pdftex.def)             Requested size: 113.8001pt x 94.49532pt.
 
-<figures/spanner/spannerCumulativeDist_color.pdf, id=25, 614.295pt x 794.97pt>
+<figures/spanner/spannerCumulativeDist_color.pdf, id=15, 614.295pt x 794.97pt>
 File: figures/spanner/spannerCumulativeDist_color.pdf Graphic file (type pdf)
 
 <use figures/spanner/spannerCumulativeDist_color.pdf>
 Package pdftex.def Info: figures/spanner/spannerCumulativeDist_color.pdf used o
-n input line 31.
+n input line 29.
 (pdftex.def)             Requested size: 113.8001pt x 94.49532pt.
 
-<figures/cluster/perc_all_sets_covered_vary_k_color.pdf, id=27, 614.295pt x 794
+<figures/cluster/perc_all_sets_covered_vary_k_color.pdf, id=17, 614.295pt x 794
 .97pt>
 File: figures/cluster/perc_all_sets_covered_vary_k_color.pdf Graphic file (type
  pdf)
  <use figures/cluster/perc_all_sets_covered_vary_k_color.pdf>
 Package pdftex.def Info: figures/cluster/perc_all_sets_covered_vary_k_color.pdf
- used on input line 35.
+ used on input line 33.
 (pdftex.def)             Requested size: 114.4545pt x 94.49532pt.
- [3])
-(./sections/qoi_scalability.tex [4 <./figures/topk/topk_sum_sim_color.pdf> <./f
-igures/topk/avg_num_matching_color.pdf> <./figures/spanner/spannerCumulativeDis
-t_color.pdf> <./figures/cluster/perc_all_sets_covered_vary_k_color.pdf>]
+)
+(./sections/network_model.tex) [2] (./sections/qoi_model.tex [3 <./figures/topk
+/topk_sum_sim_color.pdf> <./figures/topk/avg_num_matching_color.pdf> <./figures
+/spanner/spannerCumulativeDist_color.pdf> <./figures/cluster/perc_all_sets_cove
+red_vary_k_color.pdf>]) (./sections/qoi_scalability.tex [4]
 <figures/delay_limit_expl/fig_1_2.pdf, id=54, 430.60875pt x 382.42876pt>
 File: figures/delay_limit_expl/fig_1_2.pdf Graphic file (type pdf)
 
 <use figures/delay_limit_expl/fig_1_2.pdf>
 Package pdftex.def Info: figures/delay_limit_expl/fig_1_2.pdf used on input lin
-e 46.
+e 32.
 (pdftex.def)             Requested size: 142.10132pt x 126.20187pt.
 
 <figures/delay_limit_expl/fig_2_2.pdf, id=55, 430.60875pt x 468.75125pt>
@@ -723,93 +723,87 @@ File: figures/delay_limit_expl/fig_2_2.pdf Graphic file (type pdf)
 
 <use figures/delay_limit_expl/fig_2_2.pdf>
 Package pdftex.def Info: figures/delay_limit_expl/fig_2_2.pdf used on input lin
-e 56.
+e 43.
 (pdftex.def)             Requested size: 150.7153pt x 164.06538pt.
 
-Underfull \vbox (badness 2753) has occurred while \output is active []
-
- [5 <./figures/delay_limit_expl/fig_1_2.pdf> <./figures/delay_limit_expl/fig_2_
-2.pdf>])
-(./sections/example_applications.tex
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 6.
+               Default added (so using `tbp') on input line 52.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 28.
+               Default added (so using `tbp') on input line 70.
 
-[6]
+[5 <./figures/delay_limit_expl/fig_1_2.pdf> <./figures/delay_limit_expl/fig_2_2
+.pdf>]) (./sections/example_applications.tex [6]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 75.
+               Default added (so using `tbp') on input line 79.
 
 
-<figures/scal_sim_results/color_2d/line_scal_chernoff.pdf, id=102, 614.295pt x 
+<figures/scal_sim_results/color_2d/line_scal_chernoff.pdf, id=105, 614.295pt x 
 794.97pt>
 File: figures/scal_sim_results/color_2d/line_scal_chernoff.pdf Graphic file (ty
 pe pdf)
  <use figures/scal_sim_results/color_2d/line_scal_chernoff.pdf>
 Package pdftex.def Info: figures/scal_sim_results/color_2d/line_scal_chernoff.p
-df used on input line 81.
+df used on input line 85.
 (pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
 
-<figures/scal_sim_results/color_2d/grid_scal_chernoff.pdf, id=104, 614.295pt x 
+<figures/scal_sim_results/color_2d/grid_scal_chernoff.pdf, id=107, 614.295pt x 
 794.97pt>
 File: figures/scal_sim_results/color_2d/grid_scal_chernoff.pdf Graphic file (ty
 pe pdf)
  <use figures/scal_sim_results/color_2d/grid_scal_chernoff.pdf>
 Package pdftex.def Info: figures/scal_sim_results/color_2d/grid_scal_chernoff.p
-df used on input line 86.
+df used on input line 90.
 (pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
 
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 110.
+
+<figures/delay_cdfs/delay_cdf_line_half.pdf, id=109, 614.295pt x 794.97pt>
+File: figures/delay_cdfs/delay_cdf_line_half.pdf Graphic file (type pdf)
+
+<use figures/delay_cdfs/delay_cdf_line_half.pdf>
+Package pdftex.def Info: figures/delay_cdfs/delay_cdf_line_half.pdf used on inp
+ut line 117.
+(pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
+
+<figures/delay_cdfs/delay_cdf_grid_half.pdf, id=111, 614.295pt x 794.97pt>
+File: figures/delay_cdfs/delay_cdf_grid_half.pdf Graphic file (type pdf)
+
+<use figures/delay_cdfs/delay_cdf_grid_half.pdf>
+Package pdftex.def Info: figures/delay_cdfs/delay_cdf_grid_half.pdf used on inp
+ut line 122.
+(pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
+) (./sections/delay_char.tex
 [7 <./figures/scal_sim_results/color_2d/line_scal_chernoff.pdf> <./figures/scal
-_sim_results/color_2d/grid_scal_chernoff.pdf>]) (./sections/delay_char.tex
-Overfull \hbox (4.92851pt too wide) in alignment at lines 37--40
+_sim_results/color_2d/grid_scal_chernoff.pdf>]
+Overfull \hbox (4.92851pt too wide) in alignment at lines 33--36
  [][][] []
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 74.
+               Default added (so using `tbp') on input line 54.
 
-<figures/delay_cdfs/delay_cdf_line_half.pdf, id=121, 614.295pt x 794.97pt>
-File: figures/delay_cdfs/delay_cdf_line_half.pdf Graphic file (type pdf)
+<figures/use_cases_examples/ccp_vs_N.pdf, id=125, 433.62pt x 289.08pt>
+File: figures/use_cases_examples/ccp_vs_N.pdf Graphic file (type pdf)
 
-<use figures/delay_cdfs/delay_cdf_line_half.pdf>
-Package pdftex.def Info: figures/delay_cdfs/delay_cdf_line_half.pdf used on inp
-ut line 81.
-(pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
+<use figures/use_cases_examples/ccp_vs_N.pdf>
+Package pdftex.def Info: figures/use_cases_examples/ccp_vs_N.pdf used on input 
+line 60.
+(pdftex.def)             Requested size: 160.43689pt x 106.95792pt.
 
-<figures/delay_cdfs/delay_cdf_grid_half.pdf, id=123, 614.295pt x 794.97pt>
-File: figures/delay_cdfs/delay_cdf_grid_half.pdf Graphic file (type pdf)
+<figures/use_cases_examples/tness_vs_N.pdf, id=127, 433.62pt x 289.08pt>
+File: figures/use_cases_examples/tness_vs_N.pdf Graphic file (type pdf)
 
-<use figures/delay_cdfs/delay_cdf_grid_half.pdf>
-Package pdftex.def Info: figures/delay_cdfs/delay_cdf_grid_half.pdf used on inp
-ut line 86.
-(pdftex.def)             Requested size: 209.29477pt x 170.03067pt.
-)
-(./sections/network_design.tex
-<figures/use_cases_examples/cluster/cluster_cov_perc_vs_num_nodes_50_T_12_IS_2_
-W_color.pdf, id=125, 614.295pt x 794.97pt>
-File: figures/use_cases_examples/cluster/cluster_cov_perc_vs_num_nodes_50_T_12_
-IS_2_W_color.pdf Graphic file (type pdf)
-
-<use figures/use_cases_examples/cluster/cluster_cov_perc_vs_num_nodes_50_T_12_I
-S_2_W_color.pdf>
-Package pdftex.def Info: figures/use_cases_examples/cluster/cluster_cov_perc_vs
-_num_nodes_50_T_12_IS_2_W_color.pdf used on input line 8.
-(pdftex.def)             Requested size: 143.32126pt x 119.02277pt.
-
-<figures/use_cases_examples/cluster/num_nodes_vs_tness_cluster_color.pdf, id=12
-7, 614.295pt x 794.97pt>
-File: figures/use_cases_examples/cluster/num_nodes_vs_tness_cluster_color.pdf G
-raphic file (type pdf)
-
-<use figures/use_cases_examples/cluster/num_nodes_vs_tness_cluster_color.pdf>
-Package pdftex.def Info: figures/use_cases_examples/cluster/num_nodes_vs_tness_
-cluster_color.pdf used on input line 12.
-(pdftex.def)             Requested size: 142.52458pt x 119.02277pt.
+<use figures/use_cases_examples/tness_vs_N.pdf>
+Package pdftex.def Info: figures/use_cases_examples/tness_vs_N.pdf used on inpu
+t line 64.
+(pdftex.def)             Requested size: 160.43689pt x 106.95792pt.
 
 <figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf, id=129, 433.62p
 t x 289.08pt>
@@ -818,56 +812,54 @@ e (type pdf)
 
 <use figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf>
 Package pdftex.def Info: figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tn
-ess.pdf used on input line 16.
-(pdftex.def)             Requested size: 195.1272pt x 130.0848pt.
- [8]
-Underfull \vbox (badness 1377) has occurred while \output is active []
-
-)
-(./sections/scal_feasible_qoi.tex [9 <./figures/delay_cdfs/delay_cdf_line_half.
-pdf> <./figures/delay_cdfs/delay_cdf_grid_half.pdf>]
-<figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf, id=143, 614.295pt x 794
+ess.pdf used on input line 68.
+(pdftex.def)             Requested size: 160.43689pt x 106.95792pt.
+ [8 <./figures/delay_cdfs/delay_cdf_line_half.pdf> <./figures/delay_cdfs/delay_
+cdf_grid_half.pdf>]) (./sections/network_design.tex) (./sections/scal_feasible_
+qoi.tex
+[9 <./figures/use_cases_examples/ccp_vs_N.pdf> <./figures/use_cases_examples/tn
+ess_vs_N.pdf> <./figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.pdf>
+]
+<figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf, id=304, 614.295pt x 794
 .97pt>
 File: figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf Graphic file (type 
 pdf)
  <use figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf>
 Package pdftex.def Info: figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf 
-used on input line 28.
+used on input line 29.
 (pdftex.def)             Requested size: 172.78896pt x 121.19043pt.
 
-<figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png, id=145, 1162.34
+<figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png, id=306, 1162.34
 25pt x 935.495pt>
 File: figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png Graphic fil
 e (type png)
 
 <use figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png>
 Package pdftex.def Info: figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2
-d_2.png used on input line 34.
+d_2.png used on input line 35.
 (pdftex.def)             Requested size: 162.72684pt x 130.9684pt.
-) [10 <./figures/use_cases_examples/cluster/cluster_cov_perc_vs_num_nodes_50_T_
-12_IS_2_W_color.pdf> <./figures/use_cases_examples/cluster/num_nodes_vs_tness_c
-luster_color.pdf> <./figures/use_cases_examples/nsf_net/prob_sets_cov_vs_tness.
-pdf> <./figures/scal_feas_qoi/scal_feas_qoi_corner_sink_6.pdf> <./figures/scal_
-feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png>] (./sections/discussion.tex)
+)
+(./sections/discussion.tex [10 <./figures/scal_feas_qoi/scal_feas_qoi_corner_si
+nk_6.pdf> <./figures/scal_feas_qoi/scal_feas_qoi_grid_corner_sink_2d_2.png>])
 (./sections/conclusion.tex) (./sections/appendices.tex [11]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 46.
+(amsmath)                 on input line 45.
 
-[12] <figures/TF_proof_fig_color.pdf, id=1657, 500.87125pt x 374.39874pt>
+[12] <figures/TF_proof_fig_color.pdf, id=1758, 500.87125pt x 374.39874pt>
 File: figures/TF_proof_fig_color.pdf Graphic file (type pdf)
 
 <use figures/TF_proof_fig_color.pdf>
-Package pdftex.def Info: figures/TF_proof_fig_color.pdf used on input line 123.
+Package pdftex.def Info: figures/TF_proof_fig_color.pdf used on input line 127.
 
 (pdftex.def)             Requested size: 195.33899pt x 146.01492pt.
 
-<figures/NSF_net.png, id=1658, 876.876pt x 456.2646pt>
+<figures/NSF_net.png, id=1759, 876.876pt x 456.2646pt>
 File: figures/NSF_net.png Graphic file (type png)
 
 <use figures/NSF_net.png>
-Package pdftex.def Info: figures/NSF_net.png used on input line 174.
+Package pdftex.def Info: figures/NSF_net.png used on input line 179.
 (pdftex.def)             Requested size: 219.21846pt x 114.06587pt.
  [13 <./figures/TF_proof_fig_color.pdf> <./figures/NSF_net.png>]) (./prob_qoi_s
 cal.bbl
@@ -881,7 +873,7 @@ Underfull \hbox (badness 2662) in paragraph at lines 36--42
 
  []
 
-[14])
+)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -893,52 +885,46 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[15
-
-] (./prob_qoi_scal.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[14] (./prob_qoi_scal.aux) ) 
 Here is how much of TeX's memory you used:
  12650 strings out of 493014
- 225762 string characters out of 6133351
- 265642 words of memory out of 5000000
+ 225361 string characters out of 6133351
+ 263630 words of memory out of 5000000
  15966 multiletter control sequences out of 15000+600000
  51190 words of font info for 113 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  38i,14n,40p,10381b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
-/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb></usr/local/texli
-ve/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2
-016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2016/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2016/texmf-dist/fo
-nts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
-/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on prob_qoi_scal.pdf (15 pages, 718000 bytes).
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips
+/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmex
+tra/cmex8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cm
+mib6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextr
+a/cmmib8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pf
+b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2
+016/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on prob_qoi_scal.pdf (14 pages, 739733 bytes).
 PDF statistics:
- 1854 PDF objects out of 2073 (max. 8388607)
- 1679 compressed objects within 17 object streams
+ 1952 PDF objects out of 2073 (max. 8388607)
+ 1693 compressed objects within 17 object streams
  0 named destinations out of 1000 (max. 500000)
  164 words of extra memory for PDF output out of 10000 (max. 10000000)
 

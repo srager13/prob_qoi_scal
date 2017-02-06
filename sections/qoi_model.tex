@@ -1,41 +1,27 @@
 \section{QoI Model}
 \label{sec:qoi_model}
 
-%\begin{figure}
+%\begin{figure*}[t!]
 %\centering
-%    \subfigure[Sum Similarity]{
-%        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/topk/topk_sum_sim.pdf}
+%    \subfigure[Top-K: Sum Similarity]{
+%        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/topk/topk_sum_sim_color.pdf}
 %        \label{fig:topkSumSim}
 %        }
-%    \subfigure[Avg. Match Target]{
-%        \includegraphics[clip=true, trim = 17mm 65mm 23mm 70mm, scale=0.23]{figures/topk/avg_num_matching_color.pdf}
+%    \subfigure[Top-K: Avg. Match Target]{
+%        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/topk/avg_num_matching_color.pdf}
 %        \label{fig:topkAvgNumSameSet}
 %        }
-%   \caption{Completeness metrics for the Top-K selection algorithm. Each exhibits a diminishing return as more images are added.}
+%    \subfigure[Spanner: Sum Dissimilarity]{
+%        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/spanner/spannerCumulativeDist_color.pdf}
+%        \label{fig:spanSumDissim}
+%        }
+%    \subfigure[Clustering: Cover All Sets]{
+%        \includegraphics[clip=true, trim = 16mm 65mm 25mm 70mm, scale=0.23]{figures/cluster/perc_all_sets_covered_vary_k_color.pdf}
+%        \label{fig:clusterAvgNumSetsCov}
+%        }        
+%   \caption{Completeness metrics for the three image selection algorithms. Each exhibits a diminishing return as more images are added.}
 %   \label{fig:completeness_exp_results}
-%\end{figure}
-
-\begin{figure*}
-\centering
-    \subfigure[Top-K: Sum Similarity]{
-        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/topk/topk_sum_sim_color.pdf}
-        \label{fig:topkSumSim}
-        }
-    \subfigure[Top-K: Avg. Match Target]{
-        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/topk/avg_num_matching_color.pdf}
-        \label{fig:topkAvgNumSameSet}
-        }
-    \subfigure[Spanner: Sum Dissimilarity]{
-        \includegraphics[clip=true, trim = 17mm 65mm 25mm 70mm, scale=0.23]{figures/spanner/spannerCumulativeDist_color.pdf}
-        \label{fig:spanSumDissim}
-        }
-    \subfigure[Clustering: Cover All Sets]{
-        \includegraphics[clip=true, trim = 16mm 65mm 25mm 70mm, scale=0.23]{figures/cluster/perc_all_sets_covered_vary_k_color.pdf}
-        \label{fig:clusterAvgNumSetsCov}
-        }        
-   \caption{Completeness metrics for the three image selection algorithms. Each exhibits a diminishing return as more images are added.}
-   \label{fig:completeness_exp_results}
-\end{figure*}
+%\end{figure*}
 
 QoI is a multi-dimensional metric that can be defined for an application to give a more meaningful measure of the value of information.  It consists of attributes such as  timeliness, freshness, completeness, accuracy, precision, etc.  
 For example, information that contributes to a decision-making process may only be useful if it arrives before the decision must be made, or it may have varying usefulness based on how similar or dissimilar it is to other data already collected.
@@ -71,14 +57,10 @@ Similarly, Figure \ref{fig:clusterAvgNumSetsCov} shows that jumping from $k=10$ 
 
 The relationship between the number of images and completeness in each of these graphs also shows that obtaining a certain value of QoI or completeness requires a different number of images depending on the set available and their similarities.  We can denote the number of images required to achieve a level of completeness, $C$, as $k_{req} = Q(C)$.  This relationship will be useful later in determining capacity and scalability limits.
 
-%\subsection{Other Applications}
-%In our work, we also studied and experimented with two other algorithms in \cite{mediascope} that provide completeness by returning images that are dissimilar from each, providing a representative view of available data.  These completeness definitions resulted in very similar relationships as seen in Figure \ref{fig:completeness_exp_results} and are omitted for space.  We also note that the formulation in Section \ref{sec:qoi_scalability} is not restricted to just completeness, but can be used with any QoI metric that can be translated into a data requirement.
 \subsection{Further Discussion of QoI}
-We have defined and provided examples for a number of ways that completeness can be defined and used to obtain a concrete data requirement from a contextual QoI requirement.  Throughout the rest of the paper, we use sum similarity and the probability of covering all sets using clustering as completeness metrics, but we note that any of the definitions of completeness used here, or any other QoI requirement that can be translated into a data requirement, for that matter, can be used. % in the formulation in Section \ref{sec:qoi_scalability}.
+We have defined and provided examples for a number of ways that completeness can be defined and used to obtain a concrete data requirement from a contextual QoI requirement.  Throughout the rest of the paper, we use sum similarity and the probability of covering all sets using clustering as completeness metrics, but we note that any of the definitions of completeness used here, or any other QoI requirement that can be translated into a data requirement, for that matter, can be used. 
 
-%Also, note that QoI and its usage in understanding networks is not exclusive to these metrics and applications.  On the contrary, the model used in the capacity and scalability analysis of Section \ref{sec:qoi_scalability} is meant to be an in-depth example of this concept.  Modifications to account for different data size requirements should be quite straightforward, and extensions to other time-based metrics should be possible with careful extensions to the framework.
-
-Also, while metadata associated with photographs may be useful in obtaining similar goals to those given in this section, relying on such information is problematic because metadata is not guaranteed to be available, and it is not as universally applicable as content-based retrieval.  For example, tags describing the image contents would require users to participate by entering this information, which is time-consuming and unreliable.  Location and time stamps may be automatically applied by the device allowing an application to filter images accordingly, but these tags often do not account for factors such as the direction of the camera or obstructed views.  Content-based processing, though, can be applied to any set of images.
+%Also, while metadata associated with photographs may be useful in obtaining similar goals to those given in this section, relying on such information is problematic because metadata is not guaranteed to be available, and it is not as universally applicable as content-based retrieval.  For example, tags describing the image contents would require users to participate by entering this information, which is time-consuming and unreliable.  Location and time stamps may be automatically applied by the device allowing an application to filter images accordingly, but these tags often do not account for factors such as the direction of the camera or obstructed views.  Content-based processing, though, can be applied to any set of images.
 
 
 
